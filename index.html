@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.2.0">
+<meta name="google-site-verification" content="NNns6yX_AQQxa6sJQwIIHMJbXcs02pg3ZiTE4UK8VQQ" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
-
-<script class="hexo-configurations">
+<script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
@@ -33,11 +32,10 @@
 <meta property="article:tag" content="codeforces, competitive programming, algorithms, atcoder, segment tree, dp, sam, 山姆, 路過的一隻山姆, 線段樹, BIT, graph, flow">
 <meta name="twitter:card" content="summary">
 
-
 <link rel="canonical" href="http://example.com/">
 
 
-<script class="page-configurations">
+<script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -57,61 +55,49 @@
 
   <noscript>
   <style>
-  body { margin-top: 2rem; }
-
+  .use-motion .brand,
   .use-motion .menu-item,
-  .use-motion .sidebar,
+  .sidebar-inner,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
+  .use-motion .site-subtitle {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切換導航欄">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">山姆的競程日記</h1>
-      <i class="logo-line"></i>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">從綠牌開始的旅途</p>
   </div>
@@ -124,21 +110,17 @@
 
 
 
+
 <nav class="site-nav">
-  <ul class="main-menu menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
-        <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-archives">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
 
   </li>
   </ul>
@@ -148,61 +130,6 @@
 
 
 </div>
-        
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">路過的一隻山姆</p>
-  <div class="site-description" itemprop="description">這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </section>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
     </header>
 
     
@@ -211,15 +138,14 @@
     <span>0%</span>
   </div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    <div class="main-inner index posts-expand">
-      
-
-      
+          <div class="content index posts-expand">
+            
       
   
   
@@ -235,28 +161,24 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="山姆的競程日記">
     </span>
-
-    
-    
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/29/Codeforces-Round-673-Div-2/" class="post-title-link" itemprop="url">Codeforces Round</a>
+            <a href="/2020/09/29/Codeforces-Round-673-Div-2/" class="post-title-link" itemprop="url">Codeforces Round &#35;673 (Div.2)</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
 
-      <time title="創建時間：2020-09-29 21:06:18 / 修改時間：21:07:47" itemprop="dateCreated datePublished" datetime="2020-09-29T21:06:18+08:00">2020-09-29</time>
-    </span>
+              <time title="創建時間：2020-09-29 21:06:18 / 修改時間：21:29:17" itemprop="dateCreated datePublished" datetime="2020-09-29T21:06:18+08:00">2020-09-29</time>
+            </span>
 
-  
+          
   
   <span class="post-meta-item">
     
@@ -271,7 +193,6 @@
   </span>
   
   
-</div>
 
         </div>
       </header>
@@ -280,48 +201,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>這場只答對三題pA, pB, pC，所以掉分了(´Д` )</p>
-<h2 id="Problem-A-Copy-paste"><a href="#Problem-A-Copy-paste" class="headerlink" title="Problem A - Copy-paste"></a>Problem A - Copy-paste</h2><p>給予一個 $n$ 項的陣列以及一個 $k$ 值</p>
-<p>你能挑選  $1\leq i,j \leq n$<br>並讓 $a_j = a_j + a_i$</p>
-<p>問最多能做幾次</p>
-<p>這題我一看到是直接砸priority_queue<br>不過其實這題很簡單的做法是<br>選取 $min(a_0,a_1,…,a_n)$ 的值<br>並用該值去增加其他項的數值</p>
-<p>程式碼</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,k;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">priority_queue</span>&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt;&gt; pq;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>,tmp;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; tmp;</span><br><span class="line">		pq.push(tmp);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(pq.top()&lt;=k)&#123;</span><br><span class="line">		<span class="keyword">int</span> a = pq.top(); pq.pop();</span><br><span class="line">		<span class="keyword">int</span> b = pq.top(); pq.pop();</span><br><span class="line">		<span class="keyword">if</span>(a+b &lt;= k)&#123;</span><br><span class="line">			cnt++;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		pq.push(a+b);</span><br><span class="line">		pq.push(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; cnt &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--) solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Problem-B-Two-Arrays"><a href="#Problem-B-Two-Arrays" class="headerlink" title="Problem B - Two Arrays"></a>Problem B - Two Arrays</h2><p>題意是說<br>給予一個 $n$ 項的陣列與一個 $T$ 值<br>你可以將整個陣列塗兩種顏色<br>使得同一個顏色當中 任兩個元素總和為 $T$ 的數量最小化</p>
-<p>這題我一開始想錯 砸了兩次WA 不過這題非常簡單<br>首先 我們先掃過每一個元素 $a_i$<br>決定是否將 $a_i$ 塗色<br>若我們尚未塗過 $T-a_i$ 我們就將 $a_i$ 塗色<br>這個題目有一個小陷阱<br>那就是當元素可重複且元素為 $\frac{t}{2}$<br>我們就必須把同個元素塗上不同的顏色<br>否則同元素放在同一顏色當中反而更好</p>
-<p>程式碼</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; c,cnt;</span><br><span class="line">	<span class="keyword">int</span> n,t;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; t;</span><br><span class="line">	<span class="keyword">int</span> arr[n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x : arr) <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		cnt[arr[i]]++;</span><br><span class="line">		<span class="keyword">if</span>(!c[t-arr[i]])</span><br><span class="line">			c[arr[i]] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[i]==t-arr[i]&amp;&amp;cnt[arr[i]]%<span class="number">2</span>==<span class="number">0</span>) <span class="built_in">cout</span> &lt;&lt; (c[arr[i]]^<span class="number">1</span>) &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; c[arr[i]] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		cnt[arr[i]]--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--) solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Problem-C-k-Amazing-Numbers"><a href="#Problem-C-k-Amazing-Numbers" class="headerlink" title="Problem C - k-Amazing Numbers"></a>Problem C - k-Amazing Numbers</h2><p>這題是說給予一個 $n$ 項的陣列<br>問在每一個長度為 $k$ 的子陣列當中 都有出現的最小元素<br>並依序從 $k=1 \sim k=n$ 分別輸出最小元素</p>
-<p>這題我的做法是紀錄 $1 \sim n$ 相隔最久都沒有出現重複的長度<br>之後就能用這個去得到答案了<br>由於出現在每個長度為 $k$ 的子陣列的元素 一定出現在長度為 $k+1$的子陣列 我們也需要用 $k$的元素來更新 $k+1$的元素</p>
-<p>程式碼</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> g = <span class="number">0</span>, mi = INT_MAX;</span><br><span class="line">	<span class="keyword">int</span> arr[n+<span class="number">1</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">int</span> ans[n+<span class="number">1</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, tmp;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; tmp;</span><br><span class="line">		mi = min(mi,tmp);</span><br><span class="line">		ans[tmp] = max(ans[tmp],(arr[tmp]+g + (ans[tmp]==<span class="number">0</span> ? <span class="number">1</span> : <span class="number">0</span>)));</span><br><span class="line">		arr[tmp] = -i;</span><br><span class="line">		g++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">pr</span><span class="params">(n+<span class="number">2</span>,<span class="number">1e9</span>+<span class="number">7</span>)</span></span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">		ans[i] = max(ans[i],arr[i]+g);</span><br><span class="line">		pr[ans[i]] = min(i,pr[ans[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">	pr[n] = mi;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">		pr[i+<span class="number">1</span>] = min(pr[i+<span class="number">1</span>],pr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(pr[i]==<span class="number">1e9</span>+<span class="number">7</span>) <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; pr[i] &lt;&lt; <span class="string">&quot; &quot;</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--) solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Problem-D-Make-Them-Equal"><a href="#Problem-D-Make-Them-Equal" class="headerlink" title="Problem D - Make Them Equal"></a>Problem D - Make Them Equal</h2><p>這題真的要說的話 難度並不高<br>不過我一直砸 伴隨而來的是無止盡的WA<br><img src="https://i.imgur.com/5QLQW5q.png"><br>度的 就是如此的可撥(／‵Д′)／~ ╧╧ </p>
-<p>這題的題目是說給予一個n項的陣列<br>你可以進行操作<br>$\Rightarrow$ 選擇三個整數 $i,j,x$<br>$\Rightarrow$ 將$a_j = a_j + i\times x$，$a_i = a_i - i \times x$<br>問是否能在 $3n$ 次操作內 使得陣列中的所有元素相等</p>
-<p>這題其實 $3n$ 是非常寬的一個數字<br>而這題的作法其實非常簡單<br>我們可以把題目的操作理解成 $\Rightarrow$ 選擇 $a_i$ 並將 $i$ 的倍數轉移至 $a_j$</p>
-<p>我們可以很輕易想到 如果要使得每個元素相等 代表所有元素應變為他們的算術平均數<br>因此 當總和不是 $n$ 的倍數時 我們就可以排出這個解</p>
-<p>接下來的作法就非常簡單了<br>由於我們不容易想應該如何將 $i$ 的倍數轉移<br>如果我們可以先將所有的數字先集中到 $a_1$ 之後<br>再由 $a_1$ 去分配給其他元素 這就會是一個非常好的解法了</p>
-<p>然而，說來簡單 如何將其他元素都集中到 $a_1$ 呢？</p>
-<p>題目有一個條件 $1 \leq a_i \leq 10^5$<br>既然 $a_i$ 一定大於0 我們可以從 $a_2$ 開始分別將數字轉移至 $a_1$</p>
-<p>當我們要轉移 $a_i$ 的值到 $a_1$ 時<br>我們會先將 $a_i$ 的值變為 $i$ 的倍數<br>這樣我們就可以直接轉移到 $a_1$ 身上了</p>
-<p>附上程式碼</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, sum = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> arr[n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; arr[i];</span><br><span class="line">		sum += arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(sum%n)&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	sum/=n;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">array</span>&lt;<span class="keyword">int</span>,3&gt;&gt; v;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[i]%(i+<span class="number">1</span>))&#123;</span><br><span class="line">			v.push_back(&#123;<span class="number">1</span>,i+<span class="number">1</span>,i+<span class="number">1</span>-arr[i]%(i+<span class="number">1</span>)&#125;);</span><br><span class="line">			arr[<span class="number">0</span>] -= i+<span class="number">1</span>-arr[i]%(i+<span class="number">1</span>);</span><br><span class="line">			arr[i] += i+<span class="number">1</span>-arr[i]%(i+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		v.push_back(&#123;i+<span class="number">1</span>,<span class="number">1</span>,arr[i]/(i+<span class="number">1</span>)&#125;);</span><br><span class="line">		arr[<span class="number">0</span>] += (arr[i]/(i+<span class="number">1</span>))*(i+<span class="number">1</span>);</span><br><span class="line">		arr[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; n;i++)&#123;</span><br><span class="line">		v.push_back(&#123;<span class="number">1</span>,i+<span class="number">1</span>,sum&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; v.size() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> x : v)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> y : x)&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; y &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--) solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Problem-E-XOR-Inverse"><a href="#Problem-E-XOR-Inverse" class="headerlink" title="Problem E - XOR Inverse"></a>Problem E - XOR Inverse</h2><p>待補</p>
-
+      
+          <h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>這場只答對三題pA, pB, pC<br>所以掉分了(´Д` )<br>1793 -&gt; 1781</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/29/Codeforces-Round-673-Div-2/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
   
   
@@ -342,28 +241,24 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="山姆的競程日記">
     </span>
-
-    
-    
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
             <a href="/2020/09/27/IOI-2014-Wall-IOI-2005-Mountain/" class="post-title-link" itemprop="url">IOI 2014 Wall & IOI 2005 Mountain</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
 
-      <time title="創建時間：2020-09-27 20:32:39 / 修改時間：22:42:11" itemprop="dateCreated datePublished" datetime="2020-09-27T20:32:39+08:00">2020-09-27</time>
-    </span>
+              <time title="創建時間：2020-09-27 20:32:39 / 修改時間：22:42:11" itemprop="dateCreated datePublished" datetime="2020-09-27T20:32:39+08:00">2020-09-27</time>
+            </span>
 
-  
+          
   
   <span class="post-meta-item">
     
@@ -378,7 +273,6 @@
   </span>
   
   
-</div>
 
         </div>
       </header>
@@ -387,6 +281,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h1 id="IOI-2014-Wall-amp-IOI-2005-Mountain"><a href="#IOI-2014-Wall-amp-IOI-2005-Mountain" class="headerlink" title="IOI 2014 Wall &amp; IOI 2005 Mountain"></a>IOI 2014 Wall &amp; IOI 2005 Mountain</h1><p>上週瘋狂的在解Codeforces EDU的線段樹題目<br>其中有各式各樣的線段樹題目 而這兩題剛好是過往的IOI題目 所以來紀錄一下解法</p>
           <!--noindex-->
             <div class="post-button">
@@ -402,11 +298,9 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
   
   
@@ -417,7 +311,8 @@
 
 
 
-      
+          </div>
+          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -426,7 +321,7 @@
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
     if (activeClass) {
-      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
       if (activeTab) {
         activeTab.click();
       }
@@ -435,20 +330,77 @@
   if (CONFIG.comments.storage) {
     window.addEventListener('tabs:click', event => {
       if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      const commentClass = event.target.classList[1];
+      let commentClass = event.target.classList[1];
       localStorage.setItem('comments_active', commentClass);
     });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">路過的一隻山姆</p>
+  <div class="site-description" itemprop="description">這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
     </div>
-  </main>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      
 
-      
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
 
 <div class="copyright">
   
@@ -459,28 +411,36 @@
   </span>
   <span class="author" itemprop="copyrightHolder">路過的一隻山姆</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
 
-    </div>
-  </footer>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
 
   
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-  
+<script src="/js/utils.js"></script>
 
-
-
-
-
+<script src="/js/motion.js"></script>
 
 
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -494,12 +454,27 @@
 
 
 
+
+
+
+
+
+
+
   
 
   
-      <script>
+      
+
+<script>
   if (typeof MathJax === 'undefined') {
     window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
       tex: {
         inlineMath: {'[+]': [['$', '$']]},
         tags: 'ams'
@@ -519,7 +494,7 @@
           }, '', false],
           insertedScript: [200, () => {
             document.querySelectorAll('mjx-container').forEach(node => {
-              const target = node.parentNode;
+              let target = node.parentNode;
               if (target.nodeName.toLowerCase() === 'li') {
                 target.parentNode.classList.add('has-jax');
               }
@@ -528,13 +503,14 @@
         }
       }
     };
-    const script = document.createElement('script');
-    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
-    script.defer = true;
-    document.head.appendChild(script);
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
   } else {
     MathJax.startup.document.state(0);
-    MathJax.typesetClear();
     MathJax.texReset();
     MathJax.typeset();
   }
