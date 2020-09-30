@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2020/09/30/TIOJ-2019-Taipei-Contest/</loc>
+    
+    <lastmod>2020-09-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/about/index.html</loc>
     
     <lastmod>2020-09-29</lastmod>
@@ -32,7 +39,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -40,42 +47,84 @@
   
   <url>
     <loc>http://example.com/tags/%E7%B7%9A%E6%AE%B5%E6%A8%B9/</loc>
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Codeforces/</loc>
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/IOI/</loc>
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Math/</loc>
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Greedy/</loc>
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E8%97%8D%E7%89%8C/</loc>
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/TIOJ/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E5%8C%97%E5%B8%82%E8%B3%BD/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E7%B4%84%E7%91%9F%E5%A4%AB%E6%96%AF%E5%95%8F%E9%A1%8C/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E5%9C%96%E8%AB%96/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/LCA/</loc>
+    <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
