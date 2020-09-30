@@ -103,7 +103,7 @@
 <p>這一題第一眼看上去，以為是向量投影 <br><br>不過仔細想一想，這題從題目的說明上看來 <br><br>其實只要解模方程 題目給了 $n$ 個方程式 <br></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2 101     2 101</span><br><span class="line">5 3    &#x3D;&gt; 5 3</span><br><span class="line">3 1       3x 1x</span><br><span class="line">2 2       2y 2y</span><br></pre></td></tr></table></figure>
 
-<p>因此我們有了一個一元模方程組<br>$\begin{bmatrix}3 &amp; 2 \\ 1 &amp; 2\end{bmatrix} \begin{bmatrix}x \\ y \end{bmatrix} = \begin{bmatrix}5 \\ 3 \end{bmatrix}$<br>要用電腦解方程式有很多作法</p>
+<p>因此我們有了一個一元模方程組<br>$$<br>\left{<br>\begin{array}{ll}<br>3x+2y=5 \text{ (mod 101)} \\<br>1x+2y=3 \text{ (mod 101)}<br>\end{array}<br>\right.<br>$$<br>要用電腦解方程式有很多作法</p>
 <p>用矩陣的解法</p>
 <p>$\begin{bmatrix}3 &amp; 2 \\ 1 &amp; 2\end{bmatrix} \begin{bmatrix}x \\ y \end{bmatrix} = \begin{bmatrix}5 \\ 3 \end{bmatrix}$</p>
 <p>或者<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84#%E5%85%8B%E6%8B%89%E7%91%AA%E5%AE%9A%E7%90%86">克拉瑪公式</a></p>
