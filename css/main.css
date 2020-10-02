@@ -1194,7 +1194,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c338ff;
+  background: #ff0bec;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2695,4 +2695,20 @@ mjx-container + br {
   .pagination {
     margin: 8px 0 0;
   }
+}
+body {
+  background: url("https://wallpapercave.com/wp/wp2894282.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.posts-expand .post-title-link {
+  color: #222;
+}
+.post-block {
+  background: #fff;
+  border-radius: initial;
+  box-shadow: 0 2px 2px 0 #000, 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  padding: 40px;
 }
