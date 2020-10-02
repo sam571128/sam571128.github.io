@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://i.imgur.com/l1pix1F.png">
 <meta property="og:image" content="https://i.imgur.com/nwt427l.png">
 <meta property="article:published_time" content="2020-10-02T10:07:15.000Z">
-<meta property="article:modified_time" content="2020-10-02T10:08:12.467Z">
+<meta property="article:modified_time" content="2020-10-02T10:15:55.815Z">
 <meta property="article:author" content="路過的一隻山姆">
 <meta property="article:tag" content="Codeforces">
 <meta property="article:tag" content="String">
@@ -223,7 +223,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-10-02 18:07:15 / 修改時間：18:08:12" itemprop="dateCreated datePublished" datetime="2020-10-02T18:07:15+08:00">2020-10-02</time>
+              <time title="創建時間：2020-10-02 18:07:15 / 修改時間：18:15:55" itemprop="dateCreated datePublished" datetime="2020-10-02T18:07:15+08:00">2020-10-02</time>
             </span>
 
           
@@ -271,7 +271,7 @@
 <p>然後再加上排序的複雜度也是不太理想 $O(nlogn \times |s|)$</p>
 <p>總共複雜度會達到 $O(n^2logn)$<br><br></p>
 <h2 id="改進找到Suffix-Array的方式"><a href="#改進找到Suffix-Array的方式" class="headerlink" title="改進找到Suffix Array的方式"></a>改進找到Suffix Array的方式</h2><p>由於上面的方式實在是非常沒有效率又佔空間 <br><br>如果我們只紀錄Suffix Array的數值 我們所需要的空間複雜度則為 $O(n)$ <br></p>
-<p>為了方便起見 我們在字串後面加上 「$」 （$的字典序小於所有字母） <br></p>
+<p>為了方便起見 我們在字串後面加上 「\$」 （\$的字典序小於所有字母） <br></p>
 <p>並把字串讓字串形成環 字串長度也加到 $2^k$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aabbaa$</span><br><span class="line"><span class="number">0</span> aabbaa$a</span><br><span class="line"><span class="number">1</span> abbaa$aa</span><br><span class="line"><span class="number">2</span> bbaa$aab</span><br><span class="line"><span class="number">3</span> baa$aabb</span><br><span class="line"><span class="number">4</span> aa$aabba</span><br><span class="line"><span class="number">5</span> a$aabbaa</span><br><span class="line"><span class="number">6</span> $aabbaa$</span><br><span class="line">  <span class="number">01234567</span> =&gt; 字串長度:<span class="number">2</span>^<span class="number">3</span> =&gt; <span class="number">8</span></span><br></pre></td></tr></table></figure>
 <p>排序之後則變成<br><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">aabbaa$</span><br><span class="line"><span class="number">6</span> $aabbaa$</span><br><span class="line"><span class="number">5</span> a$aabbaa</span><br><span class="line"><span class="number">4</span> aa$aabba</span><br><span class="line"><span class="number">0</span> aabbaa$a</span><br><span class="line"><span class="number">1</span> abbaa$aa</span><br><span class="line"><span class="number">3</span> baa$aabb</span><br><span class="line"><span class="number">2</span> bbaa$aab</span><br></pre></td></tr></table></figure><br>我們如何去排序Suffix Array呢？<br><br>我們先分別找到 $k=0, k=1, k=2,…$ 時的排序 <br><br>我們可以用 $k=0$ 去推出 $k=1$ 的狀況 <br></p>
