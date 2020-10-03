@@ -253,7 +253,7 @@
       </tags>
   </entry>
   <entry>
-    <title>MO Algorithm</title>
+    <title>分塊法與莫隊算法</title>
     <url>/2020/10/03/MO-Algorithm/</url>
     <content><![CDATA[<p>今天不知道要學什麼<br>所以就找了一個還沒學過的演算法<br>而<strong>分塊法</strong>和<strong>莫隊算法</strong>是我還沒有碰過的演算法<br>所以就來學一下這兩個演算法吧<br><a id="more"></a></p>
 <h2 id="分塊算法-Square-Root-Decomposition-又稱根號算法）"><a href="#分塊算法-Square-Root-Decomposition-又稱根號算法）" class="headerlink" title="分塊算法 Square Root Decomposition (又稱根號算法）"></a>分塊算法 Square Root Decomposition (又稱根號算法）</h2><p>分塊法是個什麼樣的演算法呢？ </p>
