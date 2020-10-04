@@ -362,7 +362,7 @@
     <content><![CDATA[<p>這週一沒有打這場比賽 因為時間實在是沒有辦法打 இдஇ</p>
 <p>今天突然想到 就決定來Virtual一下了</p>
 <p>打完之後覺得自己真的是太久沒有打 Div.3 了</p>
-<p>這種Ad-Hoc的題目都要想很久才會解</p>
+<p>這種Ad-Hoc的題目都要想很久才會解<br><a id="more"></a></p>
 <h2 id="Problem-A-Floor-Number"><a href="#Problem-A-Floor-Number" class="headerlink" title="Problem A - Floor Number"></a>Problem A - Floor Number</h2><p><img src="https://i.imgur.com/11VW40F.png" alt=""><br>還沒看題目 看到範測 直接砸了 $\lceil \frac{n}{x} \rceil$ </p>
 <p>然後就WA了 (☍﹏⁰)</p>
 <p>看了題目才知道 他是第一樓只能住 $2$ 個人</p>
