@@ -266,7 +266,9 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = l;i &lt;= r;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i/k!=l/k) <span class="keyword">break</span>;</span><br><span class="line">    <span class="comment">//暴力詢問區間左段的值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = r;i &gt;= l;i--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i/k!=r/k) <span class="keyword">break</span>;</span><br><span class="line">    <span class="comment">//暴力詢問區間右段的值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = l/k+<span class="number">1</span>;i &lt; r/k;i++)&#123;</span><br><span class="line">    <span class="comment">//詢問分塊的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可能看完程式碼還是不太懂<br>現在就讓我們來看看例題吧</p>
 <h2 id="分塊法-例題"><a href="#分塊法-例題" class="headerlink" title="分塊法 例題"></a>分塊法 例題</h2><h3 id="一、區間最小值-Range-Minimum-Query-RMQ"><a href="#一、區間最小值-Range-Minimum-Query-RMQ" class="headerlink" title="一、區間最小值 Range Minimum Query (RMQ)"></a>一、區間最小值 Range Minimum Query (RMQ)</h3><blockquote>
-<p>給予 $n$ 個數字的陣列 以及 $q$ 個詢問<br>每次詢問 $[l,r]$<br>請輸出 $[l,r]$ 中的最小值</p>
+<p>給予 $n$ 個數字的陣列 以及 $q$ 個詢問</p>
+<p>每次詢問 $[l,r]$ </p>
+<p>請輸出 $[l,r]$ 中的最小值</p>
 </blockquote>
 <p>線段樹 (Segment Tree) 與稀疏表（Sparse Table) 的經典題<br>而我們也可以嘗試使用分塊法來完成這樣的題目</p>
 <p>可以去 <a href="https://zerojudge.tw/ShowProblem?problemid=d539">Zerojudge d539</a> 丟丟看自己的解（不過是區間最大值）</p>
