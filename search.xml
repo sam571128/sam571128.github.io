@@ -255,7 +255,7 @@
   <entry>
     <title>分塊法與莫隊算法</title>
     <url>/2020/10/03/MO-Algorithm/</url>
-    <content><![CDATA[<h1 id="分塊與莫隊算法"><a href="#分塊與莫隊算法" class="headerlink" title="分塊與莫隊算法"></a>分塊與莫隊算法</h1><p>今天不知道要學什麼<br>所以就找了一個還沒學過的演算法<br>而<strong>分塊法</strong>和<strong>莫隊算法</strong>是我還沒有碰過的演算法<br>所以就來學一下這兩個演算法吧<br><a id="more"></a></p>
+    <content><![CDATA[<p>今天不知道要學什麼<br>所以就找了一個還沒學過的演算法<br>而<strong>分塊法</strong>和<strong>莫隊算法</strong>是我還沒有碰過的演算法<br>所以就來學一下這兩個演算法吧<br><a id="more"></a></p>
 <h2 id="分塊算法-Square-Root-Decomposition-又稱根號算法）"><a href="#分塊算法-Square-Root-Decomposition-又稱根號算法）" class="headerlink" title="分塊算法 Square Root Decomposition (又稱根號算法）"></a>分塊算法 Square Root Decomposition (又稱根號算法）</h2><p>分塊法是個什麼樣的演算法呢？ </p>
 <p>其實他跟線段樹的概念非常相似<br>線段樹的作法是將一個陣列劃分為 $2^n$ 的長度去詢問<br><img src="https://i.imgur.com/RslnwZ6.png" alt=""></p>
 <p>而分塊法則是分為 $\sqrt{n}$ 塊<br><img src="https://i.imgur.com/30LzJoj.png" alt=""></p>
