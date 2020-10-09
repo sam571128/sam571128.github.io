@@ -23,7 +23,22 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 body {
-  margin: 0;
+ 	background:url("https://wallpapercave.com/wp/wp2894282.jpg");
+ 	background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:50% 50%;
+	background-size: cover
+}
+
+.hider_title{
+    font-family: "Microsoft Yahei";
+    cursor: pointer;
+}
+.close:after{
+    content: "▼";
+}
+.open:after{
+    content: "▲";
 }
 main {
   display: block;
