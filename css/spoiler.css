@@ -26,6 +26,11 @@
     content: "▼";
 }
 
+.spoiler.collapsed .spoiler-title:after {
+    content: " （若點擊無反應 請重刷新網頁）";
+}
+
+
 .spoiler.expanded .spoiler-title:before {
     content: "▲";
 }
