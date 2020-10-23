@@ -189,6 +189,121 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/23/TAIPEI-CONTEST-13-DAYS-LEFT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+      <meta itemprop="name" content="路過的一隻山姆">
+      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山姆的競程日記">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/23/TAIPEI-CONTEST-13-DAYS-LEFT/" class="post-title-link" itemprop="url">北市賽倒數13天！</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-10-23 23:28:22 / 修改時間：23:33:20" itemprop="dateCreated datePublished" datetime="2020-10-23T23:28:22+08:00">2020-10-23</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/10/23/TAIPEI-CONTEST-13-DAYS-LEFT/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/23/TAIPEI-CONTEST-13-DAYS-LEFT/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>北市賽剩下不到兩週就要比賽了</p>
+<p>我決定從今天開始每天都要解一年的北市賽考古題</p>
+<p>因為 $2019$ 的我已經做過了 所以今天來解 $2018$ 的</p>
+<h2 id="2018-北市賽"><a href="#2018-北市賽" class="headerlink" title="2018 北市賽"></a>2018 北市賽</h2><h3 id="第一題、森林大火"><a href="#第一題、森林大火" class="headerlink" title="第一題、森林大火"></a>第一題、森林大火</h3><p><img src="https://i.imgur.com/cyrUQVl.png" alt=""></p>
+<p>第一題我就不太會解了 有點太實作</p>
+<p>所以這題是我最後才解的</p>
+<h4 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h4><p>先做一次 $O(mn)$ 去找到每一個連通塊</p>
+<p>找到連通塊最多延燒的 將其封鎖</p>
+<p>之後再延燒其他連通塊 </p>
+<p>不斷進行同樣的動作 整體複雜度應該還是 $O(mn)$ 只是常數很大</p>
+<p>自己的解通過了全部的範測 所以還是放上來看看</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">205</span>;</span><br><span class="line"><span class="keyword">int</span> grid[N][N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; vis, vis2; </span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt;&gt; points;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; pt;</span><br><span class="line"><span class="keyword">int</span> n,m, sz, ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">bool</span> s)</span></span>&#123;</span><br><span class="line">	vis[x][y] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i : &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j : &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;)&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">abs</span>(i)==<span class="built_in">abs</span>(j)) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(x+i &lt; <span class="number">0</span> || x+i &gt;= n || y+j &lt; <span class="number">0</span> || y+j &gt;= m) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x+i][y+j])&#123;</span><br><span class="line"> 				<span class="keyword">if</span>(grid[x+i][y+j])&#123;</span><br><span class="line">					dfs(x+i,y+j,<span class="literal">false</span>);</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					vis[x+i][y+j] = <span class="number">1</span>;</span><br><span class="line">					sz++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(s) points.push_back(&#123;sz,&#123;x,y&#125;&#125;),sz = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	vis2[x][y] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i : &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j : &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;)&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">abs</span>(i)==<span class="built_in">abs</span>(j)) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(x+i &lt; <span class="number">0</span> || x+i &gt;= n || y+j &lt; <span class="number">0</span> || y+j &gt;= m) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis2[x+i][y+j])&#123;</span><br><span class="line"> 				<span class="keyword">if</span>(grid[x+i][y+j])&#123;</span><br><span class="line">					dfs2(x+i,y+j);</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					ans++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs3</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	vis[x][y] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i : &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j : &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;)&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">abs</span>(i)==<span class="built_in">abs</span>(j)) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(x+i &lt; <span class="number">0</span> || x+i &gt;= n || y+j &lt; <span class="number">0</span> || y+j &gt;= m) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x+i][y+j])&#123;</span><br><span class="line"> 				<span class="keyword">if</span>(grid[x+i][y+j])&#123;</span><br><span class="line">					dfs3(x+i,y+j);</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					pt.emplace_back(x+i,y+j);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	vis.resize(n,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(m,<span class="number">0</span>));</span><br><span class="line">	vis2.resize(n,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(m,<span class="number">0</span>));</span><br><span class="line">	<span class="keyword">int</span> num;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; num;</span><br><span class="line">	<span class="keyword">while</span>(num--)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		grid[x][y] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">		vis = vis2;</span><br><span class="line">		points.clear();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; m;j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(!vis[i][j]&amp;&amp;grid[i][j]) dfs(i,j,<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(points.size()==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">		<span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; p = (*max_element(points.begin(),points.end())).second;</span><br><span class="line">		vis = vis2;</span><br><span class="line">		dfs2(p.first,p.second);</span><br><span class="line">		vis = vis2;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; m;j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(!vis[i][j]&amp;&amp;grid[i][j]) dfs3(i,j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> x : pt) grid[x.first][x.second] = <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第二題、勇者冒險（Adventure）"><a href="#第二題、勇者冒險（Adventure）" class="headerlink" title="第二題、勇者冒險（Adventure）"></a>第二題、勇者冒險（Adventure）</h3><p><img src="https://i.imgur.com/0843lAN.png" alt=""></p>
+<p>給兩點</p>
+<p>找到路徑上最大值最小的路徑最大值</p>
+<p>$bfs$裸題</p>
+<p>應該能直接拿$100$分</p>
+<p>不負責任程式碼<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1005</span>;</span><br><span class="line"><span class="keyword">int</span> grid[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="built_in">memset</span>(grid,<span class="number">-1</span>,<span class="keyword">sizeof</span> grid);</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">int</span> sx, sy, ex, ey;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; sx &gt;&gt; sy &gt;&gt; ex &gt;&gt; ey;</span><br><span class="line">	<span class="keyword">int</span> num;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; num;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; num;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x,y,w;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; w;</span><br><span class="line">			grid[x][y] = w;</span><br><span class="line">	&#125;</span><br><span class="line">	grid[sx][sy] = <span class="number">0</span>;</span><br><span class="line">	grid[ex][ey] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">	<span class="built_in">memset</span>(ans,<span class="number">0x3f3f3f3f</span>,<span class="keyword">sizeof</span> ans);</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; q;</span><br><span class="line">	q.emplace(sx,sy);</span><br><span class="line">	ans[sx][sy] = grid[sx][sy];</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		<span class="keyword">auto</span> [x,y] = q.front(); q.pop();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i : &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j : &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;)&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">abs</span>(i)==<span class="built_in">abs</span>(j)) <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span>(x+i &lt; <span class="number">0</span> || x+i &gt;= n || y+j &lt; <span class="number">0</span> || y+j &gt;= m) <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span>(~grid[x+i][y+j])&#123;</span><br><span class="line">					<span class="keyword">if</span>(ans[x+i][y+j] &gt; max(ans[x][y],grid[x+i][y+j]))&#123;</span><br><span class="line">						ans[x+i][y+j] = max(ans[x][y],grid[x+i][y+j]);</span><br><span class="line">						q.emplace(x+i,y+j);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans[ex][ey] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="第三題、表演節目-（Show）"><a href="#第三題、表演節目-（Show）" class="headerlink" title="第三題、表演節目 （Show）"></a>第三題、表演節目 （Show）</h3><p><img src="https://i.imgur.com/qrCRXhp.png" alt=""></p>
+<p>給予容量與價值的0/1背包問題（完全裸題）</p>
+<p>在固定容量內能裝的最高價值為何</p>
+<p>輸出最高價值與所需容量</p>
+<p>應該也能直接拿$100$分</p>
+<p>不負責任程式碼<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> m,s;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; m &gt;&gt; s;</span><br><span class="line">	<span class="keyword">int</span> dp[s+<span class="number">1</span>][m+<span class="number">1</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= s;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> val, cp;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; val &gt;&gt; cp;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt;= m;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(cp+j &lt;= m) dp[i][cp+j] = max(dp[i][cp+j],dp[i<span class="number">-1</span>][j] + val);</span><br><span class="line">			<span class="keyword">if</span>(i!=s) dp[i+<span class="number">1</span>][j] = max(dp[i][j],dp[i+<span class="number">1</span>][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>, num = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= s;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt;= m;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(ans &lt; dp[i][j]) ans = dp[i][j], num = j;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; num &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="第四題、幸運表格（Lucky）"><a href="#第四題、幸運表格（Lucky）" class="headerlink" title="第四題、幸運表格（Lucky）"></a>第四題、幸運表格（Lucky）</h3><p><img src="https://i.imgur.com/S6zbD4C.png" alt=""></p>
+<p>簡單的 $dp$ 題 這題很像今年十月APCS 但是簡單很多</p>
+<h4 id="想法-1"><a href="#想法-1" class="headerlink" title="想法"></a>想法</h4><p>列出轉移式<br>$dp[i][j] = max(grid[i][j],dp[i-1][j]+grid[i][j], dp[i][j-1]+grid[i][j])$</p>
+<p>希望沒想錯 不過應該不會偏差太多</p>
+<p>$100$分GET!</p>
+<p>我的程式碼（兩個範測都$AC$）<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">int</span> dp[n][m] = &#123;&#125;, grid[n][m] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; m;j++)&#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; grid[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; m;j++)&#123;</span><br><span class="line">			dp[i][j] = max(&#123;(<span class="keyword">int</span>)grid[i][j],max(&#123;(i!=<span class="number">0</span> ? dp[i<span class="number">-1</span>][j] : <span class="number">0</span>), (j!=<span class="number">0</span> ? dp[i][j<span class="number">-1</span>] : <span class="number">0</span>),(<span class="keyword">int</span>)<span class="number">0</span>&#125;)+grid[i][j]&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *max_element(dp[n<span class="number">-1</span>],dp[n<span class="number">-1</span>]+m) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="第五題、保護女王（Queen）"><a href="#第五題、保護女王（Queen）" class="headerlink" title="第五題、保護女王（Queen）"></a>第五題、保護女王（Queen）</h3><p><img src="https://i.imgur.com/FvD9Ebs.png" alt=""></p>
+<p>幾何問題 </p>
+<h4 id="想法-2"><a href="#想法-2" class="headerlink" title="想法"></a>想法</h4><p>先照著題目做 將點依照 $x$ 座標排序並分成兩群</p>
+<p>接下來分別找出兩群凸包上的點（第二子題的提示）</p>
+<h4 id="子題一、二"><a href="#子題一、二" class="headerlink" title="子題一、二"></a>子題一、二</h4><p>子題二提到兩群凸包上的點數量（先設其為$n’$）不超過 $3000$</p>
+<p>我們可以對兩群凸包上的點去做 $O(n’^2)$ 找到線段</p>
+<p>把斜率最大和最小的線段找出來 然後找出兩線段交點</p>
+<p>$65$分GET!</p>
+<p>不負責任程式碼<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y;</span><br><span class="line">	Point(<span class="keyword">int</span> x, <span class="keyword">int</span> y): x(x), y(y)&#123;&#125;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (Point b)&#123;</span><br><span class="line">		<span class="keyword">return</span> x &lt; b.x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> <span class="keyword">operator</span> ^ (Point b)&#123;</span><br><span class="line">		<span class="keyword">return</span> x*b.y-y*b.x;</span><br><span class="line">	&#125;</span><br><span class="line">	Point <span class="keyword">operator</span> - (Point b)&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;x-b.x,y-b.y&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Line</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> m, c;</span><br><span class="line">	Line(Point a, Point b)&#123;</span><br><span class="line">		m = <span class="number">1.0</span>*(b.y-a.y)/(b.x-a.x);</span><br><span class="line">		c = a.y-m*a.x;</span><br><span class="line">	&#125;</span><br><span class="line">	Line(<span class="keyword">double</span> m1, <span class="keyword">double</span> c1)&#123;</span><br><span class="line">		m = m1;</span><br><span class="line">		c = c1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">findY</span><span class="params">(<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> m*x+c;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;Point&gt; <span class="title">getHull</span><span class="params">(<span class="built_in">vector</span>&lt;Point&gt; v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n = v.size();</span><br><span class="line">	<span class="built_in">vector</span>&lt;Point&gt; hull;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> t = hull.size();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> x : v)&#123;</span><br><span class="line">			<span class="keyword">while</span>(hull.size()-t &gt;= <span class="number">2</span>&amp;&amp;((hull.back()-hull[hull.size()<span class="number">-2</span>])^(x-hull[hull.size()<span class="number">-2</span>]))&lt;=<span class="number">0</span>)</span><br><span class="line">				hull.pop_back();</span><br><span class="line">			hull.push_back(x);</span><br><span class="line">		&#125;</span><br><span class="line">		hull.pop_back();</span><br><span class="line">		reverse(v.begin(),v.end());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> hull;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// y = m1x + b1</span></span><br><span class="line"><span class="comment">// y = m2x + b2 </span></span><br><span class="line"><span class="comment">// =&gt; (m1-m2)x + (b1-b2) = 0</span></span><br><span class="line"><span class="comment">// =&gt; x = (b2-b1)/(m1-m2);</span></span><br><span class="line">pair&lt;double,double&gt; intersect(Line a, Line b)&#123;</span><br><span class="line">	<span class="keyword">double</span> x = (b.c-a.c)/(a.m-b.m);</span><br><span class="line">	<span class="keyword">double</span> y = a.findY(x);</span><br><span class="line">	<span class="keyword">return</span> &#123;x,y&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; fixed &lt;&lt; setprecision(<span class="number">10</span>);</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">vector</span>&lt;Point&gt; v;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		v.emplace_back(x,y);</span><br><span class="line">	&#125;</span><br><span class="line">	sort(v.begin(),v.end());</span><br><span class="line">	<span class="built_in">vector</span>&lt;Point&gt; v1, v2;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="number">2</span>*i &lt; n) v1.push_back(v[i]);</span><br><span class="line">		<span class="keyword">else</span> v2.push_back(v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	v1 = getHull(v1);</span><br><span class="line">	v2 = getHull(v2);</span><br><span class="line">	Line ma(-1e9,0), mi(1e9,0);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v1.size();i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; v2.size();j++)&#123;</span><br><span class="line">			<span class="function">Line <span class="title">tmp</span><span class="params">(v1[i],v2[j])</span></span>;</span><br><span class="line">			<span class="keyword">if</span>(tmp.m &gt; ma.m) ma = tmp;</span><br><span class="line">			<span class="keyword">if</span>(tmp.m &lt; mi.m) mi = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">pair</span>&lt;<span class="keyword">double</span>,<span class="keyword">double</span>&gt; p = intersect(ma,mi);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; p.second &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="子題三"><a href="#子題三" class="headerlink" title="子題三"></a>子題三</h4><p>我還沒想到 應該能把 $O(n’^2)$ 做優化 來通過這個子題</p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>$2018,2019$ 年的北市賽 在自己打的感覺看來 難度不算太高</p>
+<p>很難說今年會不會提昇難度 不過能拿到的裸題就要盡量拿分</p>
+<p>不會解的就再去問其他電神或慢慢想吧！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/19/Competitive-Programming-10-19/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,7 +329,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-10-19 23:01:50 / 修改時間：23:10:33" itemprop="dateCreated datePublished" datetime="2020-10-19T23:01:50+08:00">2020-10-19</time>
+              <time title="創建時間：2020-10-19 23:01:50 / 修改時間：23:22:20" itemprop="dateCreated datePublished" datetime="2020-10-19T23:01:50+08:00">2020-10-19</time>
             </span>
 
           
@@ -941,95 +1056,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/02/Suffix-Array/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/02/Suffix-Array/" class="post-title-link" itemprop="url">Suffix Array 後綴數組</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-10-02 18:07:15" itemprop="dateCreated datePublished" datetime="2020-10-02T18:07:15+08:00">2020-10-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-10-12 03:07:43" itemprop="dateModified" datetime="2020-10-12T03:07:43+08:00">2020-10-12</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/10/02/Suffix-Array/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/02/Suffix-Array/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>因為看到電神「雞塊」在「<a target="_blank" rel="noopener" href="https://rk42745417.github.io/">雞塊的競程隨筆</a>」介紹了Suffix Array</p>
-<p>今天上Codeforces的EDU學了Suffix Array</p>
-<p>覺得Suffix Array真的是一個還滿神奇的東西的</p>
-<p>因此決定來紀錄一下怎麼找Suffix Array以及其用途</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/02/Suffix-Array/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1101,14 +1127,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
