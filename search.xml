@@ -829,13 +829,15 @@
       </tags>
   </entry>
   <entry>
-    <title>TAIPEI CONTEST 12 DAYS LEFT</title>
+    <title>北市賽倒數12天</title>
     <url>/2020/10/24/TAIPEI-CONTEST-12-DAYS-LEFT/</url>
-    <content><![CDATA[<h1 id="北市賽倒數12天"><a href="#北市賽倒數12天" class="headerlink" title="北市賽倒數12天"></a>北市賽倒數12天</h1><h2 id="2017-北市賽"><a href="#2017-北市賽" class="headerlink" title="2017 北市賽"></a>2017 北市賽</h2><p>這一年的題目真的比較難(((ﾟДﾟ;)))</p>
+    <content><![CDATA[<p>今天解了2017北市賽的題目</p>
+<p>還有晚上打了AtCoder和Codeforces</p>
+<p>不過Codeforces比較晚 所以晚點補<br><a id="more"></a></p>
+<h2 id="2017-北市賽"><a href="#2017-北市賽" class="headerlink" title="2017 北市賽"></a>2017 北市賽</h2><p>這一年的題目真的比較難(((ﾟДﾟ;)))</p>
 <p>我預估只能拿到 $400$ 分左右 可能再更低 不像昨天解的 2018 那樣和藹可親</p>
 <p>然後2017的北市賽的二、三題之前也寫過了 所以今天又重新解了一次</p>
 <p>解法大致上滿相似的 所以我這裡一樣用之前的Code整理過來</p>
-<a id="more"></a>
 <h3 id="第一題、編碼問題"><a href="#第一題、編碼問題" class="headerlink" title="第一題、編碼問題"></a>第一題、編碼問題</h3><p><img src="https://i.imgur.com/Zrz9tlN.png" alt=""></p>
 <p>這題我不太確定怎麼解 但是我用頗暴力的方式解決了</p>
 <p>可能會有錯誤</p>
