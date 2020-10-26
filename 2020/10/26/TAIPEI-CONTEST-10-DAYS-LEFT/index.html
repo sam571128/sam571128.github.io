@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+<meta name="google-site-verification" content="NNns6yX_AQQxa6sJQwIIHMJbXcs02pg3ZiTE4UK8VQQ" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="true">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="居然距離北市賽已經剩下不到10天了 時間真的過得很快 為了北市賽做準備真的比段考還要緊張很多 目前已經做了 $5$ 年的考古題了 北市賽每年都大概會考一題 dfs, bfs 然後每年都會有裸題 $1$ ~ $2$ 題不等 有的題目可以暴搜來得到答案 這些分數都是我覺得一定要拿到的分數 據說北市賽只要拿到 $350$ ~ $400$ 分左右就有機會一、二等獎了 我一定要盡全力喇分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="北市賽倒數10天">
+<meta property="og:url" content="http://example.com/2020/10/26/TAIPEI-CONTEST-10-DAYS-LEFT/index.html">
+<meta property="og:site_name" content="山姆的競程日記">
+<meta property="og:description" content="居然距離北市賽已經剩下不到10天了 時間真的過得很快 為了北市賽做準備真的比段考還要緊張很多 目前已經做了 $5$ 年的考古題了 北市賽每年都大概會考一題 dfs, bfs 然後每年都會有裸題 $1$ ~ $2$ 題不等 有的題目可以暴搜來得到答案 這些分數都是我覺得一定要拿到的分數 據說北市賽只要拿到 $350$ ~ $400$ 分左右就有機會一、二等獎了 我一定要盡全力喇分">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/14q76Ga.png">
+<meta property="og:image" content="https://i.imgur.com/JSyJgKi.png">
+<meta property="og:image" content="https://i.imgur.com/Xuj5d9z.png">
+<meta property="article:published_time" content="2020-10-26T15:58:45.000Z">
+<meta property="article:modified_time" content="2020-10-26T16:02:42.103Z">
+<meta property="article:author" content="路過的一隻山姆">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="北市賽">
+<meta property="article:tag" content="TIOJ">
+<meta property="article:tag" content="Floyd-Warshall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/14q76Ga.png">
+
+<link rel="canonical" href="http://example.com/2020/10/26/TAIPEI-CONTEST-10-DAYS-LEFT/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>北市賽倒數10天 | 山姆的競程日記</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">山姆的競程日記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">從綠牌開始的旅途</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/26/TAIPEI-CONTEST-10-DAYS-LEFT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+      <meta itemprop="name" content="路過的一隻山姆">
+      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山姆的競程日記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          北市賽倒數10天
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-10-26 23:58:45" itemprop="dateCreated datePublished" datetime="2020-10-26T23:58:45+08:00">2020-10-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-10-27 00:02:42" itemprop="dateModified" datetime="2020-10-27T00:02:42+08:00">2020-10-27</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/10/26/TAIPEI-CONTEST-10-DAYS-LEFT/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/26/TAIPEI-CONTEST-10-DAYS-LEFT/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>居然距離北市賽已經剩下不到10天了 時間真的過得很快</p>
+<p>為了北市賽做準備真的比段考還要緊張很多</p>
+<p>目前已經做了 $5$ 年的考古題了</p>
+<p>北市賽每年都大概會考一題 dfs, bfs</p>
+<p>然後每年都會有裸題 $1$ ~ $2$ 題不等</p>
+<p>有的題目可以暴搜來得到答案</p>
+<p>這些分數都是我覺得一定要拿到的分數</p>
+<p>據說北市賽只要拿到 $350$ ~ $400$ 分左右就有機會一、二等獎了</p>
+<p>我一定要盡全力喇分</p>
+<a id="more"></a>
+<h2 id="2015-北市賽"><a href="#2015-北市賽" class="headerlink" title="2015 北市賽"></a>2015 北市賽</h2><p>$2015$ 年的題目比較難的大概就是第四題和第五題了</p>
+<p>第五題其實沒很難 只是不好想到要使用 Floyd-Warshall</p>
+<p>而第四題我現在還沒想到 據說要用 KMP 的樣子</p>
+<h3 id="第一題、質數加法分解（Prime）"><a href="#第一題、質數加法分解（Prime）" class="headerlink" title="第一題、質數加法分解（Prime）"></a>第一題、質數加法分解（Prime）</h3><p>我們可以藉由哥德巴赫定理</p>
+<blockquote>
+<p>任一大於5的奇數都可寫成三個質數之和</p>
+</blockquote>
+<p>得知 所有的質數（除了 $2,3$ 都有機會化成其他質數的和）</p>
+<p>我們可以先利用質數篩 在 $O(nlogn)$ 的時間內找到所有質數</p>
+<p>當輸入一個數字時 我們判斷他是否是質數 之後再用遞迴找到解</p>
+<p>程式碼:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="built_in">bitset</span>&lt;N&gt; isPrime;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; primes;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	isPrime.flip();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= N;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!isPrime[i]) <span class="keyword">continue</span>;</span><br><span class="line">		primes.push_back(i);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = i*i;j &lt;= N;j += i)&#123;</span><br><span class="line">			isPrime[j] = <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">bool</span> done;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(done) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">0</span>)&#123;</span><br><span class="line">		done = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span>; </span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">2</span>||n==<span class="number">3</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!ans.empty()&amp;&amp;n==ans.back()) <span class="keyword">return</span>;</span><br><span class="line">		ans.push_back(n);</span><br><span class="line">		done = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">auto</span> itr = lower_bound(primes.begin(),primes.end(),n);</span><br><span class="line">	<span class="keyword">int</span> idx = (*itr==n ? itr-primes.begin()<span class="number">-1</span> : itr-primes.begin());</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = idx;~i;i--)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n &lt; primes[i]) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(!ans.empty()&amp;&amp;primes[i]==ans.back()) <span class="keyword">continue</span>;</span><br><span class="line">		ans.push_back(primes[i]);</span><br><span class="line">		solve(n-primes[i]);</span><br><span class="line">		<span class="keyword">if</span>(done) <span class="keyword">return</span>;</span><br><span class="line">		ans.pop_back();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ans.clear();</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">if</span>(!isPrime[n])&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="number">0</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	done = <span class="literal">false</span>;</span><br><span class="line">	solve(n);</span><br><span class="line">	<span class="keyword">if</span>(!done)&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> x : ans) <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--) solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="第二題、舞會（Party）"><a href="#第二題、舞會（Party）" class="headerlink" title="第二題、舞會（Party）"></a>第二題、舞會（Party）</h3><p><img src="" alt="Uploading file..._0kkehpp4z"></p>
+<p>這題就是裸LCS 刻下去大概就過了<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">int</span> arr[n+<span class="number">1</span>], arr2[m+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++) <span class="built_in">cin</span> &gt;&gt; arr[i], arr[i] ^= <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= m;j++) <span class="built_in">cin</span> &gt;&gt; arr2[j];</span><br><span class="line">	<span class="keyword">int</span> dp[n+<span class="number">1</span>][m+<span class="number">1</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= m;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[i]==arr2[j])&#123;</span><br><span class="line">				dp[i][j] = dp[i<span class="number">-1</span>][j<span class="number">-1</span>] + <span class="number">1</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				dp[i][j] = max(dp[i<span class="number">-1</span>][j],dp[i][j<span class="number">-1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; dp[n][m] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="第三題、大黑馬（Underdog）"><a href="#第三題、大黑馬（Underdog）" class="headerlink" title="第三題、大黑馬（Underdog）"></a>第三題、大黑馬（Underdog）</h3><p><img src="https://i.imgur.com/14q76Ga.png" alt=""></p>
+<p>這題看到題目就是那種很長會不想讀的題目</p>
+<p>但其實很簡單</p>
+<p>找出數字比較大的一隊如果有機會超越其他隊 那麼就輸出那隊的編號</p>
+<p>照著做就可以 AC 了</p>
+<p>程式碼<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> k,n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; k &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> P[n][<span class="number">2</span>*k+<span class="number">1</span>], U[n][<span class="number">2</span>*k+<span class="number">1</span>], L[n][<span class="number">2</span>*k+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> s;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">2</span>*k+<span class="number">1</span>;j++)&#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; P[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">2</span>*k+<span class="number">1</span>;j++)&#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; U[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">2</span>*k+<span class="number">1</span>;j++)&#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; L[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-1</span>;~i;i--)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i==j) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> a = <span class="number">0</span>;a &lt; k+<span class="number">1</span>;a++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(P[i][a] &lt;= P[j][a+k])&#123;</span><br><span class="line">					<span class="keyword">goto</span> stop;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; i+<span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		stop:;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-1</span>;~i;i--)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i==j) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> a = <span class="number">0</span>;a &lt; k+<span class="number">1</span>;a++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(U[i][a] &lt;= L[j][a+k])&#123;</span><br><span class="line">					<span class="keyword">goto</span> stop2;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; i+<span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		stop2:;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="第四題、猜謎遊戲"><a href="#第四題、猜謎遊戲" class="headerlink" title="第四題、猜謎遊戲"></a>第四題、猜謎遊戲</h3><p><img src="https://i.imgur.com/JSyJgKi.png" alt=""></p>
+<p>這題我想了好久都不會 上 Code Community 問這題</p>
+<p>結果雞塊和 Wiwi 都一下子就想到結論(((ﾟДﾟ;)))</p>
+<p>不過我還不會 先放個 <a target="_blank" rel="noopener" href="https://www.wiwiho.me/2020/10/26/tioj1091/#more">Wiwi 的題解</a></p>
+<h3 id="第五題、搶救雷恩大兵（Saving-Ryan）"><a href="#第五題、搶救雷恩大兵（Saving-Ryan）" class="headerlink" title="第五題、搶救雷恩大兵（Saving Ryan）"></a>第五題、搶救雷恩大兵（Saving Ryan）</h3><p><img src="https://i.imgur.com/Xuj5d9z.png" alt=""></p>
+<p>這題是這幾年的北市賽中做到最有趣的一題</p>
+<p>他多次詢問最短路徑</p>
+<p>我們會想到 All Pairs Shortest Path 的演算法</p>
+<p>最主要就兩個 Floyd-Warshall 和 Johnson’s</p>
+<p>但是 Floyd 比較好寫 所以就寫Floyd-Warshall吧</p>
+<p>要詢問時 我們可以枚舉我們要炸掉的點 就可以得到答案了</p>
+<p>程式碼<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">P</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x*n + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> arr[n][n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++) <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; arr[i][j];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> dis[n*n][n*n];</span><br><span class="line">	fill(&amp;dis[<span class="number">0</span>][<span class="number">0</span>],&amp;dis[n*n<span class="number">-1</span>][n*n<span class="number">-1</span>],<span class="number">1e9</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++) <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</span><br><span class="line">		dis[P(i,j)][P(i,j)] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(i!=n<span class="number">-1</span>) dis[P(i,j)][P(i+<span class="number">1</span>,j)] = arr[i+<span class="number">1</span>][j];</span><br><span class="line">		<span class="keyword">if</span>(i!=<span class="number">0</span>) dis[P(i,j)][P(i<span class="number">-1</span>,j)] = arr[i<span class="number">-1</span>][j];</span><br><span class="line">		<span class="keyword">if</span>(j!=<span class="number">0</span>) dis[P(i,j)][P(i,j<span class="number">-1</span>)] = arr[i][j<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">if</span>(j!=n<span class="number">-1</span>) dis[P(i,j)][P(i,j+<span class="number">1</span>)] = arr[i][j+<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n*n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n*n; j++)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n*n; k++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (dis[j][k] &gt; dis[j][i] + dis[i][k])&#123;</span><br><span class="line">                        dis[j][k] = dis[j][i] + dis[i][k];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	<span class="keyword">int</span> q;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">	<span class="keyword">while</span>(q--)&#123;</span><br><span class="line">		<span class="keyword">int</span> a,b,c,d;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;</span><br><span class="line">		a--,b--,c--,d--;</span><br><span class="line">		<span class="keyword">int</span> ans = INT_MAX;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n*n;i++)&#123;</span><br><span class="line">			ans = min(arr[a][b]+dis[P(a,b)][i]+dis[i][P(c,d)]-arr[i/n][i%n],ans);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/tags/%E5%8C%97%E5%B8%82%E8%B3%BD/" rel="tag"># 北市賽</a>
+              <a href="/tags/TIOJ/" rel="tag"># TIOJ</a>
+              <a href="/tags/Floyd-Warshall/" rel="tag"># Floyd-Warshall</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/25/TAIPEI-CONTEST-11-DAYS-LEFT/" rel="prev" title="北市賽倒數11天">
+      <i class="fa fa-chevron-left"></i> 北市賽倒數11天
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/26/Codeforces-Round-679-Div-2/" rel="next" title="Codeforces Round 679 Div 2">
+      Codeforces Round 679 Div 2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2015-%E5%8C%97%E5%B8%82%E8%B3%BD"><span class="nav-number">1.</span> <span class="nav-text">2015 北市賽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%A1%8C%E3%80%81%E8%B3%AA%E6%95%B8%E5%8A%A0%E6%B3%95%E5%88%86%E8%A7%A3%EF%BC%88Prime%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">第一題、質數加法分解（Prime）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A1%8C%E3%80%81%E8%88%9E%E6%9C%83%EF%BC%88Party%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">第二題、舞會（Party）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%A1%8C%E3%80%81%E5%A4%A7%E9%BB%91%E9%A6%AC%EF%BC%88Underdog%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">第三題、大黑馬（Underdog）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%A1%8C%E3%80%81%E7%8C%9C%E8%AC%8E%E9%81%8A%E6%88%B2"><span class="nav-number">1.4.</span> <span class="nav-text">第四題、猜謎遊戲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%A1%8C%E3%80%81%E6%90%B6%E6%95%91%E9%9B%B7%E6%81%A9%E5%A4%A7%E5%85%B5%EF%BC%88Saving-Ryan%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">第五題、搶救雷恩大兵（Saving Ryan）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="路過的一隻山姆"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+  <p class="site-author-name" itemprop="name">路過的一隻山姆</p>
+  <div class="site-description" itemprop="description">這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sam571128" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sam571128" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sam571128/0819" title="Discord → sam571128&#x2F;0819"><i class="fab fa-discord fa-fw"></i>Discord</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://codeforces.com/profile/sam571128" title="https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;sam571128" rel="noopener" target="_blank">Codeforces</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://atcoder.jp/users/SamDaBest" title="https:&#x2F;&#x2F;atcoder.jp&#x2F;users&#x2F;SamDaBest" rel="noopener" target="_blank">AtCoder</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://discord.gg/yb3Hv2U" title="https:&#x2F;&#x2F;discord.gg&#x2F;yb3Hv2U" rel="noopener" target="_blank">Code Community (Xuan)</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fas fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">路過的一隻山姆</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://sam571128.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://example.com/2020/10/26/TAIPEI-CONTEST-10-DAYS-LEFT/";
+    this.page.identifier = "2020/10/26/TAIPEI-CONTEST-10-DAYS-LEFT/";
+    this.page.title = "北市賽倒數10天";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sam571128.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>
