@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://i.imgur.com/JSyJgKi.png">
 <meta property="og:image" content="https://i.imgur.com/Xuj5d9z.png">
 <meta property="article:published_time" content="2020-10-26T15:58:45.000Z">
-<meta property="article:modified_time" content="2020-10-26T16:02:42.103Z">
+<meta property="article:modified_time" content="2020-10-27T13:19:59.073Z">
 <meta property="article:author" content="路過的一隻山姆">
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="北市賽">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-10-27 00:02:42" itemprop="dateModified" datetime="2020-10-27T00:02:42+08:00">2020-10-27</time>
+                <time title="修改時間：2020-10-27 21:19:59" itemprop="dateModified" datetime="2020-10-27T21:19:59+08:00">2020-10-27</time>
               </span>
 
           
@@ -290,6 +290,9 @@
 <p>這題我想了好久都不會 上 Code Community 問這題</p>
 <p>結果雞塊和 Wiwi 都一下子就想到結論(((ﾟДﾟ;)))</p>
 <p>不過我還不會 先放個 <a target="_blank" rel="noopener" href="https://www.wiwiho.me/2020/10/26/tioj1091/#more">Wiwi 的題解</a></p>
+<p>（10/27 補）</p>
+<p>去學了 KMP 演算法 看得懂Wiwi的解了 不過如果是我自己想一定想不到 QQ</p>
+<p>程式碼<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(<span class="meta-string">&quot;Ofast&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize (<span class="meta-string">&quot;unroll-loops&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC target(<span class="meta-string">&quot;sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[<span class="number">105</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1005</span>][<span class="number">105</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build_failure</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= s.size();i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(p == s.size() || (p&amp;&amp;s[p+<span class="number">1</span>]!=s[i]))</span><br><span class="line">			p = f[p];</span><br><span class="line">		<span class="keyword">if</span>(s[p+<span class="number">1</span>]==s[i]) p++;</span><br><span class="line">		f[i] = p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="built_in">string</span> a,b;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">	<span class="keyword">int</span> n = a.size(), m = b.size();</span><br><span class="line">	a = <span class="string">&#x27; &#x27;</span> + a, b = <span class="string">&#x27; &#x27;</span> + b;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f3f3f</span>,<span class="keyword">sizeof</span> dp);</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	build_failure(a);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</span><br><span class="line">			dp[i+<span class="number">1</span>][j] = min(dp[i+<span class="number">1</span>][j],dp[i][j]+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">int</span> p = j;</span><br><span class="line">			<span class="keyword">while</span>(p &amp;&amp; a[p+<span class="number">1</span>]!=b[i+<span class="number">1</span>])</span><br><span class="line">				p = f[p];</span><br><span class="line">			<span class="keyword">if</span>(a[p+<span class="number">1</span>]==b[i+<span class="number">1</span>]) p++;</span><br><span class="line">			dp[i+<span class="number">1</span>][p] = min(dp[i+<span class="number">1</span>][p],dp[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *min_element(dp[m],dp[m]+n) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="第五題、搶救雷恩大兵（Saving-Ryan）"><a href="#第五題、搶救雷恩大兵（Saving-Ryan）" class="headerlink" title="第五題、搶救雷恩大兵（Saving Ryan）"></a>第五題、搶救雷恩大兵（Saving Ryan）</h3><p><img src="https://i.imgur.com/Xuj5d9z.png" alt=""></p>
 <p>這題是這幾年的北市賽中做到最有趣的一題</p>
 <p>他多次詢問最短路徑</p>
@@ -407,14 +410,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
