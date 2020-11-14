@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+<meta name="google-site-verification" content="NNns6yX_AQQxa6sJQwIIHMJbXcs02pg3ZiTE4UK8VQQ" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="true">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="很久沒PO文了 來放個教學文好了 之前想要學 dsu on tree 所以就跑去看CF的這篇 不過看了好久還是看不懂 決定還是自己來紀錄一下DSU on Tree 參考資料：第一篇CF 第二篇CF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dsu on tree 樹上啟發式合併">
+<meta property="og:url" content="http://example.com/2020/11/14/DSUonTREE/index.html">
+<meta property="og:site_name" content="山姆的競程日記">
+<meta property="og:description" content="很久沒PO文了 來放個教學文好了 之前想要學 dsu on tree 所以就跑去看CF的這篇 不過看了好久還是看不懂 決定還是自己來紀錄一下DSU on Tree 參考資料：第一篇CF 第二篇CF">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-11-14T12:30:16.000Z">
+<meta property="article:modified_time" content="2020-11-14T12:31:12.189Z">
+<meta property="article:author" content="路過的一隻山姆">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="圖論">
+<meta property="article:tag" content="DSU on Tree">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/11/14/DSUonTREE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>dsu on tree 樹上啟發式合併 | 山姆的競程日記</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">山姆的競程日記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">從綠牌開始的旅途</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/14/DSUonTREE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+      <meta itemprop="name" content="路過的一隻山姆">
+      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山姆的競程日記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          dsu on tree 樹上啟發式合併
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-11-14 20:30:16 / 修改時間：20:31:12" itemprop="dateCreated datePublished" datetime="2020-11-14T20:30:16+08:00">2020-11-14</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/11/14/DSUonTREE/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/14/DSUonTREE/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>很久沒PO文了 來放個教學文好了</p>
+<p>之前想要學 dsu on tree 所以就跑去看CF的<a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/44351">這篇</a></p>
+<p>不過看了好久還是看不懂 決定還是自己來紀錄一下DSU on Tree</p>
+<p>參考資料：<a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/44351">第一篇CF</a> <a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/67696">第二篇CF</a></p>
+<a id="more"></a>
+<h2 id="為什麼叫做-dsu-on-tree？"><a href="#為什麼叫做-dsu-on-tree？" class="headerlink" title="為什麼叫做 dsu on tree？"></a>為什麼叫做 dsu on tree？</h2><p>dsu on tree 其實跟並查集（dsu）沒有什麼關聯</p>
+<p>但是他用到了啟發式合併 也就是 dsu 常會用到的一種降低複雜度的作法</p>
+<p>DSU 的啟發式合併</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unite</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	u = find(u), v = find(v);</span><br><span class="line">    <span class="keyword">if</span>(u==v) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(sz[u] &lt; sz[v]) v = dsu[u], sz[v] += sz[u];</span><br><span class="line">    <span class="keyword">else</span> u = dsu[v], sz[u] += sz[v];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="樹上問題的-Naive-Solution"><a href="#樹上問題的-Naive-Solution" class="headerlink" title="樹上問題的 Naive Solution"></a>樹上問題的 Naive Solution</h2><p>首先 在進入 dsu on Tree 之前 先來看看一個例題</p>
+<blockquote>
+<p>給予一棵以 $1$ 為根的一棵樹 </p>
+<p>在 $O(1)$ 的時間詢問以 $x$ 為根的子樹有幾個顏色為 $c$ 的節點？</p>
+</blockquote>
+<p>這個問題 我們可以很輕易的想到他的作法 也就是直接 dfs 去存數量</p>
+<p>但是這並不是一個很好的方法 因為預處理的時候 會花 $O(n^2)$ 的時間</p>
+<p>$O(n^2)$ 的程式碼</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> par, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	cnt[color[u]] += x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])&#123;</span><br><span class="line">		<span class="keyword">if</span>(v!=par) add(v,u,x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> par)</span></span>&#123;</span><br><span class="line">	add(u,par,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//這裡的cnt[c]就會是在u為根的子樹上顏色為c的節點數量</span></span><br><span class="line">	ans[u][c] = cnt[c];</span><br><span class="line"></span><br><span class="line">	add(u,par,<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])&#123;</span><br><span class="line">		<span class="keyword">if</span>(v!=par) dfs(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-dsu-on-tree"><a href="#使用-dsu-on-tree" class="headerlink" title="使用 dsu on tree"></a>使用 dsu on tree</h2><p>要改進上面的解法 我們就可以使用 dsu on tree</p>
+<h3 id="dsu-on-tree-的概念"><a href="#dsu-on-tree-的概念" class="headerlink" title="dsu on tree 的概念"></a>dsu on tree 的概念</h3><p>我們可以先考慮樹鏈剖分的概念 先做一次找出子樹的大小</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs_size</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> par)</span></span>&#123;</span><br><span class="line">	sz[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])</span><br><span class="line">        <span class="keyword">if</span>(v != par) dfs(v,u), sz[u] += sz[v];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之後要找答案再做另一次 dfs</p>
+<p>先去對輕鏈做 dfs 找到輕鏈上的答案 </p>
+<p>之後再對重鏈去找到重鏈上的答案 將輕重鏈的答案合併 </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; adj[N], vec[N];</span><br><span class="line"><span class="keyword">int</span> color[N], cnt[N], sz[N];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; ans[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs_size</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> par)</span></span>&#123;</span><br><span class="line">	sz[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])</span><br><span class="line">        <span class="keyword">if</span>(v != par) dfs_size(v,u), sz[u] += sz[v];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> par, <span class="keyword">bool</span> keep)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mx = <span class="number">0</span>, heavy = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])&#123;</span><br><span class="line">		<span class="keyword">if</span>(v != par &amp;&amp; sz[v] &gt; mx)&#123;</span><br><span class="line">			mx = sz[v];</span><br><span class="line">			heavy = v;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])&#123;</span><br><span class="line">		<span class="comment">//DFS 輕鏈</span></span><br><span class="line">		<span class="keyword">if</span>(v != par &amp;&amp; v != heavy)&#123;</span><br><span class="line">			<span class="comment">//Keep = 0 代表 dfs 後會清除這個子樹的答案</span></span><br><span class="line">			dfs(v,u,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(heavy)&#123;</span><br><span class="line">		<span class="comment">//Keep = 1 代表我們不必清除這個子樹的答案</span></span><br><span class="line">		dfs(heavy,u,<span class="number">1</span>);</span><br><span class="line">		vec[u] = vec[heavy];</span><br><span class="line">	&#125;</span><br><span class="line">	vec[u].push_back(u);</span><br><span class="line">	cnt[color[u]]++;</span><br><span class="line">	ans[u][color[u]] = cnt[color[u]];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])&#123;</span><br><span class="line">		<span class="keyword">if</span>(v != par &amp;&amp; v != heavy)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">auto</span> x : vec[v])&#123;</span><br><span class="line">                <span class="comment">//把答案加上去</span></span><br><span class="line">				cnt[color[x]]++;</span><br><span class="line">				ans[u][color[x]] = cnt[color[x]];</span><br><span class="line">				vec[u].push_back(x);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!keep)&#123;</span><br><span class="line">        <span class="comment">//清除輕鏈的資料</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> x : vec[u])&#123;</span><br><span class="line">			cnt[color[x]]--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> n; </span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++) <span class="built_in">cin</span> &gt;&gt; color[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">		adj[u].push_back(v);</span><br><span class="line">		adj[v].push_back(u);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs_size(<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line">	dfs(<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> q;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">	<span class="keyword">while</span>(q--)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,c;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; c;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans[x][c] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="例題"><a href="#例題" class="headerlink" title="例題"></a>例題</h2><h3 id="Codeforces-600D-Lomsat-gelral"><a href="#Codeforces-600D-Lomsat-gelral" class="headerlink" title="Codeforces 600D - Lomsat gelral"></a>Codeforces 600D - Lomsat gelral</h3><blockquote>
+<p>給予一棵以 $1$ 為根的樹以及每一個節點的顏色</p>
+<p>問以 $1$ ~ $n$ 為根的子樹內 出現最多次的顏色 $c$ 的總和為？</p>
+</blockquote>
+<p>這題也是 dsu on tree 可以輕鬆解掉的題目</p>
+<p>只要維護出現最多次的顏色就能解決了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; adj[N], vec[N];</span><br><span class="line"><span class="keyword">int</span> color[N], cnt[N], sz[N];</span><br><span class="line"><span class="keyword">int</span> res[N], ans[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs_size</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> par)</span></span>&#123;</span><br><span class="line">	sz[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])</span><br><span class="line">        <span class="keyword">if</span>(v != par) dfs_size(v,u), sz[u] += sz[v];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> &amp;mx, <span class="keyword">int</span> u, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	ans[cnt[color[u]]] -= color[u];</span><br><span class="line">	cnt[color[u]] += x;</span><br><span class="line">	ans[cnt[color[u]]] += color[u];</span><br><span class="line">	mx = max(cnt[color[u]],mx);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> par, <span class="keyword">bool</span> keep)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mx = <span class="number">1</span>, heavy = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])&#123;</span><br><span class="line">		<span class="keyword">if</span>(v != par &amp;&amp; sz[v] &gt; mx)&#123;</span><br><span class="line">			mx = sz[v];</span><br><span class="line">			heavy = v;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])&#123;</span><br><span class="line">		<span class="comment">//DFS 輕鏈</span></span><br><span class="line">		<span class="keyword">if</span>(v != par &amp;&amp; v != heavy)&#123;</span><br><span class="line">			<span class="comment">//Keep = 0 代表 dfs 後會清除這個子樹的答案</span></span><br><span class="line">			dfs(v,u,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	mx = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(heavy)&#123;</span><br><span class="line">		mx = max(mx,dfs(heavy,u,<span class="number">1</span>));</span><br><span class="line">		swap(vec[u],vec[heavy]);</span><br><span class="line">	&#125;</span><br><span class="line">	vec[u].push_back(u);</span><br><span class="line">	update(mx,u,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v : adj[u])&#123;</span><br><span class="line">		<span class="keyword">if</span>(v != par &amp;&amp; v != heavy)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">auto</span> x : vec[v])&#123;</span><br><span class="line">				update(mx,x,<span class="number">1</span>);</span><br><span class="line">				vec[u].push_back(x);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	res[u] = ans[mx];</span><br><span class="line">	<span class="keyword">if</span>(!keep)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> x : vec[u])&#123;</span><br><span class="line">			update(mx,x,<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> mx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> n; </span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++) <span class="built_in">cin</span> &gt;&gt; color[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>,u,v;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">		adj[u].push_back(v);</span><br><span class="line">		adj[v].push_back(u);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs_size(<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line">	dfs(<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++) <span class="built_in">cout</span> &lt;&lt; res[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"># 教學</a>
+              <a href="/tags/%E5%9C%96%E8%AB%96/" rel="tag"># 圖論</a>
+              <a href="/tags/DSU-on-Tree/" rel="tag"># DSU on Tree</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/29/TAIPEI-CONTEST-7-DAYS-LEFT/" rel="prev" title="北市賽倒數7天">
+      <i class="fa fa-chevron-left"></i> 北市賽倒數7天
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E5%8F%AB%E5%81%9A-dsu-on-tree%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">為什麼叫做 dsu on tree？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%B9%E4%B8%8A%E5%95%8F%E9%A1%8C%E7%9A%84-Naive-Solution"><span class="nav-number">2.</span> <span class="nav-text">樹上問題的 Naive Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-dsu-on-tree"><span class="nav-number">3.</span> <span class="nav-text">使用 dsu on tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dsu-on-tree-%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">dsu on tree 的概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A1%8C"><span class="nav-number">4.</span> <span class="nav-text">例題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Codeforces-600D-Lomsat-gelral"><span class="nav-number">4.1.</span> <span class="nav-text">Codeforces 600D - Lomsat gelral</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="路過的一隻山姆"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+  <p class="site-author-name" itemprop="name">路過的一隻山姆</p>
+  <div class="site-description" itemprop="description">這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sam571128" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sam571128" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sam571128/0819" title="Discord → sam571128&#x2F;0819"><i class="fab fa-discord fa-fw"></i>Discord</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://codeforces.com/profile/sam571128" title="https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;sam571128" rel="noopener" target="_blank">Codeforces</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://atcoder.jp/users/SamDaBest" title="https:&#x2F;&#x2F;atcoder.jp&#x2F;users&#x2F;SamDaBest" rel="noopener" target="_blank">AtCoder</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://discord.gg/yb3Hv2U" title="https:&#x2F;&#x2F;discord.gg&#x2F;yb3Hv2U" rel="noopener" target="_blank">Code Community (Xuan)</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fas fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">路過的一隻山姆</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://sam571128.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://example.com/2020/11/14/DSUonTREE/";
+    this.page.identifier = "2020/11/14/DSUonTREE/";
+    this.page.title = "dsu on tree 樹上啟發式合併";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sam571128.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>
