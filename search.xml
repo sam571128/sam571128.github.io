@@ -1426,7 +1426,7 @@
 <p>紀錄一下每天所解的題目以及新學到的演算法等等</p>
 <p>而寒假過後不久 就將迎來TOI初選</p>
 <p>因此在這個寒假要更加努力勤奮的練習</p>
-<!---more--->
+<a id="more"></a>
 <h2 id="解題"><a href="#解題" class="headerlink" title="解題"></a>解題</h2><p>今天解了 1 題</p>
 <h3 id="CodeForces-612E-Square-Root-of-Permutation"><a href="#CodeForces-612E-Square-Root-of-Permutation" class="headerlink" title="CodeForces 612E - Square Root of Permutation"></a>CodeForces 612E - <a href="https://codeforces.com/contest/612/problem/E">Square Root of Permutation</a></h3><p><img src="https://i.imgur.com/acfArMM.png" alt=""></p>
 <h4 id="題意"><a href="#題意" class="headerlink" title="題意"></a>題意</h4><p>給予一個 Permutation （$1$ ~ $n$ 數字的排列）$q$ ，定義一個 Permutation 的平方 $q^2 = p = q[q[i]]$ </p>
