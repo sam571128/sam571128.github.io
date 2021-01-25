@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+<meta name="google-site-verification" content="NNns6yX_AQQxa6sJQwIIHMJbXcs02pg3ZiTE4UK8VQQ" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="true">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="今天混了滿久都沒在練習的  一樣是持續戳 2100 ~ 2500 的題目 不過我覺得感覺一直解這些題目好像沒什麼進步 就只是猜梗的速度以及實作的速度變快了一點 我覺得要開始解一些照主題分的題目了 順便解一些經典題 畢竟聽說入營考常常會考裸題 像去年的最後一題也是 AC 自動機 （不過我去年根本連DP都還不會就去參加了（¯﹃¯）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="寒假競程訓練第二天">
+<meta property="og:url" content="http://example.com/2021/01/23/Winter-Day-2/index.html">
+<meta property="og:site_name" content="山姆的競程日記">
+<meta property="og:description" content="今天混了滿久都沒在練習的  一樣是持續戳 2100 ~ 2500 的題目 不過我覺得感覺一直解這些題目好像沒什麼進步 就只是猜梗的速度以及實作的速度變快了一點 我覺得要開始解一些照主題分的題目了 順便解一些經典題 畢竟聽說入營考常常會考裸題 像去年的最後一題也是 AC 自動機 （不過我去年根本連DP都還不會就去參加了（¯﹃¯）">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/3XbvzB9.png">
+<meta property="og:image" content="https://i.imgur.com/GA6AwFM.png">
+<meta property="og:image" content="https://i.imgur.com/TjuR5fh.png">
+<meta property="og:image" content="https://i.imgur.com/l0voomW.png">
+<meta property="og:image" content="https://i.imgur.com/7UyiBaE.png">
+<meta property="og:image" content="https://i.imgur.com/FKggHmL.png">
+<meta property="og:image" content="https://i.imgur.com/YO6anzB.png">
+<meta property="article:published_time" content="2021-01-23T08:36:01.000Z">
+<meta property="article:modified_time" content="2021-01-25T07:27:22.690Z">
+<meta property="article:author" content="路過的一隻山姆">
+<meta property="article:tag" content="Codeforces">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="線段樹">
+<meta property="article:tag" content="stack">
+<meta property="article:tag" content="解題">
+<meta property="article:tag" content="寒假">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/3XbvzB9.png">
+
+<link rel="canonical" href="http://example.com/2021/01/23/Winter-Day-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>寒假競程訓練第二天 | 山姆的競程日記</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">山姆的競程日記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">從綠牌開始的旅途</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/23/Winter-Day-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+      <meta itemprop="name" content="路過的一隻山姆">
+      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山姆的競程日記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          寒假競程訓練第二天
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-01-23 16:36:01" itemprop="dateCreated datePublished" datetime="2021-01-23T16:36:01+08:00">2021-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-01-25 15:27:22" itemprop="dateModified" datetime="2021-01-25T15:27:22+08:00">2021-01-25</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/01/23/Winter-Day-2/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/01/23/Winter-Day-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>今天混了滿久都沒在練習的 </p>
+<p>一樣是持續戳 2100 ~ 2500 的題目</p>
+<p>不過我覺得感覺一直解這些題目好像沒什麼進步</p>
+<p>就只是猜梗的速度以及實作的速度變快了一點</p>
+<p>我覺得要開始解一些照主題分的題目了</p>
+<p>順便解一些經典題 畢竟聽說入營考常常會考裸題</p>
+<p>像去年的最後一題也是 AC 自動機 （不過我去年根本連DP都還不會就去參加了（¯﹃¯）</p>
+<a id="more"></a>
+<h2 id="解題"><a href="#解題" class="headerlink" title="解題"></a>解題</h2><p>今天一共解了 1 題 + 前一天的寒假練題計畫 5 題</p>
+<h3 id="Codeforces-992E-Nastya-and-King-Shamans"><a href="#Codeforces-992E-Nastya-and-King-Shamans" class="headerlink" title="Codeforces 992E - Nastya and King-Shamans"></a>Codeforces 992E - Nastya and King-Shamans</h3><p><img src="https://i.imgur.com/3XbvzB9.png" alt=""></p>
+<h4 id="題意："><a href="#題意：" class="headerlink" title="題意："></a>題意：</h4><p>給一個 $n$ 項的陣列，以及 $q$ 個操作，每次操作完要輸出任一個 $i$ 使得 $\displaystyle  \sum_{k &lt; i} a_k = a_i$ ，亦即在這個元素以前的和要等於這個元素本身</p>
+<p>若是找不到這樣的元素，則輸出 $-1$ </p>
+<h4 id="想法："><a href="#想法：" class="headerlink" title="想法："></a>想法：</h4><p>要找一個陣列某一項前面的和，不就是「<strong>前綴和</strong>」嗎？</p>
+<h4 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h4><p>我們可以先建一個前綴和陣列</p>
+<p>然後我們所要找的是 <strong>前綴和</strong> $= a_i$ 的位置</p>
+<p>因此我們可以使用線段樹存 $a_i -$ <strong>前綴和 </strong>的值</p>
+<p>然後每次去進行區間修改</p>
+<p>接著在線段樹上二分搜找到答案即可</p>
+<h4 id="程式碼："><a href="#程式碼：" class="headerlink" title="程式碼："></a>程式碼：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span>+<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SegT</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> d[<span class="number">4</span>*N];</span><br><span class="line">	<span class="keyword">int</span> lazy_tag[<span class="number">4</span>*N];</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">combine</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> max(a,b);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> ind = <span class="number">1</span>, <span class="keyword">int</span> l = <span class="number">0</span>, <span class="keyword">int</span> r = N<span class="number">-1</span>)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">			d[ind]=a[l];</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">int</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">			build(a,ind&lt;&lt;<span class="number">1</span>,l,mid);</span><br><span class="line">			build(a,ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">			d[ind] = combine(d[ind&lt;&lt;<span class="number">1</span>],d[ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">apply</span><span class="params">(<span class="keyword">int</span> ind, <span class="keyword">int</span> val, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(ind&gt;=<span class="number">0</span>&amp;&amp;ind&lt;<span class="number">4</span>*N)&#123;</span><br><span class="line">			d[ind] += val;</span><br><span class="line">			lazy_tag[ind] += val;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">range_modify</span><span class="params">(<span class="keyword">int</span> ml, <span class="keyword">int</span> mr, <span class="keyword">int</span> val, <span class="keyword">int</span> ind = <span class="number">1</span>, <span class="keyword">int</span> l = <span class="number">0</span>, <span class="keyword">int</span> r = N<span class="number">-1</span>)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(ml&gt;r||mr&lt;l) <span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span>(ml&lt;=l&amp;&amp;mr&gt;=r)&#123;</span><br><span class="line">			lazy_tag[ind] += val;</span><br><span class="line">			d[ind] += val;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(lazy_tag[ind])&#123;</span><br><span class="line">			apply(ind&lt;&lt;<span class="number">1</span>, lazy_tag[ind], l, mid);</span><br><span class="line">			apply(ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, lazy_tag[ind], mid+<span class="number">1</span>, r);</span><br><span class="line">			d[ind] = combine(d[ind&lt;&lt;<span class="number">1</span>],d[ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">			lazy_tag[ind] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		range_modify(ml,mr,val,ind&lt;&lt;<span class="number">1</span>,l,mid);</span><br><span class="line">		range_modify(ml,mr,val,ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">		d[ind] = combine(d[ind&lt;&lt;<span class="number">1</span>],d[ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> ind = <span class="number">1</span>, <span class="keyword">int</span> l = <span class="number">0</span>, <span class="keyword">int</span> r = N<span class="number">-1</span>)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(d[ind] &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">if</span>(l==r) <span class="keyword">return</span> d[ind] ? <span class="number">-1</span> : l+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> mid = l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(lazy_tag[ind])&#123;</span><br><span class="line">			apply(ind&lt;&lt;<span class="number">1</span>, lazy_tag[ind], l, mid);</span><br><span class="line">			apply(ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, lazy_tag[ind], mid+<span class="number">1</span>, r);</span><br><span class="line">			d[ind] = combine(d[ind&lt;&lt;<span class="number">1</span>],d[ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">			lazy_tag[ind] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> tmp = query(ind&lt;&lt;<span class="number">1</span>,l,mid);</span><br><span class="line">		<span class="keyword">if</span>(tmp &gt; <span class="number">0</span>) <span class="keyword">return</span> tmp;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> query(ind&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; st;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> n,q;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; q;</span><br><span class="line">	<span class="keyword">int</span> arr[n], pref[n+<span class="number">1</span>] = &#123;&#125;, arr2[n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; arr[i];</span><br><span class="line">		pref[i+<span class="number">1</span>] = pref[i]+arr[i];</span><br><span class="line">		arr2[i] = arr[i]-pref[i];</span><br><span class="line">	&#125;</span><br><span class="line">	st.build(arr2,<span class="number">1</span>,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">while</span>(q--)&#123;</span><br><span class="line">		<span class="keyword">int</span> p,x;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; p &gt;&gt; x;</span><br><span class="line">		p--;</span><br><span class="line">		<span class="keyword">int</span> tmp = x; x = x - arr[p]; arr[p] = tmp; </span><br><span class="line">		st.range_modify(p,p,x,<span class="number">1</span>,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">		st.range_modify(p+<span class="number">1</span>,n<span class="number">-1</span>,-x,<span class="number">1</span>,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; st.query(<span class="number">1</span>,<span class="number">0</span>,n<span class="number">-1</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="寒假練題計畫-1-22"><a href="#寒假練題計畫-1-22" class="headerlink" title="寒假練題計畫 1/22"></a>寒假練題計畫 1/22</h2><p><img src="https://i.imgur.com/GA6AwFM.png" alt=""></p>
+<p>一開始忘記打了 也打的不怎麼樣</p>
+<h3 id="第一題、k-factorization-Codeforces-797A"><a href="#第一題、k-factorization-Codeforces-797A" class="headerlink" title="第一題、k-factorization (Codeforces 797A)"></a>第一題、k-factorization (Codeforces 797A)</h3><p><img src="https://i.imgur.com/TjuR5fh.png" alt=""></p>
+<h4 id="題意：-1"><a href="#題意：-1" class="headerlink" title="題意："></a>題意：</h4><p>給兩個數字 $n$ 以及 $k$</p>
+<p>問 $n$ 能不能分成 $k$ 個大於 $2$ 的數字的乘積</p>
+<p>若可以 則輸出一組解</p>
+<h4 id="想法：-1"><a href="#想法：-1" class="headerlink" title="想法："></a>想法：</h4><p>$n \leq 10^5$ 因此，我們直接使用一個 for 迴圈解決</p>
+<h4 id="程式碼：-1"><a href="#程式碼：-1" class="headerlink" title="程式碼："></a>程式碼：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> n,k;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(v.size()==k<span class="number">-1</span>&amp;&amp;n!=<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">auto</span> x : v) <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">			v.push_back(i), n/=i;</span><br><span class="line">			<span class="keyword">if</span>(v.size()==k<span class="number">-1</span>&amp;&amp;n!=<span class="number">1</span>)&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">auto</span> x : v) <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(v.size()==k)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> x : v) <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第二題、New-Year-and-Buggy-Bot-Codeforces-908B"><a href="#第二題、New-Year-and-Buggy-Bot-Codeforces-908B" class="headerlink" title="第二題、New Year and Buggy Bot (Codeforces 908B)"></a>第二題、New Year and Buggy Bot (Codeforces 908B)</h3><p><img src="https://i.imgur.com/l0voomW.png" alt=""></p>
+<h4 id="題意：-2"><a href="#題意：-2" class="headerlink" title="題意："></a>題意：</h4><p>給一個盤面包含了起點與終點</p>
+<p>以及一個操作指令的字串（由 $0~3$ 組成）</p>
+<p>問有幾種數字與上下左右的對應能使我們走到終點</p>
+<h4 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h4><p>C++ STL 的 next_permutation</p>
+<h4 id="程式碼：-2"><a href="#程式碼：-2" class="headerlink" title="程式碼："></a>程式碼：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; ma;</span><br><span class="line">	ma[<span class="string">&#x27;U&#x27;</span>] = &#123;<span class="number">-1</span>,<span class="number">0</span>&#125;;</span><br><span class="line">	ma[<span class="string">&#x27;R&#x27;</span>] = &#123;<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line">	ma[<span class="string">&#x27;D&#x27;</span>] = &#123;<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line">	ma[<span class="string">&#x27;L&#x27;</span>] = &#123;<span class="number">0</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">	<span class="keyword">char</span> d[<span class="number">4</span>] = &#123;<span class="string">&#x27;U&#x27;</span>,<span class="string">&#x27;L&#x27;</span>,<span class="string">&#x27;R&#x27;</span>,<span class="string">&#x27;D&#x27;</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">int</span> grid[n][m] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">int</span> sx, sy, ex, ey;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; m;j++)&#123;</span><br><span class="line">			<span class="keyword">char</span> c;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; c;</span><br><span class="line">			<span class="keyword">if</span>(c==<span class="string">&#x27;S&#x27;</span>) sx = i, sy = j;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(c==<span class="string">&#x27;#&#x27;</span>) grid[i][j] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(c==<span class="string">&#x27;E&#x27;</span>) ex = i, ey = j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">string</span> s;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	sort(d,d+<span class="number">4</span>);</span><br><span class="line">	<span class="keyword">do</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> nx = sx, ny = sy;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; s.size();i++)&#123;</span><br><span class="line">			<span class="keyword">auto</span> [dx,dy] = ma[d[s[i]-<span class="string">&#x27;0&#x27;</span>]];</span><br><span class="line">			<span class="keyword">if</span>(nx+dx &gt;= <span class="number">0</span> &amp;&amp; nx + dx &lt; n &amp;&amp; ny + dy &gt;= <span class="number">0</span> &amp;&amp; ny + dy &lt; m &amp;&amp; grid[nx+dx][ny+dy]==<span class="number">0</span>)&#123;</span><br><span class="line">				nx += dx, ny += dy;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(nx==ex&amp;&amp;ny==ey)&#123;</span><br><span class="line">				ans++;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">while</span>(next_permutation(d,d+<span class="number">4</span>));</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第三題、Driving-Test-Codeforces-845D"><a href="#第三題、Driving-Test-Codeforces-845D" class="headerlink" title="第三題、Driving Test (Codeforces 845D)"></a>第三題、Driving Test (Codeforces 845D)</h3><p><img src="https://i.imgur.com/7UyiBaE.png" alt=""></p>
+<h4 id="題意：-3"><a href="#題意：-3" class="headerlink" title="題意："></a>題意：</h4><p>有一個人在開車 有六種他會遇到的事件</p>
+<p>（一）改變車子的速度為 $s$</p>
+<p>（二）超車</p>
+<p>（三）遇到「限速 $s$」 的牌子</p>
+<p>（四）遇到「可以超車」的牌子</p>
+<p>（五）遇到「不限速」的牌子</p>
+<p>（六）遇到「不可超車」的牌子</p>
+<p>問最少要無視幾個牌子 才能遵守交通規則</p>
+<h4 id="想法：-2"><a href="#想法：-2" class="headerlink" title="想法："></a>想法：</h4><p>會發現（一）（三）（五）和（二）（四）（六）可以分開思考</p>
+<p>是否能超車只要用一個變數來維護就好了 而限速則是能用stack來輔助</p>
+<h4 id="程式碼：-3"><a href="#程式碼：-3" class="headerlink" title="程式碼："></a>程式碼：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s; <span class="comment">//For speed;</span></span><br><span class="line">	<span class="keyword">int</span> nowspeed = <span class="number">0</span>, sign = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> a,b;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">		<span class="keyword">if</span>(a==<span class="number">1</span>||a==<span class="number">3</span>)&#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; b;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(a==<span class="number">1</span>)&#123;</span><br><span class="line">			nowspeed = b;</span><br><span class="line">			<span class="keyword">while</span>(!s.empty()&amp;&amp;b &gt; s.top())</span><br><span class="line">				s.pop(), ans++;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(a==<span class="number">2</span>)&#123;</span><br><span class="line">			ans += sign;</span><br><span class="line">			sign = <span class="number">0</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(a==<span class="number">3</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(nowspeed &gt; b) ans++;</span><br><span class="line">			<span class="keyword">else</span> s.push(b);</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(a==<span class="number">4</span>)&#123;</span><br><span class="line">			sign = <span class="number">0</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(a==<span class="number">5</span>)&#123;</span><br><span class="line">			<span class="keyword">while</span>(!s.empty()) s.pop();</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(a==<span class="number">6</span>)&#123;</span><br><span class="line">			sign++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第四題、The-Intriguing-Obsession-Codeforces-869C"><a href="#第四題、The-Intriguing-Obsession-Codeforces-869C" class="headerlink" title="第四題、The Intriguing Obsession (Codeforces 869C)"></a>第四題、The Intriguing Obsession (Codeforces 869C)</h3><p><img src="https://i.imgur.com/FKggHmL.png" alt=""></p>
+<h4 id="題意：-4"><a href="#題意：-4" class="headerlink" title="題意："></a>題意：</h4><p>有三種顏色的島嶼，分別有 $a$, $b$, $c$ 個這三種顏色的島嶼。</p>
+<p>給予兩個條件：</p>
+<p>（一）同色的島嶼不能互相相鄰</p>
+<p>（二）同色的島嶼之間的最短距離要是 $3$ 以上</p>
+<h4 id="想法：-3"><a href="#想法：-3" class="headerlink" title="想法："></a>想法：</h4><p>不能相鄰這點還算好像，那最短距離為 $3$ 以上呢？</p>
+<p>我們會發現如果每個同色島嶼之間的最短距離要是 $3$</p>
+<p>那麼一定要是 $1-2-3-1-2-3$ 這樣的排法</p>
+<p>因此，每個島嶼只會和一種顏色的島嶼做連接</p>
+<p>我們還能發現由於這個性質，兩兩顏色之間是互相獨立的事件</p>
+<p>因此最後只要相乘就好</p>
+<p>至於要怎麼維護兩兩之間的連接呢？</p>
+<h4 id="解法：-2"><a href="#解法：-2" class="headerlink" title="解法："></a>解法：</h4><p>如果我們使用 DP 的方式來思考</p>
+<p>那麼這個問題就沒有很難了</p>
+<p>如果我們今天考慮 dp 式</p>
+<p>$dp[i][j]$ 為 $i$ 個顏色 $1$ 與 $j$ 個顏色 $2$ 的接法</p>
+<p>那我們就可以思考轉移式</p>
+<p>如果我們新加入一種顏色 $1$ </p>
+<p>那麼轉移式就可以列成 </p>
+<p>$dp[i][j] = dp[i-1][j]$ （代表不連）$+ dp[i-1][j-1] * j$ （代表可以和任一個顏色 $2$ 相連）</p>
+<h4 id="程式碼：-4"><a href="#程式碼：-4" class="headerlink" title="程式碼："></a>程式碼：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">5e3</span>+<span class="number">5</span>, MOD = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">int</span> dp[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="keyword">int</span> a,b,c;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; N;i++) dp[i][<span class="number">0</span>] = <span class="number">1</span>, dp[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; N;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt; N;j++)&#123;</span><br><span class="line">			dp[i][j] = (dp[i<span class="number">-1</span>][j]+dp[i<span class="number">-1</span>][j<span class="number">-1</span>]*j%MOD)%MOD;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; dp[a][b]*dp[b][c]%MOD*dp[c][a]%MOD &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第五題、Square-Subsets-Codeforces-895C"><a href="#第五題、Square-Subsets-Codeforces-895C" class="headerlink" title="第五題、Square Subsets (Codeforces 895C)"></a>第五題、Square Subsets (Codeforces 895C)</h3><p><img src="https://i.imgur.com/YO6anzB.png" alt=""></p>
+<h4 id="題意：-5"><a href="#題意：-5" class="headerlink" title="題意："></a>題意：</h4><p>給一個 $n$ 項的陣列 $a$ ($a_i \leq 70$)，問有幾種選法使得選到的數字乘積為完全平方數？</p>
+<h4 id="想法：-4"><a href="#想法：-4" class="headerlink" title="想法："></a>想法：</h4><p>首先，我們可以注意到 $a_i \leq 70$</p>
+<p>$70$ 這個數字有什麼特別的呢？</p>
+<p>我們可以將小於 $70$ 的質數列出來，會發現只有 $19$ 個！</p>
+<p>而要怎麼判斷是完全平方數呢 </p>
+<p>完全平方數的特性是他在質因數分解後，質數的次方一定是<strong>偶數</strong>！</p>
+<p>$19$ 個代表著我們可以使用位元dp，枚舉 $1$ 到 $2^{18}$ </p>
+<p>兩個數字的位元狀態做 <strong>XOR</strong> 即為相乘</p>
+<h4 id="解法：-3"><a href="#解法：-3" class="headerlink" title="解法："></a>解法：</h4><p>因為值域只有到 $70$，我們可以先紀錄 $1~70$ 在陣列中出現了幾次</p>
+<p>然後每次去加入這些數字，去判斷有幾種選法</p>
+<h4 id="程式碼：-5"><a href="#程式碼：-5" class="headerlink" title="程式碼："></a>程式碼：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; primes = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">13</span>,<span class="number">17</span>,<span class="number">19</span>,<span class="number">23</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">37</span>,<span class="number">41</span>,<span class="number">43</span>,<span class="number">47</span>,<span class="number">53</span>,<span class="number">59</span>,<span class="number">61</span>,<span class="number">67</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cnt[<span class="number">71</span>], num[<span class="number">71</span>], dp[<span class="number">71</span>][<span class="number">1</span>&lt;&lt;<span class="number">18</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fastpow</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(p)&#123;</span><br><span class="line">		<span class="keyword">if</span>(p&amp;<span class="number">1</span>) res = (res * n) % MOD;</span><br><span class="line">		n = (n * n) % MOD;</span><br><span class="line">		p&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fastio</span><br><span class="line">	<span class="comment">//cout &lt;&lt; primes.size() &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">70</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> tmp = i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; primes.size();j++)&#123;</span><br><span class="line">			<span class="keyword">while</span>(tmp%primes[j]==<span class="number">0</span>) num[i]^=(<span class="number">1</span>&lt;&lt;j), tmp/=primes[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> tmp;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; tmp;</span><br><span class="line">		cnt[tmp]++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">70</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; (<span class="number">1</span>&lt;&lt;<span class="number">18</span>);j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!cnt[i]) dp[i][j] = dp[i<span class="number">-1</span>][j];</span><br><span class="line">			<span class="keyword">else</span> dp[i][j] = (dp[i][j] + dp[i<span class="number">-1</span>][j] + dp[i<span class="number">-1</span>][j^num[i]])%MOD * fastpow(<span class="number">2</span>,cnt[i]<span class="number">-1</span>)%MOD;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; (dp[<span class="number">70</span>][<span class="number">0</span>]<span class="number">-1</span>+MOD)%MOD &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Codeforces/" rel="tag"># Codeforces</a>
+              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/tags/%E7%B7%9A%E6%AE%B5%E6%A8%B9/" rel="tag"># 線段樹</a>
+              <a href="/tags/stack/" rel="tag"># stack</a>
+              <a href="/tags/%E8%A7%A3%E9%A1%8C/" rel="tag"># 解題</a>
+              <a href="/tags/%E5%AF%92%E5%81%87/" rel="tag"># 寒假</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/22/Winter-Day-1/" rel="prev" title="寒假競程訓練第一天">
+      <i class="fa fa-chevron-left"></i> 寒假競程訓練第一天
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">解題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Codeforces-992E-Nastya-and-King-Shamans"><span class="nav-number">1.1.</span> <span class="nav-text">Codeforces 992E - Nastya and King-Shamans</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E6%84%8F%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">題意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%B3%E6%B3%95%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">想法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%EF%BC%9A"><span class="nav-number">1.1.3.</span> <span class="nav-text">解法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%EF%BC%9A"><span class="nav-number">1.1.4.</span> <span class="nav-text">程式碼：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%92%E5%81%87%E7%B7%B4%E9%A1%8C%E8%A8%88%E7%95%AB-1-22"><span class="nav-number">2.</span> <span class="nav-text">寒假練題計畫 1&#x2F;22</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%A1%8C%E3%80%81k-factorization-Codeforces-797A"><span class="nav-number">2.1.</span> <span class="nav-text">第一題、k-factorization (Codeforces 797A)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E6%84%8F%EF%BC%9A-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">題意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%B3%E6%B3%95%EF%BC%9A-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">想法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%EF%BC%9A-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">程式碼：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A1%8C%E3%80%81New-Year-and-Buggy-Bot-Codeforces-908B"><span class="nav-number">2.2.</span> <span class="nav-text">第二題、New Year and Buggy Bot (Codeforces 908B)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E6%84%8F%EF%BC%9A-2"><span class="nav-number">2.2.1.</span> <span class="nav-text">題意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%EF%BC%9A-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">解法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%EF%BC%9A-2"><span class="nav-number">2.2.3.</span> <span class="nav-text">程式碼：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%A1%8C%E3%80%81Driving-Test-Codeforces-845D"><span class="nav-number">2.3.</span> <span class="nav-text">第三題、Driving Test (Codeforces 845D)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E6%84%8F%EF%BC%9A-3"><span class="nav-number">2.3.1.</span> <span class="nav-text">題意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%B3%E6%B3%95%EF%BC%9A-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">想法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%EF%BC%9A-3"><span class="nav-number">2.3.3.</span> <span class="nav-text">程式碼：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%A1%8C%E3%80%81The-Intriguing-Obsession-Codeforces-869C"><span class="nav-number">2.4.</span> <span class="nav-text">第四題、The Intriguing Obsession (Codeforces 869C)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E6%84%8F%EF%BC%9A-4"><span class="nav-number">2.4.1.</span> <span class="nav-text">題意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%B3%E6%B3%95%EF%BC%9A-3"><span class="nav-number">2.4.2.</span> <span class="nav-text">想法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%EF%BC%9A-2"><span class="nav-number">2.4.3.</span> <span class="nav-text">解法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%EF%BC%9A-4"><span class="nav-number">2.4.4.</span> <span class="nav-text">程式碼：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%A1%8C%E3%80%81Square-Subsets-Codeforces-895C"><span class="nav-number">2.5.</span> <span class="nav-text">第五題、Square Subsets (Codeforces 895C)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E6%84%8F%EF%BC%9A-5"><span class="nav-number">2.5.1.</span> <span class="nav-text">題意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%B3%E6%B3%95%EF%BC%9A-4"><span class="nav-number">2.5.2.</span> <span class="nav-text">想法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%EF%BC%9A-3"><span class="nav-number">2.5.3.</span> <span class="nav-text">解法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%EF%BC%9A-5"><span class="nav-number">2.5.4.</span> <span class="nav-text">程式碼：</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="路過的一隻山姆"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+  <p class="site-author-name" itemprop="name">路過的一隻山姆</p>
+  <div class="site-description" itemprop="description">這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sam571128" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sam571128" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sam571128/0819" title="Discord → sam571128&#x2F;0819"><i class="fab fa-discord fa-fw"></i>Discord</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://codeforces.com/profile/sam571128" title="https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;sam571128" rel="noopener" target="_blank">Codeforces</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://atcoder.jp/users/SamDaBest" title="https:&#x2F;&#x2F;atcoder.jp&#x2F;users&#x2F;SamDaBest" rel="noopener" target="_blank">AtCoder</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://discord.gg/yb3Hv2U" title="https:&#x2F;&#x2F;discord.gg&#x2F;yb3Hv2U" rel="noopener" target="_blank">Code Community (Xuan)</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">路過的一隻山姆</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://sam571128.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://example.com/2021/01/23/Winter-Day-2/";
+    this.page.identifier = "2021/01/23/Winter-Day-2/";
+    this.page.title = "寒假競程訓練第二天";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sam571128.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>
