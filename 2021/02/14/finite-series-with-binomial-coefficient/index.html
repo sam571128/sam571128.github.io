@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+<meta name="google-site-verification" content="NNns6yX_AQQxa6sJQwIIHMJbXcs02pg3ZiTE4UK8VQQ" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="true">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="不久前 在 Discord 群看到有人在解 Codeforces 932E  然後看到這題 就覺得感覺不難 列出算式之後卻還是不會算 不過經由呆呆獸及他人的指導  終於理解了這類方便的方法來計算這種排列組合的題目 那就讓我們來看看這是什麼樣的方法吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="含有二項式的有限級數">
+<meta property="og:url" content="http://example.com/2021/02/14/finite-series-with-binomial-coefficient/index.html">
+<meta property="og:site_name" content="山姆的競程日記">
+<meta property="og:description" content="不久前 在 Discord 群看到有人在解 Codeforces 932E  然後看到這題 就覺得感覺不難 列出算式之後卻還是不會算 不過經由呆呆獸及他人的指導  終於理解了這類方便的方法來計算這種排列組合的題目 那就讓我們來看看這是什麼樣的方法吧">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-02-13T18:17:41.000Z">
+<meta property="article:modified_time" content="2021-02-13T20:28:45.645Z">
+<meta property="article:author" content="路過的一隻山姆">
+<meta property="article:tag" content="Codeforces">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="數學">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/02/14/finite-series-with-binomial-coefficient/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>含有二項式的有限級數 | 山姆的競程日記</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">山姆的競程日記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">從綠牌開始的旅途</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/14/finite-series-with-binomial-coefficient/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+      <meta itemprop="name" content="路過的一隻山姆">
+      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山姆的競程日記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          含有二項式的有限級數
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-02-14 02:17:41 / 修改時間：04:28:45" itemprop="dateCreated datePublished" datetime="2021-02-14T02:17:41+08:00">2021-02-14</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/02/14/finite-series-with-binomial-coefficient/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/02/14/finite-series-with-binomial-coefficient/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>不久前 在 Discord 群看到有人在解 <a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/932/E">Codeforces 932E</a> </p>
+<p>然後看到這題 就覺得感覺不難 列出算式之後卻還是不會算</p>
+<p>不過經由呆呆獸及他人的指導 </p>
+<p>終於理解了這類方便的方法來計算這種排列組合的題目</p>
+<p>那就讓我們來看看這是什麼樣的方法吧</p>
+<a id="more"></a>
+<h2 id="先看看-Codeforces-932E"><a href="#先看看-Codeforces-932E" class="headerlink" title="先看看 Codeforces 932E"></a>先看看 Codeforces 932E</h2><p>這題的題目是這樣子的</p>
+<blockquote>
+<p>有 $N$ 個人，你可以選任意一組集合</p>
+<p>當你選了 $x$ 個人 ($x \ge 1$) 的集合 這個集合的花費為 $x^k$</p>
+<p>問所有選法的花費和為？ （模 $10^9 + 7$）</p>
+<p>範圍：$1 \leq N \leq 10^9$, $1 \leq k \leq 5000$ </p>
+</blockquote>
+<p>遇到這樣的題目 我們應該能很輕易的列出下面這個算式</p>
+<script type="math/tex; mode=display">\displaystyle \sum_{i=1}^n {\binom{n}{k} i^k}</script><p>但 接下來呢</p>
+<p>如果我們直接跑一個 for 迴圈將總和加起來</p>
+<p>$N \leq 10^9$ 再加上需要模運算</p>
+<p>根本不可能解決這個問題啊？？？</p>
+<h2 id="換個簡單點的題目吧"><a href="#換個簡單點的題目吧" class="headerlink" title="換個簡單點的題目吧"></a>換個簡單點的題目吧</h2><p>大家在高中的排列組合都學會下面這個東西 也就是 <strong>二項式定理</strong></p>
+<p>$\displaystyle (1+x)^n = \sum_{i=0}^n \binom{n}{i} x^i$</p>
+<p>但是要怎麼讓用上面這個式子做出</p>
+<script type="math/tex; mode=display">\displaystyle \sum_{i=1}^n {\binom{n}{k} i^k}</script><p>這樣子的東西呢？</p>
+<p>我們可以假設看看 如果有個函數 $f(x) = $$\displaystyle \sum_{i=1}^n {\binom{n}{k} i^k} x^i$ </p>
+<p>那 $f(1)$ 不就會是 $\displaystyle \sum_{i=1}^n {\binom{n}{k} i^k}$ 了嗎？</p>
+<p>會發現 $f(x)$ 與二項式定理的式子只差了 $i^k$</p>
+<p>那如何將上面的式子推得 $f(x)$ 呢</p>
+<p>我們會發現 $i$ 其實是二項式定理中 $x$ 的次方</p>
+<p>我們可以想想一個問題 如何<strong>將 $x$ 的次方移下來與 $x$ 相乘</strong>呢？</p>
+<h2 id="微分？"><a href="#微分？" class="headerlink" title="微分？"></a>微分？</h2><p>上面 我們說到了 如果我們能夠找到一個方法 使得 <strong>$x$ 的次方移下來相乘</strong> </p>
+<p>那這個方法不就是高中會學到的<strong>多項式的微分</strong>嗎？</p>
+<p>我們可以試著先列出二項式定理的這個式子</p>
+<script type="math/tex; mode=display">\displaystyle (1+x)^n = \sum_{i=0}^n \binom{n}{i} x^i</script><p>然後 <strong>兩邊一起微分</strong> 吧</p>
+<script type="math/tex; mode=display">\displaystyle n(1+x)^{n-1} = \frac{d}{dx} \sum_{i=0}^n \binom{n}{i} x^i</script><p>什麼？ 你說你不會<strong>微分 Sigma</strong>？（<del>回去重學微分吧</del></p>
+<script type="math/tex; mode=display">\displaystyle n(1+x)^{n-1} =  \sum_{i=0}^n \frac{d}{dx}(\binom{n}{i} x^i) = \sum_{i=0}^n i \times \binom{n}{i} x^{i-1}</script><p>這樣一來右邊的式子就出現 $i$ 了！</p>
+<p>但我們想要的是 $i^k$ </p>
+<p>假如我們繼續微分 會發現移下來的會是 $i-1, i-2, i-3, …$  </p>
+<p>但如果我們兩邊同乘上 $x$ 之後再微分呢？</p>
+<p>因此整個過程就變成了一個對二項式定理 微分 ＝&gt; 乘以 $x$ ＝&gt; 微分 ＝&gt; … 的一個循環過程</p>
+<h2 id="實際操作一遍吧！"><a href="#實際操作一遍吧！" class="headerlink" title="實際操作一遍吧！"></a>實際操作一遍吧！</h2><blockquote>
+<p>求 $\displaystyle \sum_{i=0}^n {\binom{n}{i} i^2}$ 的一般式為何？</p>
+</blockquote>
+<p>遇到這樣的問題 我們就可以來試試看使用剛剛的技巧</p>
+<p>也就是不停的微分再乘上 $x$ </p>
+<p>從這個式子 $\displaystyle (1+x)^n = \sum_{i=0}^n \binom{n}{i} x^i$</p>
+<p>微分 ＝&gt; $\displaystyle n(1+x)^n = \sum_{i=0}^n \binom{n}{i} x^{i-1} \times i$</p>
+<p>乘以 $x$  ＝&gt; $\displaystyle nx(1+x)^{n-1} = \sum_{i=0}^n \binom{n}{i} x^i \times i$</p>
+<p>微分 ＝&gt; $\displaystyle (n(1+x)^{n-1})(x)’ + (n(1+x)^{n-1})’(x)   =  \sum_{i=0}^n \binom{n}{i} x^{i-1} \times i^2$</p>
+<p>​         ＝&gt; $\displaystyle n(1+x)^{n-1} + n(n-1)(1+x)^{n-2}x  =  \sum_{i=0}^n \binom{n}{i} x^{i-1} \times i^2$</p>
+<p>乘以 $x$ ＝&gt; $\displaystyle n(1+x)^{n-1} x+ n(n-1)(1+x)^{n-2}x^2  =  \sum_{i=0}^n \binom{n}{i} x^{i} \times i^2$</p>
+<p>代入 $1$ ＝&gt; $\displaystyle n \times 2^{n-1} + n（n-1)\times 2^{n-2} = \sum_{i=0}^n \binom{n}{i}\times i^2$</p>
+<p>化簡 ＝&gt; $2^{n-2}n(n+1) = \displaystyle \sum_{i=0}^n {\binom{n}{i} i^2}$</p>
+<p>得 $2^{n-2}n(n+1)$ 為 $\displaystyle \sum_{i=0}^n {\binom{n}{i} i^2}$ 的一般式</p>
+<h2 id="回到原題"><a href="#回到原題" class="headerlink" title="回到原題"></a>回到原題</h2><p>扯了那麼多 讓我們回到原來的題目吧</p>
+<script type="math/tex; mode=display">\displaystyle \sum_{i=1}^n {\binom{n}{k} i^k}</script><p>你可能會想說 就只要微分再乘上 $x$ 的操作做 $k$ 次對吧</p>
+<p>但如何做到呢？</p>
+<p>我們必須要寫個程式來 <strong>模擬微分的運算！</strong> </p>
+<p>也就是使用 <strong>DP</strong> 來模擬！</p>
+<p>我們可以記下每一項 $(1+x)^{n-i} x^i$ 的係數</p>
+<p>用 $dp[i][j]$ 來表示到第 $i$ 次時 $(1+x)^{n-j} x^j$ 的係數</p>
+<p>但微分要怎麼做呢?</p>
+<p>我們可以再試一次看看 把上面練習題的兩次微分後的式子再拿來微分看看</p>
+<p>$\displaystyle n(1+x)^{n-1} x+ n(n-1)(1+x)^{n-2}x^2$</p>
+<p>微分後</p>
+<p>$\displaystyle n(1+x)^{n-1}+ n(n-1)(1+x)^{n-2}x + n(n-1)(1+x)^{n-2}\times 2x + n(n-1)(n-2)(1+x)^{n-2}x^2$</p>
+<p>乘以 $x$</p>
+<p>$\displaystyle (1n)(1+x)^{n-1}x+ (n \times (n-1) +2n(n-1))(1+x)^{n-2}x^2+ (n(n-1)\times(n-2) + 3 \times 0)(1+x)^{n-2}x^3$</p>
+<p>觀察出來了嗎 如果還沒 那我們假設係數都是未知數</p>
+<p>$\displaystyle C_1(1+x)^{n-1} x+ C_2(1+x)^{n-2}x^2 + C_3(1+x)^{n-2}x^3 + …$</p>
+<p>微分後乘以 $x$</p>
+<p>$(1 \times C_1)(1+x)^{n-1}x + (C_1 \times (n-1) + 2 \times C_2)(1+x)^{n-2}x^2 + (C_2 \times (n-2) + 3 \times C_3)(1+x)^{n-2}x^3 + …$</p>
+<p>規律就出現了</p>
+<h2 id="DP-模擬微分以及程式碼"><a href="#DP-模擬微分以及程式碼" class="headerlink" title="DP 模擬微分以及程式碼"></a>DP 模擬微分以及程式碼</h2><p>既然推得了規律 那我們來看看轉移式要怎麼列吧</p>
+<p>$dp[i][j]$ 表示到第 $i$ 次操作時 $(1+x)^{n-j} x^j$ 的係數</p>
+<p>轉移式由規律可寫成</p>
+<p>$dp[i+1][j] = dp[i+1][j] + dp[i][j] \times j$</p>
+<p>$dp[i+1][j+1] = dp[i+1][j+1] + dp[i][j] \times (n-j)$</p>
+<p>因此我們就可以得到該題的程式碼 （記得進行模運算</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; k;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= i;j++)&#123;</span><br><span class="line">        dp[i+<span class="number">1</span>][j] = (dp[i+<span class="number">1</span>][j] + dp[i][j] * j % MOD) % MOD;</span><br><span class="line">        dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = (dp[i+<span class="number">1</span>][j+<span class="number">1</span>] + dp[i][j] * (n-j) % MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= k;i++)&#123;</span><br><span class="line">    ans = (ans + fastpow(<span class="number">2</span>,n-i) * dp[k][i] % MOD) % MOD;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二項式機率也能做一樣的事情嗎？-Codeforces-1278F"><a href="#二項式機率也能做一樣的事情嗎？-Codeforces-1278F" class="headerlink" title="二項式機率也能做一樣的事情嗎？ Codeforces 1278F"></a>二項式機率也能做一樣的事情嗎？ Codeforces 1278F</h2><p>這裡又有另一道例題了 <a target="_blank" rel="noopener" href="https://codeforces.com/contest/1278/problem/F">Codeforces 1278F</a></p>
+<p>題意</p>
+<blockquote>
+<p>桌上有 $m$ 張牌（其中一張是鬼牌），你可以抽 $n$ 次</p>
+<p>假如抽到鬼牌的期望值是 $x$，問 $x^k$ 為何？</p>
+</blockquote>
+<p>由於每一次抽鬼牌都是獨立的事件</p>
+<p>$E(X+Y) = E(X) + E(Y)$</p>
+<p>因此我們可以將每一次抽到鬼牌的次數相加</p>
+<p>而期望值 = 機率 $\times$ 次數</p>
+<p>任何有學過高中排列組合的人都知道二項式機率的算法為 $\displaystyle \binom{n}{i} p^i q^{n-i}$</p>
+<p>我們可以列出這個式子 $\displaystyle \sum_{i=0}^n \binom{n}{i} p^i q^{n-i} i^k$</p>
+<p>那麼再來推式子吧</p>
+<p>$\displaystyle(p+q)^n = \sum_{i=0}^n \binom{n}{i} p^i q^{n-i}$</p>
+<p>我們要如何讓這個式子推出上面的式子呢？</p>
+<p>很簡單 原本我們是先微分再乘以 $x$ </p>
+<p>現在我們只要先微分之後再乘以 $p$ 就好了</p>
+<p>由於 $p+q=1$ 因此結果非常漂亮 </p>
+<p>推導過程與前一例題相同 我們則不證明 留給讀者當作練習</p>
+<p>附上程式碼</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">m = fastpow(m,MOD<span class="number">-2</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; k;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= i;j++)&#123;</span><br><span class="line">        dp[i+<span class="number">1</span>][j] = (dp[i+<span class="number">1</span>][j] + dp[i][j] * j % MOD) % MOD;</span><br><span class="line">        dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = (dp[i+<span class="number">1</span>][j+<span class="number">1</span>] + dp[i][j] * (n-j) % MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= k;i++)&#123;</span><br><span class="line">    ans = (ans + fastpow(m,n-i) * dp[k][i] % MOD) % MOD;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>在競程當中使用到微積分真的是讓我滿驚訝的</p>
+<p>但是同時這個方法也非常神奇且好用</p>
+<p>實作的程式碼也非常短</p>
+<p>雖然這個方法在競程上可能比較少會看到</p>
+<p>但是以後如果遇到含有二項式的有限級數</p>
+<p>我們就可以使用這個方法來找到一般式了！</p>
+<p>聽說這個方法在生成函數是個滿常見的方式 不過我還沒學</p>
+<p>所以先將這個方法歸納在這裡 至於這個方法的名稱我查好久都找不到</p>
+<p>唯一找到的只有<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=g9m8HgDyJxI">這個影片</a> 稱其為 Finite Series With Binomial Coefficient</p>
+<p>所以我就直翻成中文了 XD</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Codeforces/" rel="tag"># Codeforces</a>
+              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"># 教學</a>
+              <a href="/tags/%E6%95%B8%E5%AD%B8/" rel="tag"># 數學</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/13/Purple-Here-I-am/" rel="prev" title="寒假檢討以及成為紫牌了！">
+      <i class="fa fa-chevron-left"></i> 寒假檢討以及成為紫牌了！
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E7%9C%8B%E7%9C%8B-Codeforces-932E"><span class="nav-number">1.</span> <span class="nav-text">先看看 Codeforces 932E</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%9B%E5%80%8B%E7%B0%A1%E5%96%AE%E9%BB%9E%E7%9A%84%E9%A1%8C%E7%9B%AE%E5%90%A7"><span class="nav-number">2.</span> <span class="nav-text">換個簡單點的題目吧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%88%86%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">微分？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E6%93%8D%E4%BD%9C%E4%B8%80%E9%81%8D%E5%90%A7%EF%BC%81"><span class="nav-number">4.</span> <span class="nav-text">實際操作一遍吧！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E5%8E%9F%E9%A1%8C"><span class="nav-number">5.</span> <span class="nav-text">回到原題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DP-%E6%A8%A1%E6%93%AC%E5%BE%AE%E5%88%86%E4%BB%A5%E5%8F%8A%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">6.</span> <span class="nav-text">DP 模擬微分以及程式碼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%A0%85%E5%BC%8F%E6%A9%9F%E7%8E%87%E4%B9%9F%E8%83%BD%E5%81%9A%E4%B8%80%E6%A8%A3%E7%9A%84%E4%BA%8B%E6%83%85%E5%97%8E%EF%BC%9F-Codeforces-1278F"><span class="nav-number">7.</span> <span class="nav-text">二項式機率也能做一樣的事情嗎？ Codeforces 1278F</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number"></span> <span class="nav-text">心得</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="路過的一隻山姆"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
+  <p class="site-author-name" itemprop="name">路過的一隻山姆</p>
+  <div class="site-description" itemprop="description">這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sam571128" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sam571128" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sam571128/0819" title="Discord → sam571128&#x2F;0819"><i class="fab fa-discord fa-fw"></i>Discord</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://codeforces.com/profile/sam571128" title="https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;sam571128" rel="noopener" target="_blank">Codeforces</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://atcoder.jp/users/SamDaBest" title="https:&#x2F;&#x2F;atcoder.jp&#x2F;users&#x2F;SamDaBest" rel="noopener" target="_blank">AtCoder</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://discord.gg/yb3Hv2U" title="https:&#x2F;&#x2F;discord.gg&#x2F;yb3Hv2U" rel="noopener" target="_blank">Code Community (Xuan)</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">路過的一隻山姆</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://sam571128.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://example.com/2021/02/14/finite-series-with-binomial-coefficient/";
+    this.page.identifier = "2021/02/14/finite-series-with-binomial-coefficient/";
+    this.page.title = "含有二項式的有限級數";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sam571128.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>
