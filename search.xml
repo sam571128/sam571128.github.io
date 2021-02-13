@@ -1754,4 +1754,91 @@
         <tag>入芽考</tag>
       </tags>
   </entry>
+  <entry>
+    <title>寒假檢討以及成為紫牌了！</title>
+    <url>/2021/02/13/Purple-Here-I-am/</url>
+    <content><![CDATA[<p>好久沒有寫Blog 最近都一直富奸 XD</p>
+<p>不過距離上一次也發生了不少事情 就來細數一下這個寒假到現在有哪些令人印象深刻的事情吧</p>
+<a id="more"></a>
+<h1 id="IOICamp"><a href="#IOICamp" class="headerlink" title="IOICamp"></a>IOICamp</h1><p>這個寒假最愉快的莫過於 <strong>IOICamp</strong> 了</p>
+<p>在那裡見到了各位電神，跟上一次去 <strong>IONCamp</strong> 時那種誰都不認識的情況不一樣了</p>
+<p>這次見到了 <strong>Code Community</strong> 的人 學到的東西也不少</p>
+<p>然後明明住在臺北還填住宿 從臺大到西門町還比到我家遠 （還被爸媽說幹嘛不回家睡 (ﾉ&gt;ω&lt;)ﾉ</p>
+<p>每天的比賽也讓我見識到了自己實力的不足</p>
+<h2 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h2><p>一開始就拿到一本 <strong>IOICamp 講義</strong> （<del>為了這本來的</del></p>
+<p>第一天的早上是<strong>電仁的喵喵時間</strong></p>
+<p>他分享了許多他以前的故事</p>
+<p>還有他如何成為國手</p>
+<p>還滿有趣的</p>
+<p>中午則是和 <strong>benson0402</strong> 決鬥</p>
+<p>而下午則是<strong>圖論</strong></p>
+<p>圖論課<del>倒是沒學到什麼東西</del> </p>
+<p>沒啦 只是講師有很大的比重放在比較簡單的內容</p>
+<p>跳過了<strong>圖的連通性</strong> 直接去講<strong>樹的演算法</strong></p>
+<p>不過<strong>樹論</strong>在 <strong>IONCamp</strong> 已經學到不少了 所以有很多這次就沒學到太多新的</p>
+<p>新奇的東西大概就是 <strong>虛樹</strong> 了</p>
+<p>然後講師還特別講的很快 因為他說<strong>隔天的個人賽會出現一題二分圖最大匹配</strong> Σ(*ﾟдﾟﾉ)ﾉ</p>
+<p>然後晚上就是 <strong>趣味賽</strong> 了</p>
+<p>整場被隊友 Carry Orz</p>
+<p><img src="https://i.imgur.com/jtEIrZQ.png" alt=""></p>
+<p>然後晚上則是走好久到飯店</p>
+<p>晚上雞塊偷跑出去 還被波神列入觀察名單</p>
+<h2 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h2><p>早上第一堂課就是<strong>數學</strong></p>
+<p>雖然自己在學校範圍內的數學都是非常強的</p>
+<p>但是競賽的數學跟學校內那種偏計算的還是不太一樣</p>
+<p>一開始就是教 <strong>排列組合</strong></p>
+<p>不過我<strong>排列組合</strong>本來就不算太好 （？</p>
+<p>所以其實也算是學到了一些東西 （然後 Foxyy 和 penguin71630 一直討論卡特蘭數 Orz</p>
+<p>下午則是<strong>進階資結</strong> 波神的課真的讚</p>
+<p>不過<strong>李超線段樹</strong>之前自己學過了</p>
+<p>比較新奇的大概是 <strong>IOI 2018 Seats</strong> 還有暴力線段樹吧</p>
+<p>然後終於能理解之前一直在 <strong>CF</strong> 看到的 <strong>Segment tree beats</strong> 了</p>
+<p>晚上個人賽意外的拿到了<strong>第8名</strong> 應該是要很開心的</p>
+<p>可是<strong>一題莫隊假解</strong> <strong>一題亂猜二分圖最大匹配</strong>（畢竟講師前一天強調）</p>
+<p>之後的比賽可不能靠假解上分呢 ｡ﾟヽ(ﾟ´Д`)ﾉﾟ｡</p>
+<p><img src="https://i.imgur.com/H3qouV3.png" alt=""></p>
+<h2 id="第三天"><a href="#第三天" class="headerlink" title="第三天"></a>第三天</h2><p>第三天的一開始就是<strong>字串</strong> </p>
+<p>照理來說我應該是沒學過太多字串</p>
+<p>但發現幾乎都聽過（除了 <strong>AC 自動機</strong> </p>
+<p>所以前半就去記憶這些演算法 （<del>然後打成模板</del></p>
+<p>後半就去聽 <strong>AC 自動機</strong></p>
+<p>然後 <strong>Suffix Array</strong> 因為自己在 <strong>CF EDU</strong> 學過了 還寫過<a href="https://sam571128.codes/2020/10/02/Suffix-Array/">一篇 Blog</a></p>
+<p>坐我旁邊的隊友聽不懂 <strong>Suffix Array</strong> 所以我就丟了我的 Blog 給他看 d(`･∀･)b</p>
+<p>下午教的基礎 DP + DP 優化 （？ 是不是哪裡怪怪的</p>
+<p>反正前半就睡下去了 後半才開始聽</p>
+<p>但是除了 <strong>斜率優化</strong> 和 <strong>Aliens Trick</strong> 以外都聽不懂 QQ</p>
+<p>晚上的團體賽也是靠著隊友拿分 Orz</p>
+<p><img src="https://i.imgur.com/j6oR6Us.png" alt=""></p>
+<h2 id="第四天"><a href="#第四天" class="headerlink" title="第四天"></a>第四天</h2><p>第四天學的東西照理來說對於高中競程選手來說是不必要的</p>
+<p>分別是 <strong>網路流 (Network Flow)</strong> 以及 <strong>賽局理論 (Game Theory)</strong></p>
+<p>但是<strong>網路流的演算法</strong>之前因為戳過 <strong>Flow</strong> 的題目</p>
+<p>去學了起來 所以早上倒是都聽得懂 (ゝ∀･)</p>
+<p>但下午除了 <strong>Nim Game + Sprague-Grundy Theorem</strong> 以外 都聽不太懂</p>
+<p>還講到有偏的 <strong>Hackenbush</strong></p>
+<p>晚上的個人賽整個大燒雞 除了賽局不會寫之外 Flow的裸題還一直 WA</p>
+<p>但還是放個前幾名的記分板好ㄌ</p>
+<p><img src="https://i.imgur.com/136S6Oz.png" alt=""></p>
+<h2 id="第五天"><a href="#第五天" class="headerlink" title="第五天"></a>第五天</h2><p><strong>正式賽</strong>來了 <strong>5個小時 ICPC制</strong></p>
+<p>一整個還是被隊友 Carry Orz</p>
+<p>就連隊友青牌的想的都比我清楚 我整個毒瘤起來每題都想砸 flow QQ</p>
+<p>但一整週下來真的很好玩</p>
+<p>後來還跟 Gino 和 Wiwi 他們一行人去吃拉麵</p>
+<h1 id="IOICamp-回來之後"><a href="#IOICamp-回來之後" class="headerlink" title="IOICamp 回來之後"></a>IOICamp 回來之後</h1><p>過了幾天之後 跟 <strong>Foxyy</strong> 和 <strong>Wiwi</strong> 約好了要一起打 PCCA 的練習賽</p>
+<p>然後一早就跑去 <strong>Wiwi</strong> Carry 整場 </p>
+<p><strong>Foxyy</strong> 在耍毒瘤亂想幾何題</p>
+<p>不過還是很好玩</p>
+<p>然後 CF gym 也可以 vir 這場</p>
+<p><img src="https://i.imgur.com/I6Tf9KE.png" alt=""></p>
+<p>之後的兩個禮拜又照常打 CF (其實也才三場)</p>
+<p>然後終於在昨天上了紫牌 (Candidate Master)</p>
+<p><img src="https://i.imgur.com/E0wBBa3.png" alt=""></p>
+<p>踏入競程後<strong>10個月</strong> 終於上了紫牌</p>
+<p>接下來的目標就是<strong>進TOI選訓</strong>以及<strong>上黃牌</strong>了</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>Codeforces</tag>
+        <tag>心情</tag>
+        <tag>里程碑</tag>
+      </tags>
+  </entry>
 </search>
