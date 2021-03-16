@@ -1961,4 +1961,130 @@
         <tag>數學</tag>
       </tags>
   </entry>
+  <entry>
+    <title>一些不錯的題目</title>
+    <url>/2021/02/20/Good-Problems/</url>
+    <content><![CDATA[<p>決定開一篇來紀錄自己寫到不錯或有趣的題目</p>
+<a id="more"></a>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>Codeforces</tag>
+        <tag>統整</tag>
+        <tag>Atcoder</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021 資訊奧林匹亞初選</title>
+    <url>/2021/03/16/TOI-Burn-Chicken/</url>
+    <content><![CDATA[<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p><img src="https://i.imgur.com/LnyHrXG.png" alt=""></p>
+<p>最後結果：$152/500$</p>
+<p>讓自己的心情沈澱了幾天</p>
+<p>這個分數高過了高一的 130分 和 女保的 124分</p>
+<p>不過我是高二，努力練了11個月的競程卻沒有成果 QQ</p>
+<p>這次燒雞的人不只我，賽中左右兩邊的人看起來也打得很難受</p>
+<p>有些實力比我強，北市賽、全國賽名次很高的人也都沒有表現好</p>
+<a id="more"></a>
+<h2 id="賽前"><a href="#賽前" class="headerlink" title="賽前"></a>賽前</h2><p>在前一天資芽結束之後</p>
+<p>和Foxxy, 蕾米廚, 雞塊, shaun_0124 一起去吃飯打機</p>
+<p>他們都說比賽前一天要好好放鬆，明天才不會打得很差</p>
+<p>但那時候的我腦中：（明天就要比賽了 好可怕QQ</p>
+<p>前一天晚上很早就睡了</p>
+<p>但睡了一小時之後就緊張到醒過來了</p>
+<p>接著整個晚上都在跟緊張奮鬥</p>
+<p>比賽前的早上 複習了各種模板</p>
+<p>練習了短時間寫出 Dinic 和 MCMF （擔心會出</p>
+<p>然後在出發前壓力過大 還爆發在父母身上QQ</p>
+<p>到了師大之後 看到資訊老師 他還幫我加油</p>
+<p>然後就遇到各個電神</p>
+<h2 id="賽中"><a href="#賽中" class="headerlink" title="賽中"></a>賽中</h2><p>比賽開始時我還是非常緊張</p>
+<p>盡力的在讓自己放輕鬆再開始看題目</p>
+<p>首先，拿起題本</p>
+<p>先登入帳號之後 看了 pA</p>
+<p>pA 是一題位元+stable sort的題目 很快將他寫掉</p>
+<p>不過丟上去之後拿 $40$ 分</p>
+<p>發現是題目範圍到 $1024 (2^{10})$ </p>
+<p>我卻打了 </p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)</span><br></pre></td></tr></table></figure>
+<p>改掉之後就拿下這題水題了</p>
+<p>之後就看了看每一題 給了他們 tag 以及排序難度</p>
+<p>pB dp題 + 斜率優化</p>
+<p>pC  看起來像圖論</p>
+<p>放到圖上之後變成一般圖最大匹配（我到底在想什麼</p>
+<p>pD 樹dp</p>
+<p>看到 pE 之後 發現是裸二分圖最大匹配 + 構造</p>
+<p>剛好自己有背模板 不過要刻+debug可能要一段時間 </p>
+<p>而且不會構造只有 $40$ 分 就先放在旁邊了</p>
+<p>當時認為的難度 pC子題一 &lt; pD子題一 &lt; pB子題一  &lt; pE $40$ 分 &lt; pB &lt; pD &lt; pC &lt; pE</p>
+<p>因此照著這個順序去拿題</p>
+<h3 id="並不如想像中的如此順利"><a href="#並不如想像中的如此順利" class="headerlink" title="並不如想像中的如此順利"></a>並不如想像中的如此順利</h3><p>pC 刻下去之後就拿到 $22$ 分了 但因為不會縮花 就沒繼續做了 一路放到比賽結束</p>
+<p>開始寫 pD 的第一個子題，不過題目實在太長，測資也麻煩</p>
+<p>花了一段時間debug之後 範測對了</p>
+<p>丟上去卻WA</p>
+<p>不過花在這題的時間夠長了 就先跑去解pB了</p>
+<p>pB 一開始以為自己能 $O(nm)$ dp解</p>
+<p>然後花了幾十分鐘響 還是突破不了 $O(nm^2)$ 的解</p>
+<p>接著花了半小時思考優化方式 想不到 QQ</p>
+<p>這時比賽已經過了一半了 我卻只有 $122$ 分 一定進不了</p>
+<p>但左邊的人看起來放棄了 右邊的看起來很痛苦</p>
+<p>預測這次大概 $200$ 出頭就能進了</p>
+<p>後來沒辦法 決定刻出 pB $O(nm^2)$ 解</p>
+<p>結果 $30$ 分拿到了 …</p>
+<p>這到底什麼爛測資 = = </p>
+<h3 id="最後的一小時"><a href="#最後的一小時" class="headerlink" title="最後的一小時"></a>最後的一小時</h3><p>這時在做一個抉擇</p>
+<p>到底要寫 pE 還是寫 pD</p>
+<p>pE 40分是一個不錯的分數</p>
+<p>pD 想不到錯誤 </p>
+<p>看著pD的題目以及 $16$ 分的 WA code 思考了半小時</p>
+<p>跑回去pE刻網路流一邊思考題目</p>
+<p>在最後的五分鐘發現了 pD 能用LCA喇到 $31$ 分</p>
+<p>就花了三分鐘刻完</p>
+<p>最後兩分鐘丟 WA</p>
+<p>最後三十秒丟 WA</p>
+<p>比賽就結束了</p>
+<h2 id="賽後"><a href="#賽後" class="headerlink" title="賽後"></a>賽後</h2><p>出場之後拿起手機看記分板</p>
+<p>前二十名都沒看到我 QQ 不過前二十名的分數線 $189$</p>
+<p>遇到學弟 學弟提到了他不會LIS就沒寫出pC</p>
+<p>我: pC 是 LIS 喔 …</p>
+<p>打開messenger 一堆場外的都說pC應該是很簡單的</p>
+<p>賽中卻很少人寫出來</p>
+<p>最後就跟著 Foxyy 和 Gino 沒進選訓的三人組跟著建中那群人一起去吃拉麵了</p>
+<h2 id="賽後檢討"><a href="#賽後檢討" class="headerlink" title="賽後檢討"></a>賽後檢討</h2><p>整場比賽 我認為自己最大的敗點在於</p>
+<p><strong>我時間管理不夠好 也沒好好看清楚題目</strong></p>
+<p>總是因為自己學過的東西多 就會誤判題目難度 QQ</p>
+<p>知道pC是LIS之後 覺得自己完全沒有理由不會寫這題</p>
+<p>不過接下來有重要的考試 因此不能再像之前一樣每天刷題了 QQ</p>
+<p>暫緩競程 不過希望每天能至少解一題維持手感</p>
+<p>然後學弟甚至只差 $8$ 分就有高一線了 好可惜</p>
+<p>我們學校已經好多年沒有人進選訓了</p>
+<p>接下來的大目標：</p>
+<p><strong>進入全國賽並拿前三等獎</strong></p>
+<p><strong>通過明年的初選</strong></p>
+<p>如果都達成的話 明年初選後讀過這篇blog的人就來叫我請拉麵ㄅ</p>
+<h2 id="女保爭議事件"><a href="#女保爭議事件" class="headerlink" title="女保爭議事件"></a>女保爭議事件</h2><p><img src="https://i.imgur.com/by6pgjx.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/kgvjMRL.jpg" alt=""></p>
+<p>今年的入營考 女生線124分</p>
+<p>高二以上男生則是200分</p>
+<p>而今年主辦單位沒有按照規則</p>
+<p>增額至兩名女生</p>
+<p>而是直接增加到五名</p>
+<p>這點看到身邊很多人都認為不公平</p>
+<p>憑什麼因為<strong>先天性別不同</strong></p>
+<p>而使得努力的人無法得到成果呢</p>
+<p>坦白說我不反對女保的制度</p>
+<p>但是真的太多了…</p>
+<p>反而是高一線</p>
+<p>今年高一厲害的人不多 </p>
+<p>能理解高一線能幫助高一的人繼續往這方面走</p>
+<p>但是分數線也好低 130分</p>
+<p>拿下暴搜就能進了</p>
+<p>自己晚了一年 又生錯性別</p>
+<p><strong>實力還不夠堅強</strong></p>
+<p><strong>心態還不夠穩定</strong></p>
+<p>接下來要繼續努力</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>TOI</tag>
+        <tag>燒雞</tag>
+      </tags>
+  </entry>
 </search>
