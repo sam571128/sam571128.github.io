@@ -1966,7 +1966,9 @@
     <url>/2021/02/20/Good-Problems/</url>
     <content><![CDATA[<p>決定開一篇來紀錄自己寫到不錯或有趣的題目</p>
 <a id="more"></a>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+<details>   <summary>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ABC</span><br></pre></td></tr></table></figure>
+</summary> </details><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <tags>
         <tag>Codeforces</tag>
         <tag>統整</tag>
