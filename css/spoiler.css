@@ -1,14 +1,14 @@
 .spoiler {
-    margin: 0px 0;
-    padding: 0 0px;
-    /*border: 1px solid #E5E5E5;*/
+    margin: 5px 0;
+    padding: 0 15px;
+    border: 1px solid #E5E5E5;
     position: relative;
     clear: both;
     border-radius: 3px;
 }
 
 .spoiler .spoiler-title {
-    background: white;
+    background: #E5E5E5;
     margin: 0 -15px;
     padding: 5px 15px;
     color: #353535;
@@ -23,18 +23,12 @@
 }
 
 .spoiler.collapsed .spoiler-title:before {
-    content: "▼";
+    content: "Show ";
 }
-
-.spoiler.collapsed .spoiler-title:after {
-    content: " （若點擊無反應 請重刷新網頁）";
-}
-
 
 .spoiler.expanded .spoiler-title:before {
-    content: "▲";
+    content: "Hide ";
 }
-
 
 .spoiler .spoiler-content {
     padding-top: 0;
