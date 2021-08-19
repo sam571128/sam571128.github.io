@@ -2166,7 +2166,7 @@
 <li><p><span class="math inline">\(f(1) = 1\)</span></p></li>
 <li><p><span class="math inline">\(gcd(a,b) = 1 \Rightarrow f(ab) = f(a)f(b)\)</span></p></li>
 </ol>
-<p>因此當 <span class="math inline">\(n = p_1^{k_1} p_2^{k_2} \cdots\)</span> 時，<span class="math inline">\(f(n) = f(p_1)^{k_1} f(p_2)^{k_2}\cdots\)</span></p>
+<p>因此當 <span class="math inline">\(n = p_1^{k_1} p_2^{k_2} \cdots\)</span> 時，<span class="math inline">\(f(n) = f(p_1^{k_1}) f(p_2^{k_2})\cdots\)</span></p>
 <p>而常見的積性函數有以下幾個</p>
 <ol type="1">
 <li><p>歐拉函數 <span class="math inline">\(\varphi(n)\)</span> : 小於 <span class="math inline">\(n\)</span> 且與 <span class="math inline">\(n\)</span> 互質的數字數量</p></li>
