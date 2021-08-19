@@ -2211,11 +2211,6 @@
 <p>證明:</p>
 <p><span class="math display">\[\displaystyle ((f * g) * h)(n) = \sum_{d|n} (f*g)(d) h(\frac{n}{d})\]</span> <span class="math display">\[\displaystyle = \sum_{d_1|n}\sum_{d_2|d_1} f(d_2) g(\frac{d_1}{d_2}) h(\frac{n}{d_1})\]</span> <span class="math display">\[\displaystyle = \sum_{d_1|n}\sum_{d_2|d_1} f(d_2) g(\frac{d_1}{d_2}) h(\frac{n}{d_1})\]</span> <span class="math display">\[\displaystyle = \sum_{d_1 d_1&#39; = n}\sum_{d_2 d_2&#39; = d_1} f(d_2) g(d_2&#39;) h(d_1&#39;)\]</span> <span class="math display">\[\displaystyle = \sum_{d_2 d_2&#39; d_1&#39; = n} f(d_2) g(d_2&#39;) h(d_1&#39;)\]</span> <span class="math display">\[\displaystyle = \sum_{d_2 d_2&#39; d_1&#39; = n} f(d_1&#39;) g(d_2) h(d_2&#39;)\]</span> <span class="math display">\[\displaystyle = \sum_{d_2 d_2&#39; d_1&#39; = n} f(d_1&#39;) (g*h)(d_1)\]</span> <span class="math display">\[\displaystyle = f * (g * h) (n)\]</span></p>
 </blockquote>
-<h3 id="性質三滿足結合律-f-g-h-f-g-h-1">性質三、滿足結合律 <span class="math inline">\((f * g) * h = f * (g * h)\)</span></h3>
-<blockquote>
-<p>證明:</p>
-<p><span class="math display">\[\displaystyle ((f * g) * h)(n) = \sum_{d|n} (f*g)(d) h(\frac{n}{d})\]</span> <span class="math display">\[\displaystyle = \sum_{d_1|n}\sum_{d_2|d_1} f(d_2) g(\frac{d_1}{d_2}) h(\frac{n}{d_1})\]</span> <span class="math display">\[\displaystyle = \sum_{d_1|n}\sum_{d_2|d_1} f(d_2) g(\frac{d_1}{d_2}) h(\frac{n}{d_1})\]</span> <span class="math display">\[\displaystyle = \sum_{d_1 d_1&#39; = n}\sum_{d_2 d_2&#39; = d_1} f(d_2) g(d_2&#39;) h(d_1&#39;)\]</span> <span class="math display">\[\displaystyle = \sum_{d_2 d_2&#39; d_1&#39; = n} f(d_2) g(d_2&#39;) h(d_1&#39;)\]</span> <span class="math display">\[\displaystyle = \sum_{d_2 d_2&#39; d_1&#39; = n} f(d_1&#39;) g(d_2) h(d_2&#39;)\]</span> <span class="math display">\[\displaystyle = \sum_{d_2 d_2&#39; d_1&#39; = n} f(d_1&#39;) (g*h)(d_1)\]</span> <span class="math display">\[\displaystyle = f * (g * h) (n)\]</span></p>
-</blockquote>
 <h3 id="性質四滿足分配律-f-gh-f-g-f-h">性質四、滿足分配律 <span class="math inline">\(f * (g+h) = f * g + f * h\)</span></h3>
 <blockquote>
 <p>證明:</p>
