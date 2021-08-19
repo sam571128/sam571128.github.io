@@ -2270,7 +2270,8 @@
 <p>如果我們直接枚舉每個數字，那麼時間複雜度會是 <span class="math inline">\(O(n^2)\)</span>，因此我們必須想到應該更好的做法</p>
 <p>我們將 <span class="math inline">\(O(n^2)\)</span> 的式子寫下來，得到 <span class="math inline">\(\displaystyle \sum_{i=1}^n \sum_{j=1}^n [gcd(a_i,a_j)=1]\)</span></p>
 <p>而根據我們上面的結論，我們可以直接將 <span class="math inline">\([gcd(a_i,a_j)=1]\)</span> 換成 <span class="math inline">\(\displaystyle \sum_{d|gcd(a_i,a_j)} \mu(d)\)</span></p>
-<p>而原式則變為 <span class="math inline">\(\displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|gcd(a_i,a_j)} \mu(d) = \displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|a_i, d|a_j} \mu(d) = \displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|a_i, d|a_j}[d|a_i][d|a_j] \mu(d)\)</span></p>
+<p>而原式則變為</p>
+<p><span class="math display">\[\displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|gcd(a_i,a_j)} \mu(d)\]</span> <span class="math display">\[= \displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|a_i, d|a_j} \mu(d)\]</span> <span class="math display">\[= \displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|a_i, d|a_j}[d|a_i][d|a_j] \mu(d)\]</span></p>
 <p>我們可以將陣列中 <span class="math inline">\(d\)</span> 的倍數的數量寫為 <span class="math inline">\(A(d)\)</span></p>
 <p>則我們可以化簡原式為 <span class="math inline">\(\displaystyle \sum_{d=1}^n \mu(d) \binom{A(d)}{2}\)</span></p>
 <p>而預處理 <span class="math inline">\(\mu(x)\)</span> 的時間複雜度為 <span class="math inline">\(O(n)\)</span>，</p>
