@@ -2267,7 +2267,7 @@
 <p>給一個 <span class="math inline">\(n\)</span> 項的陣列，請輸出陣列中有幾對互質的數對</p>
 <p>測資範圍: <span class="math inline">\(1 \le n \le 10^5, 1 \le a_i \le 10^6\)</span></p>
 <p><strong>想法:</strong></p>
-<p>如果我們直接枚舉每個數字，那麼時間複雜度會是 <span class="math inline">\(O(n^2)，因此我們必須想到應該更好的做法\)</span></p>
+<p>如果我們直接枚舉每個數字，那麼時間複雜度會是 <span class="math inline">\(O(n^2)\)</span>，因此我們必須想到應該更好的做法</p>
 <p>我們將 <span class="math inline">\(O(n^2)\)</span> 的式子寫下來，得到 <span class="math inline">\(\displaystyle \sum_{i=1}^n \sum_{j=1}^n [gcd(a_i,a_j)=1]\)</span></p>
 <p>而根據我們上面的結論，我們可以直接將 <span class="math inline">\([gcd(a_i,a_j)=1]\)</span> 換成 <span class="math inline">\(\displaystyle \sum_{d|gcd(a_i,a_j)} \mu(d)\)</span></p>
 <p>而原式則變為 <span class="math inline">\(\displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|gcd(a_i,a_j)} \mu(d) = \displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|a_i, d|a_j} \mu(d) = \displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{d|a_i, d|a_j}[d|a_i][d|a_j] \mu(d)\)</span></p>
