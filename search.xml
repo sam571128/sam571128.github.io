@@ -2152,4 +2152,114 @@
         <tag>心得</tag>
       </tags>
   </entry>
+  <entry>
+    <title>數論 狄利克雷卷積 &amp; 莫比烏斯反演</title>
+    <url>/2021/08/19/dirchlet-convolution-and-mobius-inversion/</url>
+    <content><![CDATA[<p>上一場 Div.2 的比賽中出了<a href="https://codeforces.com/contest/1559/problem/E">這題</a> 要用到莫比烏斯函數來做排容 </p>
+<p>不過這兩個東西都是之前就聽過，但從來沒有真的去了解過這東西</p>
+<p>最近就決定來好好這兩個可怕的數學</p>
+<p>如果只是想要知道如何使用莫比烏斯反演計算題目，則可跳過證明的部分</p>
+<span id="more"></span>
+<h2 id="積性函數"><a href="#積性函數" class="headerlink" title="積性函數"></a>積性函數</h2><p>在學狄利克雷卷積前，我們要先知道什麼是積性函數，積性函數的定義為以下</p>
+<p>(1) $f(1) = 1$</p>
+<p>(2) $gcd(a,b) = 1 \Rightarrow f(ab) = f(a)f(b)$</p>
+<p>因此當 $n = p_1^{k_1} p_2^{k_2} \cdots$ 時，$f(n) = f(p_1)^{k_1} f(p_2)^{k_2}\cdots$</p>
+<p>而常見的積性函數有以下幾個</p>
+<p>(1) 歐拉函數 $\varphi(n)$ : 小於 $n$ 且與 $n$ 互質的數字數量</p>
+<p>(2) 莫比烏斯函數 $\mu(n)$</p>
+<p>$\mu(n) = \begin{cases} 1&amp;, \text{when } n = 1\(-1)^k &amp;,\text{when } n \text{ does not have a squared prime factor and } n = p_1p_2\cdots p_k \ 0 &amp; ,\text{when } n \text{ has a squared prime factor}\end{cases}$</p>
+<p>(3) 特定數字 $k$ 的最大公因數 $gcd(n,k)$</p>
+<p>(4) 除數函數 $\displaystyle \sigma<em>k(n) = \sum</em>{d|n}d^k$，而 $\sigma_0(n)$ 為數字的因數數量， $\sigma_1(n)$ 為數字的因數之和</p>
+<p>(5) 常數函數 $1(n) = 1$ </p>
+<p>(6) 冪函數 $\text{Id}_k(n) = n^k$，恆等函數 $\text{Id}(n) = n$</p>
+<p>這些函數皆可以利用<strong>線性篩</strong>在 $O(n)$ 時間內求出</p>
+<h2 id="狄利克雷卷積"><a href="#狄利克雷卷積" class="headerlink" title="狄利克雷卷積"></a>狄利克雷卷積</h2><p>我們定義一種對於數論函數(定義域為 $\mathbb{Z} \rightarrow \mathbb{C}$的函數)的一種運算，使得</p>
+<script type="math/tex; mode=display">(f * g)(n) = \sum_{xy = n} f(x) g(y) = \sum_{d|n} f(d) g(\frac{n}{d})</script><p>而這個運算，我們就將其稱為「<strong>狄利克雷卷積</strong>」</p>
+<p>將這個運算做為數論函數的乘法運算，一般函數的加法作為加法運算，就會使得數論函數形成一個交換環 (滿足交換律)</p>
+<h3 id="性質一、若-f-與-g-皆為積性函數，則-f-g-同樣為積性函數"><a href="#性質一、若-f-與-g-皆為積性函數，則-f-g-同樣為積性函數" class="headerlink" title="性質一、若 $f$ 與 $g$ 皆為積性函數，則 $f * g$ 同樣為積性函數"></a>性質一、若 $f$ 與 $g$ 皆為積性函數，則 $f * g$ 同樣為積性函數</h3><blockquote>
+<p>證明:</p>
+<p>首先，$(f*g)(1) = f(1)g(1) = 1$</p>
+<p>假設 $a, b$ 互質，則有以下式子</p>
+<p>$\displaystyle (f*g)(a) = \sum_{d|a}f(d)g(\frac{a}{d})$ (1)</p>
+<p>$\displaystyle (f*g)(b) = \sum_{d|b}f(d)g(\frac{b}{d})$ (2)</p>
+<p>$\displaystyle (f*g)(ab) = \sum_{d|ab}f(d)g(\frac{ab}{d})$ (3)</p>
+<p>將 (1), (2) 式相乘，得 </p>
+<script type="math/tex; mode=display">\displaystyle (f*g)(a) \cdot (f*g)(b) = \sum_{d|a}f(d)g(\frac{a}{d})  \sum_{d|b}f(d)g(\frac{b}{d})</script><script type="math/tex; mode=display">= \sum_{d_1|a, d_2|b} f(d_1)g(\frac{a}{d_1})f(d_2)g(\frac{b}{d_2})</script><script type="math/tex; mode=display">= \sum_{d_1|a, d_2|b} f(d_1 d_2) g(\frac{ab}{d_1 d_2})</script><script type="math/tex; mode=display">= \sum_{d | ab} f(d) g(\frac{ab}{d})</script><p>因此得證</p>
+<p>$(f <em> g)$ 滿足當 $(f </em> g)(1) = 1$</p>
+<p>且當 $a,b$ 兩數互質時，$(f<em>g)(a) \cdot (f</em>g)(b) = (f*g)(ab)$</p>
+<p>因此 $(f * g)$ 為積性函數</p>
+</blockquote>
+<h3 id="性質二、滿足交換律-f-g-g-f"><a href="#性質二、滿足交換律-f-g-g-f" class="headerlink" title="性質二、滿足交換律 $f  g = g  f$"></a>性質二、滿足交換律 $f <em> g = g </em> f$</h3><blockquote>
+<p>證明: </p>
+<p>$\displaystyle (f * g)(n) = \sum_{d|n} f(d) g(\frac{n}{d})$</p>
+<p>令 $\displaystyle d’ = \frac{n}{d} \Rightarrow d = \frac{n}{d’}$，則上式可寫為</p>
+<p>$\displaystyle \sum<em>{d|n} f(d) g(\frac{n}{d}) = \sum</em>{d’|n} f(\frac{n}{d’}) g(d’) = (g * f)$</p>
+</blockquote>
+<h3 id="性質三、滿足結合律-f-g-h-f-g-h"><a href="#性質三、滿足結合律-f-g-h-f-g-h" class="headerlink" title="性質三、滿足結合律 $(f  g)  h = f  (g  h)$"></a>性質三、滿足結合律 $(f <em> g) </em> h = f <em> (g </em> h)$</h3><blockquote>
+<p>證明: </p>
+<script type="math/tex; mode=display">\displaystyle ((f * g) * h)(n) = \sum_{d|n} (f*g)(d) h(\frac{n}{d})</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_1|n}\sum_{d_2|d_1} f(d_2) g(\frac{d_1}{d_2}) h(\frac{n}{d_1})</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_1|n}\sum_{d_2|d_1} f(d_2) g(\frac{d_1}{d_2}) h(\frac{n}{d_1})</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_1 d_1' = n}\sum_{d_2 d_2' = d_1} f(d_2) g(d_2') h(d_1')</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_2 d_2' d_1' = n} f(d_2) g(d_2') h(d_1')</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_2 d_2' d_1' = n} f(d_1') g(d_2) h(d_2')</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_2 d_2' d_1' = n} f(d_1') (g*h)(d_1)</script><script type="math/tex; mode=display">\displaystyle = f * (g * h) (n)</script></blockquote>
+<h3 id="性質三、滿足結合律-f-g-h-f-g-h-1"><a href="#性質三、滿足結合律-f-g-h-f-g-h-1" class="headerlink" title="性質三、滿足結合律 $(f  g)  h = f  (g  h)$"></a>性質三、滿足結合律 $(f <em> g) </em> h = f <em> (g </em> h)$</h3><blockquote>
+<p>證明: </p>
+<script type="math/tex; mode=display">\displaystyle ((f * g) * h)(n) = \sum_{d|n} (f*g)(d) h(\frac{n}{d})</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_1|n}\sum_{d_2|d_1} f(d_2) g(\frac{d_1}{d_2}) h(\frac{n}{d_1})</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_1|n}\sum_{d_2|d_1} f(d_2) g(\frac{d_1}{d_2}) h(\frac{n}{d_1})</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_1 d_1' = n}\sum_{d_2 d_2' = d_1} f(d_2) g(d_2') h(d_1')</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_2 d_2' d_1' = n} f(d_2) g(d_2') h(d_1')</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_2 d_2' d_1' = n} f(d_1') g(d_2) h(d_2')</script><script type="math/tex; mode=display">\displaystyle = \sum_{d_2 d_2' d_1' = n} f(d_1') (g*h)(d_1)</script><script type="math/tex; mode=display">\displaystyle = f * (g * h) (n)</script></blockquote>
+<h3 id="性質四、滿足分配律-f-g-h-f-g-f-h"><a href="#性質四、滿足分配律-f-g-h-f-g-f-h" class="headerlink" title="性質四、滿足分配律 $f  (g+h) = f  g + f * h$"></a>性質四、滿足分配律 $f <em> (g+h) = f </em> g + f * h$</h3><blockquote>
+<p>證明: </p>
+<script type="math/tex; mode=display">\displaystyle f * (g+h)(n) = \sum_{d|n} f(d) (g+h)(\frac{n}{d})</script><script type="math/tex; mode=display">\displaystyle = \sum_{d|n} f(d) (g(\frac{n}{d})+h(\frac{n}{d}))</script><script type="math/tex; mode=display">\displaystyle = \sum_{d|n} f(d)g(\frac{n}{d})+f(d)h(\frac{n}{d})</script><script type="math/tex; mode=display">\displaystyle = \sum_{d|n} f(d)g(\frac{n}{d})+\sum_{d|n} f(d)h(\frac{n}{d})</script><script type="math/tex; mode=display">\displaystyle = f*g + g*h</script></blockquote>
+<h3 id="性質五、存在一單位函數-varepsilon-，使得-f-varepsilon-varepsilon-f-f"><a href="#性質五、存在一單位函數-varepsilon-，使得-f-varepsilon-varepsilon-f-f" class="headerlink" title="性質五、存在一單位函數 $\varepsilon$，使得 $f  \varepsilon = \varepsilon  f = f$"></a>性質五、存在一單位函數 $\varepsilon$，使得 $f <em> \varepsilon = \varepsilon </em> f = f$</h3><script type="math/tex; mode=display">\varepsilon(n) = \begin{cases} 1 &, \text{when } n = 1 \\ 0 & , \text{when } n \ne 1\end{cases}</script><h3 id="性質六、對於每個數論函數-f-，皆有一個反函數-f-1-，使得-f-f-1-varepsilon"><a href="#性質六、對於每個數論函數-f-，皆有一個反函數-f-1-，使得-f-f-1-varepsilon" class="headerlink" title="性質六、對於每個數論函數 $f$，皆有一個反函數 $f^{-1}$，使得 $f * f^{-1} = \varepsilon$"></a>性質六、對於每個數論函數 $f$，皆有一個反函數 $f^{-1}$，使得 $f * f^{-1} = \varepsilon$</h3><p>對於 $f$ 的反函數</p>
+<p>當 $n = 1$ 時，$\displaystyle f^{-1}(1) = \frac{1}{f(1)} = \varepsilon(1) = 1$ </p>
+<p>當 $n \ne 1$ 時， $\displaystyle f(n) * f^{-1}(n) = \sum_{d|n} f(d) f^{-1}(\frac{n}{d}) = \varepsilon(n) = 0$</p>
+<p>我們可以得到 $\displaystyle f(1)*f^{-1}(n) = \varepsilon(n) - \sum<em>{d|n, d \ne 1} f(d) f^{-1}(\frac{n}{d}) = - \sum</em>{d|n, d \ne 1} f(d) f^{-1}(\frac{n}{d})$</p>
+<p>移項得 $\displaystyle f^{-1}(n) = -\frac{1}{f(1)}\sum_{d|n, d \ne 1} f(d) f^{-1}(\frac{n}{d})$</p>
+<h3 id="性質七、一個積性函數的反函數仍為積性函數"><a href="#性質七、一個積性函數的反函數仍為積性函數" class="headerlink" title="性質七、一個積性函數的反函數仍為積性函數"></a>性質七、一個積性函數的反函數仍為積性函數</h3><h2 id="根據狄利克雷卷積得到的結論"><a href="#根據狄利克雷卷積得到的結論" class="headerlink" title="根據狄利克雷卷積得到的結論"></a>根據狄利克雷卷積得到的結論</h2><h3 id="一、-varepsilon-mu-1-Rightarrow-displaystyle-varepsilon-n-sum-d-n-mu-d-n-1"><a href="#一、-varepsilon-mu-1-Rightarrow-displaystyle-varepsilon-n-sum-d-n-mu-d-n-1" class="headerlink" title="一、$\varepsilon = \mu * 1 \Rightarrow \displaystyle \varepsilon(n) = \sum_{d|n} \mu(d) = [n=1]$"></a>一、$\varepsilon = \mu * 1 \Rightarrow \displaystyle \varepsilon(n) = \sum_{d|n} \mu(d) = [n=1]$</h3><blockquote>
+<p>證明:</p>
+<p>假設 $n$ 有 $k$ 個不同的質因數，則我們可以根據二項式定理得到</p>
+<script type="math/tex; mode=display">\sum_{d|n} \mu(d) = \binom{k}{0}-\binom{k}{1} + \cdots + (-1)^k\binom{k}{k} = (1+(-1))^k</script><p>而此式只有在 $k=0$ 時，得到$\displaystyle \sum_{d|n} \mu(d) = 1$，其他時候皆為0</p>
+</blockquote>
+<h3 id="二、-sigma-0-text-1-text-1"><a href="#二、-sigma-0-text-1-text-1" class="headerlink" title="二、$\sigma_0 = \text{1}*\text{1}$"></a>二、$\sigma_0 = \text{1}*\text{1}$</h3><p>顯然，一個數字 $n$ 的因數數量為 $\displaystyle\sigma<em>0(n) = \sum</em>{d|n} 1(d) = \sum_{d|n} 1$</p>
+<h3 id="三、-sigma-1-text-Id-text-1"><a href="#三、-sigma-1-text-Id-text-1" class="headerlink" title="三、$\sigma_1 = \text{Id} * \text{1}$"></a>三、$\sigma_1 = \text{Id} * \text{1}$</h3><p>顯然，一個數字 $n$ 的因數總和為 $\displaystyle\sigma<em>0(n) = \sum</em>{d|n} \text{Id}(d) = \sum_{d|n} d$</p>
+<h3 id="四、-varphi-mu-text-Id"><a href="#四、-varphi-mu-text-Id" class="headerlink" title="四、$\varphi = \mu * \text{Id}$"></a>四、$\varphi = \mu * \text{Id}$</h3><blockquote>
+<p>證明:</p>
+<p>已知 $\displaystyle \varphi(n) = \sum_{i=1}^n [gcd(i,n)=1]$</p>
+<p>我們可以由將 $[gcd(i,n)=1]$ 換成與其等價的 $\varepsilon(gcd(i,n))$</p>
+<p>又因為 $\varepsilon = \mu * 1$，我們可以將原式寫為</p>
+<p>$\displaystyle \varphi(n) = \sum<em>{i=1}^n \sum</em>{d|gcd(i,n)} \mu(d) = \sum<em>{i=1}^n \sum</em>{d|n} [d|i]\mu(d) = \sum<em>{d|n} \mu(d) \sum</em>{i=1}^n [d|i] = \sum_{d|n} \mu(d) \frac{n}{d}$ </p>
+</blockquote>
+<h2 id="莫比烏斯反演"><a href="#莫比烏斯反演" class="headerlink" title="莫比烏斯反演"></a>莫比烏斯反演</h2><p>若有一函數 $\displaystyle f(n) = \sum<em>{d|n} g(d)$，則 $\displaystyle g(n) = \sum</em>{d|n} \mu(d) f(\frac{n}{d})$</p>
+<blockquote>
+<p>證明:</p>
+<p>題目可被轉換成已知 $f = g <em> 1$，證明 $g = f </em> \mu$</p>
+<p>已知 $\varepsilon = \mu <em> 1$，則 $f </em> \mu = g <em> 1 </em> \mu = g * \varepsilon$</p>
+</blockquote>
+<p>而當式子出現 $[gcd(i,j)=1]$ 時，我們可以根據 $\varepsilon = \mu * 1$，將式子換成 $\displaystyle \sum_{d|gcd(i,j)} \mu(d)$</p>
+<h2 id="例題"><a href="#例題" class="headerlink" title="例題:"></a>例題:</h2><h3 id="CSES-2417-Count-Coprime-Pairs"><a href="#CSES-2417-Count-Coprime-Pairs" class="headerlink" title="CSES 2417 - Count Coprime Pairs"></a><a href="https://cses.fi/problemset/task/2417">CSES 2417 - Count Coprime Pairs</a></h3><p><strong>題目:</strong> </p>
+<p>給一個 $n$ 項的陣列，請輸出陣列中有幾對互質的數對</p>
+<p>測資範圍: $1 \le n \le 10^5, 1 \le a_i \le 10^6$</p>
+<p><strong>想法:</strong> </p>
+<p>如果我們直接枚舉每個數字，那麼時間複雜度會是 $O(n^2)，因此我們必須想到應該更好的做法$</p>
+<p>我們將 $O(n^2)$ 的式子寫下來，得到 $\displaystyle \sum<em>{i=1}^n \sum</em>{j=1}^n [gcd(a_i,a_j)=1]$</p>
+<p>而根據我們上面的結論，我們可以直接將 $[gcd(a<em>i,a_j)=1]$ 換成 $\displaystyle \sum</em>{d|gcd(a_i,a_j)} \mu(d)$</p>
+<p>而原式則變為 $\displaystyle \sum<em>{i=1}^n \sum</em>{j=1}^n \sum<em>{d|gcd(a_i,a_j)} \mu(d) = \displaystyle \sum</em>{i=1}^n \sum<em>{j=1}^n \sum</em>{d|a<em>i, d|a_j} \mu(d) = \displaystyle \sum</em>{i=1}^n \sum<em>{j=1}^n \sum</em>{d|a_i, d|a_j}[d|a_i][d|a_j] \mu(d)$</p>
+<p>我們可以將陣列中 $d$ 的倍數的數量寫為 $A(d)$</p>
+<p>則我們可以化簡原式為 $\displaystyle \sum_{d=1}^n \mu(d) \binom{A(d)}{2}$</p>
+<p>而預處理 $\mu(x)$ 的時間複雜度為 $O(n)$，</p>
+<p>計算 $d$ 的倍數數量時，我們可以加總所有 $d$ 的倍數，時間複雜度為 $\displaystyle O(n+\frac{n}{2}+\frac{n}{3}+\cdots)$</p>
+<p>可以根據調和級數的上界將複雜度寫為 $O(n log n)$</p>
+<p>總時間複雜度為 $O(n log n)$</p>
+<h3 id="Codeforces-1559E-Mocha-and-Stars"><a href="#Codeforces-1559E-Mocha-and-Stars" class="headerlink" title="Codeforces 1559E - Mocha and Stars"></a><a href="https://codeforces.com/contest/1559/problem/E">Codeforces 1559E - Mocha and Stars</a></h3><p>待補</p>
+<h3 id="Codeforces-776E-The-Holmes-Children"><a href="#Codeforces-776E-The-Holmes-Children" class="headerlink" title="Codeforces 776E - The Holmes Children"></a><a href="https://codeforces.com/contest/776/problem/E">Codeforces 776E - The Holmes Children</a></h3><p>待補</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://littlecube8152.github.io/posts/math-modular-advance/#%E8%8E%AB%E6%AF%94%E7%83%8F%E6%96%AF%E5%8F%8D%E6%BC%94">[數論] 進階質數與模運算</a></p>
+<p><a href="https://oi-wiki.org/math/number-theory/mobius/">OI Wiki - 莫比烏斯反演</a></p>
+<p><a href="https://www.cnblogs.com/loceaner/p/12785524.html">「笔记」Dirichlet卷积</a></p>
+<p><a href="https://www.cnblogs.com/loceaner/p/12785174.html">「笔记」高中生都能看懂的莫比乌斯反演</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/106775790">数论小白入门— 莫比乌斯反演</a></p>
+<p><a href="https://codeforces.com/blog/entry/54150">[Tutorial] Math note — Dirichlet convolution</a></p>
+<p><a href="https://codeforces.com/blog/entry/53925">[Tutorial] Math note — Möbius inversion</a></p>
+<p><a href="https://www.cnblogs.com/Lanly/p/12189571.html">从狄利克雷卷积到莫比乌斯函数</a></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>數學</tag>
+        <tag>數論</tag>
+        <tag>狄利克雷卷積</tag>
+        <tag>莫比烏斯反演</tag>
+      </tags>
+  </entry>
 </search>
