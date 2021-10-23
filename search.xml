@@ -2294,4 +2294,92 @@
         <tag>莫比烏斯反演</tag>
       </tags>
   </entry>
+  <entry>
+    <title>不常見的DP優化 - Slope Trick</title>
+    <url>/2021/10/23/Slope-Trick/</url>
+    <content><![CDATA[<h2 id="何謂-slope-trick">何謂 Slope Trick</h2>
+<p>Slope Trick的誕生大概是 <a href="https://codeforces.com/contest/713/problem/C">Codeforces 713C - Sonya and Problem Wihtout a Legend</a> 這個題目所衍生出來的一種 DP 優化方式。</p>
+<p>他可以處理與凹凸性函數代價的 DP 優化，不過我也是在寫 CSES 時才知道這個 DP 優化技巧</p>
+<span id="more"></span>
+<h2 id="codeforces-713c">Codeforces 713C</h2>
+<blockquote>
+<p>給你一個 <span class="math inline">\(n\)</span> 項的陣列 <span class="math inline">\(A\)</span>，每一次操作可以將一個元素 +1 或 -1，問最少要花費幾次操作才能使得整個陣列嚴格遞增?</p>
+<p>測資範圍: <span class="math inline">\(1 \le n \le 3000\)</span></p>
+</blockquote>
+<p>這個問題由於嚴格遞增的條件，不好處理，因此我們可以將 <span class="math inline">\(a_i := a_i - i\)</span></p>
+<p>而經過這樣的變化之後，這個問題就變為了</p>
+<blockquote>
+<p>給你一個 <span class="math inline">\(n\)</span> 項的陣列 <span class="math inline">\(A\)</span>，每一次操作可以將一個元素 +1 或 -1，問最少要花費幾次操作才能使得整個陣列非嚴格遞增?</p>
+</blockquote>
+<p>藉由這個問題，我們可以很簡單的寫出一條 dp 的狀態式</p>
+<p>先開另外一個陣列 <span class="math inline">\(B\)</span>，為陣列 <span class="math inline">\(A\)</span> 的元素經過排序與離散化後的結果</p>
+<p>設 <span class="math inline">\(dp[i][j]\)</span> 為將陣列前 <span class="math inline">\(i\)</span> 個元素變為非嚴格遞增，並且 <span class="math inline">\(a_i \le b_j\)</span> 所需要花的代價</p>
+<p>轉移式十分簡單，也就是 <span class="math inline">\(dp[i][j] = \min(dp[i][j-1], dp[i-1][j] + |a_i-b_j|)\)</span></p>
+<p>而這樣我們就可以在 <span class="math inline">\(O(n^2)\)</span> 的時間解決這個問題了</p>
+<h2 id="能不能再更快">能不能再更快?</h2>
+<p>答案是可以! <del>不然也不會有這篇文了</del></p>
+<p>而我們就要去使用 Slope Trick 這個技巧來達到這件事情</p>
+<h2 id="可以做-slope-trick-的函數">可以做 Slope Trick 的函數</h2>
+<p>我們定義函數 <span class="math inline">\(f(x)\)</span> 為可以做 Slope Trick 的函數 (接下來會簡稱為 Slope Trickable 函數)時，則他必須滿足</p>
+<ol type="1">
+<li><p><span class="math inline">\(f(x)\)</span> 必須是<strong>連續函數</strong></p></li>
+<li><p><span class="math inline">\(f(x)\)</span> 可以被分割為不同部分，且每個部份都是<strong>線性</strong>的，有各自的斜率</p></li>
+<li><p><span class="math inline">\(f(x)\)</span> 必須是<strong>凸函數(Convex)</strong> 或<strong>凹函數(Concave)</strong></p></li>
+</ol>
+<hr />
+<p>而最經典的例子即為 <span class="math inline">\(f(x) = |x|\)</span></p>
+<p><img src="https://i.imgur.com/Jp9sh7X.png" /></p>
+<p>我們可以將其寫為一個<strong>分段函數</strong></p>
+<p><span class="math display">\[f(x) = \begin{cases}-x &amp; \text{when } x &lt; 0 \\ x &amp; \text{when } 0 \le x\end{cases}\]</span></p>
+<p>我們可以觀察到 <span class="math inline">\(f(x)\)</span> 是連續的，而且可以被分割為多個線性函數，且 <span class="math inline">\(f(x)\)</span> 是一個 <strong>凹函數</strong></p>
+<p>因此 <span class="math inline">\(f(x) = |x|\)</span> 是一個<strong>Slope Trickable 函數</strong></p>
+<p>而我們可以將 <span class="math inline">\(f(x)\)</span> 使用另外一種形式表達，<span class="math inline">\(f(x) = [y = x,S = \{0,0\}]\)</span></p>
+<p>前面 <span class="math inline">\(y = x\)</span> 表示這個函數最右邊的線性函數，而 <span class="math inline">\(S\)</span> 表示的是斜率改變的點，我們稱這些點為<strong>分段點</strong>，每當在某一點 <span class="math inline">\(x\)</span> 時斜率改變 <span class="math inline">\(1\)</span> 時，在 <span class="math inline">\(S\)</span> 裡面就要加入兩個 <span class="math inline">\(x\)</span></p>
+<p>而從這個表示法，我們也可以很輕易的表達回原本的分段函數</p>
+<hr />
+<p>藉由上面的這個範例，讓我們來看看另一個例子</p>
+<p><span class="math display">\[f(x) = \begin{cases} -x+5 &amp; \text{when } x &lt; -1 \\ x+7 &amp; \text{when } -1 \le x \le 2 \\ 3x+3 &amp; \text{when } 2 \le x \end{cases}\]</span></p>
+<p><img src="https://i.imgur.com/xpss1U9.png" /></p>
+<p>我們可以觀察到 <span class="math inline">\(f(x)\)</span> 是連續的，而且他是由多個線性函數所組成，且 <span class="math inline">\(f(x)\)</span> 是一個<strong>凹函數</strong></p>
+<p>因此 <span class="math inline">\(f(x)\)</span> 是一個<strong>Slope Trickable 函數</strong></p>
+<p>而我們可以將 <span class="math inline">\(f(x)\)</span> 表示為 <span class="math inline">\(f(x) = [y=3x+3,S=\{-1,-1,2,2\}]\)</span></p>
+<h2 id="slope-trickable-函數的可合併性">Slope Trickable 函數的可合併性</h2>
+<p>藉由 Slope Trickable 函數的定義，我們可以觀察到，對於兩個 Slope Trickable 函數 <span class="math inline">\(f(x)\)</span> 和 <span class="math inline">\(g(x)\)</span>，<span class="math inline">\(h(x) = f(x)+g(x)\)</span> 依然為 Slope Trickable 函數，且 <span class="math inline">\(S_{h} = S_{f} \cup S_{g}\)</span></p>
+<blockquote>
+<p>想法:</p>
+<ol type="1">
+<li><p>對於兩個連續函數 <span class="math inline">\(f(x)\)</span> 與 <span class="math inline">\(g(x)\)</span>， <span class="math inline">\(h(x) = f(x) + g(x)\)</span> 依然連續</p></li>
+<li><p>對於兩個可以被分割為多個線性函數的 <span class="math inline">\(f(x)\)</span> 與 <span class="math inline">\(g(x)\)</span>，<span class="math inline">\(h(x) = f(x)+g(x)\)</span> 同樣可以被分隔為多個線性函數，且 <span class="math inline">\(f\)</span> 與 <span class="math inline">\(g\)</span> 分割點可以聯集成 <span class="math inline">\(h\)</span> 的分割點</p></li>
+<li><p>對於兩個凹函數或凸函數 <span class="math inline">\(f(x)\)</span> 與 <span class="math inline">\(g(x)\)</span>，相加之後 <span class="math inline">\(h(x) = f(x)+g(x)\)</span> 仍然為凹函數或凸函數。</p></li>
+</ol>
+</blockquote>
+<p>經由以上幾個性質，我們就可以來解決上面這個問題的優化了!</p>
+<h2 id="加速-on2-dp">加速 <span class="math inline">\(O(n^2)\)</span> DP!</h2>
+<p>回到原本的問題</p>
+<blockquote>
+<p>給你一個 <span class="math inline">\(n\)</span> 項的陣列 <span class="math inline">\(A\)</span>，每一次操作可以將一個元素 +1 或 -1，問最少要花費幾次操作才能使得整個陣列非嚴格遞增?</p>
+</blockquote>
+<p>首先，我們定義函數 <span class="math inline">\(dp_i(x)\)</span> 表示將前 <span class="math inline">\(i\)</span> 個元素變為非嚴格遞增，且 <span class="math inline">\(a_i \le x\)</span> 的最小花費</p>
+<p>我們可以利用數學歸納法證明 <span class="math inline">\(dp_i(x)\)</span> 是 Slope Trick 函數</p>
+<p>想法如下:</p>
+<ol type="1">
+<li><p>在 <span class="math inline">\(i=0\)</span> 時，很顯然地 <span class="math inline">\(dp_0(x) = 0\)</span></p></li>
+<li><p>假設在 <span class="math inline">\(i-1\)</span> 時 <span class="math inline">\(dp_{i-1}(x)\)</span> 是一個 Slope Trick 函數，我們額外定義一個函數 <span class="math inline">\(f_{i}(x)\)</span> 表示將前 <span class="math inline">\(i\)</span> 個元素變為非嚴格遞增，且 <span class="math inline">\(a_i = x\)</span> 的最小花費。則 <span class="math inline">\(f_i(x) = dp_{i-1}(x) + |x-a_i|\)</span>，我們可以觀察到 <span class="math inline">\(\displaystyle dp_i(x) = \min_{0 \le y \le x}f_i(y)\)</span>，由於 <span class="math inline">\(|x-a_i|\)</span> 是一個 Slope Trickable 函數，因此 <span class="math inline">\(f_i(x)\)</span> 和 <span class="math inline">\(dp_i(x)\)</span> 也都是 Slope Trickable 函數</p></li>
+<li><p>由於我們上面提過，<span class="math inline">\(|x-a_i|\)</span> 是一個 Slope Trickable 函數，且他的分段點是 <span class="math inline">\(\{a_i,a_i\}\)</span>，因此 <span class="math inline">\(f_i(x)\)</span> 的分段點為 <span class="math inline">\(S_{dp_{i-1}} \cup \{a_i,a_i\}\)</span></p></li>
+</ol>
+<p>既然知道 <span class="math inline">\(f_i(x)\)</span> 的分段點了，那 <span class="math inline">\(dp_i(x)\)</span> 的分段點呢?</p>
+<p>很簡單! 我們可以用一張圖來觀察 <span class="math inline">\(f_i(x)\)</span></p>
+<p><img src="https://i.imgur.com/emOyUj8.png" /></p>
+<p>既然是這樣，那如果我們要看 <span class="math inline">\(dp_i(x)\)</span> 呢，他會長這樣</p>
+<p><img src="https://i.imgur.com/vhpuXqS.png" /></p>
+<p>沒有錯! 他其實只是將斜率大於 <span class="math inline">\(0\)</span> 的分段點 pop 掉!</p>
+<p>也就是說，當我們的 <span class="math inline">\(x\)</span> 大於所有分段點時，根據這題的想法，斜率會是 <span class="math inline">\(1\)</span></p>
+<p>因此，這題的做法就是開一個 max heap/multiset 維護所有的分段點，並且每次去遍歷元素 <span class="math inline">\(a_i\)</span> 時，在 heap/multiset 中加入 <span class="math inline">\(\{a_i,a_i\}\)</span> (就會得到 <span class="math inline">\(S_{f_i}\)</span>)，並將答案加上 <span class="math inline">\(|\)</span>最右邊的分割點(heap 中的最大值) - <span class="math inline">\(a_i|\)</span> (因為 <span class="math inline">\(f_i(x) = dp_{i-1}(x)+|x-a_i|\)</span>)，然後將最大點 pop 掉 (得到 <span class="math inline">\(dp_i(x)\)</span>)，這樣就完成了!</p>
+<p>因此 <span class="math inline">\(dp_i(x)\)</span> 用 Slope Trickable 函數的表示法即為 <span class="math inline">\(dp_i(x) = [y = a, S]\)</span>，而 a 就是所有的 <span class="math inline">\(|\)</span>最右邊的分割點 - <span class="math inline">\(a_i|\)</span> 的總和</p>
+<p>而答案就會是 <span class="math inline">\(dp_n(\infty)\)</span>，時間複雜度: <span class="math inline">\(O(n \log n)\)</span></p>
+<p>參考程式碼如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">priority_queue&lt;<span class="keyword">int</span>&gt; slope;</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    slope.<span class="built_in">push</span>(x);</span><br><span class="line">    slope.<span class="built_in">push</span>(x);</span><br><span class="line">    ans += slope.<span class="built_in">top</span>()-x;</span><br><span class="line">    slope.<span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以去 <a href="https://cses.fi/problemset/task/2132/">CSES - Increasing Array II</a> 丟丟看自己的解</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+  </entry>
 </search>
