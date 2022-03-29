@@ -2383,10 +2383,9 @@
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
   </entry>
   <entry>
-    <title>Taipei_Contest_2021</title>
+    <title>2021 臺北市資訊學科能力競賽</title>
     <url>/2021/11/30/Taipei-Contest-2021/</url>
-    <content><![CDATA[<h1 id="臺北市資訊學科能力競賽">2021 臺北市資訊學科能力競賽</h1>
-<p><img src="https://i.imgur.com/7ITLOMX.png" /></p>
+    <content><![CDATA[<p><img src="https://i.imgur.com/7ITLOMX.png" /></p>
 <p>總結: 三等一 沒進全國</p>
 <p>但總算是有一場打得還算不錯的比賽了</p>
 <span id="more"></span>
@@ -2497,10 +2496,9 @@ pD 改成 B 節點恰與一個 A 節點相鄰
       </tags>
   </entry>
   <entry>
-    <title>XOR_Basis</title>
+    <title>向量空間與 Xor Basis</title>
     <url>/2022/03/29/XOR-Basis/</url>
-    <content><![CDATA[<h1 id="向量空間與-xor-basis">向量空間與 Xor Basis</h1>
-<p>由於最近學校也學到「向量空間」這個概念，決定重新來了解 <strong>Xor Basis</strong> (在對岸稱為線性基) 的概念，並將這些概念記錄下來</p>
+    <content><![CDATA[<p>由於最近學校也學到「向量空間」這個概念，決定重新來了解 <strong>Xor Basis</strong> (在對岸稱為線性基) 的概念，並將這些概念記錄下來</p>
 <p>以下會有很多的定義，而且這個概念也很抽象，不過我也不知道怎麼解釋得更簡單</p>
 <span id="more"></span>
 <h2 id="向量空間-vector-space">向量空間 (Vector Space)</h2>
