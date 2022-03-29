@@ -2382,4 +2382,330 @@
 <p>可以去 <a href="https://cses.fi/problemset/task/2132/">CSES - Increasing Array II</a> 丟丟看自己的解</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
   </entry>
+  <entry>
+    <title>Taipei_Contest_2021</title>
+    <url>/2021/11/30/Taipei-Contest-2021/</url>
+    <content><![CDATA[<h1 id="臺北市資訊學科能力競賽">2021 臺北市資訊學科能力競賽</h1>
+<p><img src="https://i.imgur.com/7ITLOMX.png" /></p>
+<p>總結: 三等一 沒進全國</p>
+<p>但總算是有一場打得還算不錯的比賽了</p>
+<span id="more"></span>
+<h2 id="北市賽前">北市賽前</h2>
+<p>從 Gino 那裡聽說了北市賽改成 10 個名額，但想說我應該不會那麼衰吧</p>
+<h2 id="前幾天">前幾天</h2>
+<p>由於在初選前總是一直想著要打好 賽中心態沒搞好</p>
+<p>這次聽很多人都建議賽前一天不要練題 耍廢比較好</p>
+<p>也因為這樣請了學校禮拜五的夜自習來練</p>
+<p>然後禮拜六就完全耍廢</p>
+<p>原本賽前想要練一些模板題的 但後來就算了</p>
+<h2 id="賽前">賽前</h2>
+<p>到師大之後就遇到 Foxyy, Gino 還有其他附中的</p>
+<p>然後就去報到 不過這次不在電腦教室 而是用筆電在大教室裡打</p>
+<p>8:10分就進去了 等到8:30才開幕</p>
+<p>賽前算是一直在讓自己穩定比賽時的心態</p>
+<h2 id="比賽開始">比賽開始</h2>
+<p>開始之後就先登CMS, 發現登不進去</p>
+<p>不過根據以前比賽的經驗，剛開場CMS掛掉好像還算正常（？</p>
+<p>就開始看題目</p>
+<blockquote>
+<p>pA - 給你一張由0, 1組成的網格 1 所形成的圖形會是實心的 請輸出從最上且最左的格子順時鐘走圖形的輪廓一圈的走法</p>
+</blockquote>
+<p>感覺DFS就好，但CMS還沒好，所以就繼續往下看</p>
+<blockquote>
+<p>pB - 給你 n 個長度 &lt;= 200的整數陣列 (n &lt;= 10000), 問 sz(s_i)^2 - (s_i與s_j (j &lt; i)的最長lcp) * (s_i與s_j (j &lt; i)的最長lcp數量) 的總和</p>
+</blockquote>
+<p>這題看到之後沒想法 但發現可以暴力拿62分 但CMS一樣還沒好 所以繼續往下看</p>
+<blockquote>
+<p>pC - 給你一個環狀的整數陣列，每次你可以選擇一個數字a_i拿掉，並得到 a_j * a_k (j 為 i 順時鐘的第一個數字, k 為 i 逆時鐘的第一個數字), 如果拿的是最後一個數字，則分數加上 a_i, 問最大數字</p>
+<p>n &lt;= 10 有 80 分，滿分是 n &lt;= 100</p>
+</blockquote>
+<p>看到這題之後就覺得一定要先拿掉80分 但judge依然還沒好 繼續往下看</p>
+<blockquote>
+<p>pD - 給你一張無向圖，而節點會分為兩種節點, A節點與B節點，而這張圖滿足 A 節點不與 A 節點相鄰, B節點必須要至少跟一個 A 節點相同，問 A 節點上的權值總和為多少</p>
+<p>n &lt;= 20 有 27 分，滿分 n &lt;= 1000</p>
+</blockquote>
+<p>看到這題的時候就覺得可以位元枚舉拿掉27，但滿分真的不會</p>
+<blockquote>
+<p>pE - 給你一張無向圖，定義在一個朋友圈中，兩兩都互相是朋友，而最大的朋友圈，被稱為重要朋友圈，而在最多個重要朋友圈的人，被稱為關鍵人物，請輸出所有關鍵人物</p>
+<p>n &lt;= 20 有 37 分，滿分 n &lt;= 10000</p>
+</blockquote>
+<p>看到這題的時候沒想法 但是judge還是還是沒好，然後這裡往後翻發現居然還有一題</p>
+<blockquote>
+<p>pF - 給你 n 個點 m 條邊，請將 n 個點分成最少的組，並且每一組的人不能有任何人互相相鄰 (output-only)</p>
+</blockquote>
+<p>看到這題之後，沒有想法 但CMS開了 就趕快開始寫前面的題目</p>
+pA dfs寫完丟上去
+<p style="color:orange;">
+0:42:43 pA - 71
+</p>
+<p>以為會拿滿分的code居然只拿71，不過有撈到分 就往pB寫了</p>
+<p style="color:orange;">
+0:52:17 pB - 62 （暴力）
+</p>
+<p style="color:orange;">
+1:06:37 pC - 80 （next_permutation）
+</p>
+<p style="color:red;">
+1:13:51 pD - 0 （位元枚舉）
+</p>
+<p>這邊丟上去有點慌 因為感覺沒寫錯 但還是往後去想pE 後來發了公告</p>
+<p style="color:green">
+pD 改成 B 節點恰與一個 A 節點相鄰
+</p>
+<p style="color:red;">
+1:26:49 pD - 27
+</p>
+<p>接著去看pF的測資 input_01.txt 發現可以手算 丟上去確定自己沒理解錯題目</p>
+<p style="color:orange;">
+1:28:38 pF - 10 （手算）
+</p>
+<p>然後這時想到 pE 的 37 分</p>
+<p style="color:orange;">
+1:49:45 pE - 37 （位元枚舉）
+</p>
+<p>到這時，發現自己根本一題都還沒AC</p>
+<p>有點害怕自己只有佳作</p>
+<p>往pF繼續想</p>
+<p>然後就唬爛了一個pF的dfs解 測了第1,2,3,4個測資 丟上去 只有1,2對 然後就沒有繼續了</p>
+<p>接著就是debug pA, 想pB</p>
+<p>pA 不久後想到了反例，丟上去 71</p>
+<p>接著怎麼想就是想不到</p>
+<h2 id="比賽倒數十分鐘">比賽倒數十分鐘</h2>
+<p>這時回去看pB，想說如果pB砸hash說不定能過</p>
+<p>就開始寫pB</p>
+<p>倒數五分鐘寫完，丟上去 29</p>
+<p>覺得是hash碰撞</p>
+<p>倒數兩分鐘 用了兩個hash 丟上去 62</p>
+<p>然後比賽就結束了</p>
+<h2 id="賽後">賽後</h2>
+<p>一出場就遇到資訊老師</p>
+<p>資訊老師：「一開始看排名都在前7名的，有點可惜」</p>
+<p>這時候就覺得應該是沒有全國了</p>
+<p>打開計分板發現居然 11，剛好就是被減掉的那個名額，心情有點複雜</p>
+<p>不過這整場我寫的code，除了暴力還是暴力，算是有點不符合我</p>
+<p>賽後聽到像pB是trie, pD 是高斯消去, pF 9,10 是二分圖，有點後悔自己沒去寫</p>
+<p>打開 discord 和 messenger 甚至發現比賽結束前10分鐘還有在線上</p>
+<p>這次算是最接近全國賽的一次了吧 但終究還是比不了全國賽</p>
+<p>不過往好處想，Foxyy, Gino 和我的這三人組都拿到三等了</p>
+<p>算是比去年只有佳作來的好</p>
+<p>這次第11大概還是自己實力不夠</p>
+<p>下次比賽就是TOI初選了，希望有望在高中最後一次比賽進入選訓</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>北市賽</tag>
+        <tag>燒雞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>XOR_Basis</title>
+    <url>/2022/03/29/XOR-Basis/</url>
+    <content><![CDATA[<h1 id="向量空間與-xor-basis">向量空間與 Xor Basis</h1>
+<p>由於最近學校也學到「向量空間」這個概念，決定重新來了解 <strong>Xor Basis</strong> (在對岸稱為線性基) 的概念，並將這些概念記錄下來</p>
+<p>以下會有很多的定義，而且這個概念也很抽象，不過我也不知道怎麼解釋得更簡單</p>
+<span id="more"></span>
+<h2 id="向量空間-vector-space">向量空間 (Vector Space)</h2>
+<p>首先我們要先認識「向量空間」是什麼，基本上都是定義，與大家以前學的向量的性質有關</p>
+<p>不過在向量空間中的向量不見得會是我們所熟知的向量，也可能是函數、多項式等等</p>
+<h3 id="定義">定義</h3>
+<p>對於一個集合 <span class="math inline">\(S\)</span>，定義兩種運算「向量加法」與「純量乘法」</p>
+<p>只要滿足以下十個條件，這個集合 <span class="math inline">\(S\)</span> 即為「向量空間」</p>
+<table>
+<thead>
+<tr class="header">
+<th>加法</th>
+<th>乘法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.<span class="math inline">\(u+v \in S\)</span> (封閉性)</td>
+<td>6.<span class="math inline">\(cv \in S\)</span> (封閉性)</td>
+</tr>
+<tr class="even">
+<td>2.<span class="math inline">\((u+v)+w = u+(v+w)\)</span> (結合律)</td>
+<td>7.<span class="math inline">\(c(u+v) = cu+cv\)</span> (結合律)</td>
+</tr>
+<tr class="odd">
+<td>3.<span class="math inline">\(u+v = v+u\)</span> (交換律)</td>
+<td>8.<span class="math inline">\((uv)w=u(vw)\)</span> (交換律)</td>
+</tr>
+<tr class="even">
+<td>4.<span class="math inline">\(u + 0 = u\)</span> (有加法單位元)</td>
+<td>9.<span class="math inline">\(1 \cdot v= v\)</span> (有乘法單位元)</td>
+</tr>
+<tr class="odd">
+<td>5.<span class="math inline">\(u+(-u)=0\)</span> (有加法反元素)</td>
+<td>10.<span class="math inline">\((a+b)v = av+bv\)</span> (分配律)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常見的向量空間">常見的向量空間</h3>
+<ol type="1">
+<li><span class="math inline">\((x_1,x_2,\cdots,x_n)\)</span>，可以是 <span class="math inline">\(\mathbb{R}^n, \mathbb{Z}^n\)</span> 等等</li>
+<li><span class="math inline">\(n \times m\)</span> 維矩陣</li>
+<li>度數 <span class="math inline">\(\le n\)</span> 的多項式</li>
+<li><span class="math inline">\(f(x), g(x)\)</span>，加法 <span class="math inline">\((f+g)(x)\)</span>，乘法 <span class="math inline">\(cf(x)\)</span></li>
+</ol>
+<p>這些都可以很輕易地驗證以上 10 種性質，因此他們都是向量空間</p>
+<p>接著向量空間有很多的名詞，因此我們要先了解這些名詞的定義</p>
+<h2 id="線性組合-linear-combination">線性組合 (Linear Combination)</h2>
+<h3 id="定義-1">定義</h3>
+<p>對於一個 <span class="math inline">\(n\)</span> 個向量 <span class="math inline">\(v_1, v_2, \cdots, v_n\)</span>，<span class="math inline">\(c_i\)</span> 為純量，這些向量的線性組合可以寫成向量</p>
+<p><span class="math display">\[x = c_1v_1+c_2v_2+\cdots+c_nv_n\]</span></p>
+<h3 id="範例">範例</h3>
+<ol type="1">
+<li>在 <span class="math inline">\(\mathbb{R}^2\)</span> 的空間中，<span class="math inline">\((3,4)\)</span> 可以寫成 <span class="math inline">\((1,0),(0,1)\)</span> 的線性組合，<span class="math inline">\((3,4) = 3(1,0) + 4(0,1)\)</span></li>
+<li>在 <span class="math inline">\(\mathbb{R}^3\)</span> 的空間中，<span class="math inline">\((1,2,3)\)</span> 可以寫成 <span class="math inline">\((1,1,0),(0,1,1),(1,0,1)\)</span> 的線性組合，<span class="math inline">\((1,2,3) = 0(1,1,0)+2(0,1,1)+1(1,0,1)\)</span></li>
+</ol>
+<h2 id="生成空間-span">生成空間 (Span)</h2>
+<h3 id="定義-2">定義</h3>
+<p>當一個向量空間 <span class="math inline">\(V\)</span> 被一個集合 <span class="math inline">\(S\)</span> Span，則任意一個 <span class="math inline">\(u \in V\)</span> 都可以寫成 <span class="math inline">\(S\)</span> 當中的向量的線性組合，意即 <span class="math inline">\(u = c_1v_1+c_2v_2+\cdots+c_nv_n\)</span>。我們將 <span class="math inline">\(V\)</span> 記為 <span class="math inline">\(span(S)\)</span>，而 <span class="math display">\[span(S) = \{\sum_{i=1}^nc_iv_i\}\]</span></p>
+<p>一個特點是對於任何一個包含 <span class="math inline">\(S\)</span> 的向量空間 <span class="math inline">\(U\)</span>, <span class="math inline">\(span(S) \subset U\)</span></p>
+<h3 id="範例-1">範例</h3>
+<p>1.當 <span class="math inline">\(S = \{(1,0),(0,1)\}\)</span> 時，<span class="math inline">\(span(S)\)</span> 包含所有 <span class="math inline">\(\mathbb{R}^2\)</span> 空間中的向量，因為任一向量 <span class="math inline">\((x_1,x_2)\)</span> 皆可寫成 <span class="math inline">\((x_1,x_2)=x_1(1,0)+x_2(0,1)\)</span> 2.當 <span class="math inline">\(S = \{(1,1),(1,-1)\}\)</span>時，<span class="math inline">\(span(S)\)</span> 包含所有 <span class="math inline">\(\mathbb{R}^2\)</span> 空間中的向量，因為任一向量 <span class="math inline">\((x_1,x_2)\)</span> 皆可寫成 <span class="math inline">\((x_1,x_2)=\frac{x_1+x_2}{2}(1,1)+\frac{x_1-x_2}{2}(1,-1)\)</span></p>
+<h2 id="線性獨立-linearly-independent">線性獨立 (Linearly Independent)</h2>
+<h3 id="定義-3">定義</h3>
+<p>對於 <span class="math inline">\(n\)</span> 個向量 <span class="math inline">\(\{v_1,v_2,\cdots,v_n\}\)</span>，滿足</p>
+<p><span class="math display">\[c_1v_1+c_2v_2+\cdots+c_nv_n = 0\]</span></p>
+<p>只有 <span class="math inline">\(c_1=c_2=\cdots = 0\)</span> 的解，則我們稱這些向量線性獨立</p>
+<h2 id="線性相依-linearly-dependent">線性相依 (Linearly Dependent)</h2>
+<h3 id="定義-4">定義</h3>
+<p>對於 <span class="math inline">\(n\)</span> 個向量 <span class="math inline">\(\{v_1,v_2,\cdots,v_n\}\)</span>，滿足</p>
+<p><span class="math display">\[c_1v_1+c_2v_2+\cdots+c_nv_n = 0\]</span></p>
+<p>存在 <span class="math inline">\(c_i\)</span> 不全為 <span class="math inline">\(0\)</span> 的解，則我們稱這些向量線性相依</p>
+<h3 id="定理">定理</h3>
+<p>一個集合 <span class="math inline">\(S\)</span> 線性相依 <span class="math inline">\(\Leftrightarrow\)</span> 其中一個向量可以寫成其他向量的線性組合</p>
+<h4 id="證明">證明</h4>
+<p>(<span class="math inline">\(\Rightarrow\)</span>): 如果集合 <span class="math inline">\(S\)</span> 線性相依，則其中一個向量可以寫成其他向量的線性組合</p>
+<p>根據線性相依的定義，<span class="math inline">\(c_1v_1+c_2v_2+\cdots+c_nv_n = 0\)</span> 有一組非全零的解</p>
+<p>我們可以不失一般性的假設 <span class="math inline">\(c_1 \ne 0\)</span>，得到</p>
+<p><span class="math display">\[v1 + c_2v_2 +\cdots+c_nv_n = 0\]</span></p>
+<p>移項得到</p>
+<p><span class="math display">\[c_2v_2 +\cdots+c_nv_n = -v_1\]</span></p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>): 如果集合 <span class="math inline">\(S\)</span> 中其中一個向量可以寫成其他向量的線性組合，則集合 <span class="math inline">\(S\)</span> 線性相依</p>
+<p>假設集合 <span class="math inline">\(S\)</span> 其中一個向量可以寫成其他向量的線性組合</p>
+<p>我們可以不失一般性的假設 <span class="math inline">\(v_1\)</span> 可以寫成 <span class="math inline">\(v_2,\cdots,v_n\)</span> 的線性組合</p>
+<p><span class="math display">\[v_1 = c_2v_2+c_3v_3+\cdots+c_nv_n\]</span></p>
+<p>移項得到</p>
+<p><span class="math display">\[v_1-c_2v_2-c_3v_3-\cdots-c_nv_n = 0\]</span></p>
+<p>為一組係數不全為 <span class="math inline">\(0\)</span> 的解</p>
+<h2 id="基底-basis">基底 (Basis)</h2>
+<h3 id="定義-5">定義</h3>
+<p>對於一個向量空間 <span class="math inline">\(V\)</span>，如果找的到一個集合 <span class="math inline">\(S\)</span> 滿足</p>
+<ol type="1">
+<li><span class="math inline">\(span(S) = V\)</span></li>
+<li><span class="math inline">\(S\)</span> 線性獨立</li>
+</ol>
+<p>則稱 <span class="math inline">\(S\)</span> 為 <span class="math inline">\(V\)</span> 的基底</p>
+<p>而任何 <span class="math inline">\(V\)</span> 當中的向量都可以寫成唯一一組 <span class="math inline">\(S\)</span> 的線性組合</p>
+<ul>
+<li>一個向量的基底可以有很多個</li>
+<li>對於任何一個 <span class="math inline">\(V\)</span> 的基底，大小皆相同，我們將 <span class="math inline">\(V\)</span> 的基底大小寫成 <span class="math inline">\(dim(V)\)</span></li>
+</ul>
+<h2 id="xor-與-mathbbzd_2">XOR 與 <span class="math inline">\(\mathbb{Z}^d_2\)</span></h2>
+<p>對於 <strong>XOR</strong> 這個運算，當 <span class="math inline">\(x,y \in \{0,1\}\)</span> 時，<span class="math inline">\(x \oplus y = x+y \pmod{2}\)</span></p>
+<p>而任何一個數字，我們皆可以將其換為二進位的形式</p>
+<p>如: <span class="math inline">\(5 = (101)_2\)</span>, <span class="math inline">\(3 = (011)_2\)</span></p>
+<p>因此我們可以定義向量空間 <span class="math inline">\(\mathbb{Z}^d_2\)</span></p>
+<p>加法運算為 <span class="math inline">\(x+y \pmod{2}\)</span> 等價於 XOR，純量乘法的 <span class="math inline">\(c_i \in \{0,1\}\)</span></p>
+<p>藉由這樣的定義，我們就可以藉由向量空間的性質來處理 XOR 的問題了</p>
+<h2 id="如何對一組數字找到-xor-basis">如何對一組數字找到 XOR Basis</h2>
+<p>最簡單的方式為 <strong>高斯消去法</strong>，我們可以將數字寫成二進位，並將所有的向量放到矩陣上，進行 <strong>高斯消去法</strong>，消成列梯形矩陣 (row-echelon form)，非零向量的集合即為這組數字的 <strong>XOR Basis</strong></p>
+<h3 id="範例-2">範例</h3>
+<h4 id="找到-356-的-xor-basis">找到 <span class="math inline">\(\{3,5,6\}\)</span> 的 XOR Basis</h4>
+<p>將 <span class="math inline">\(3,5,6\)</span> 寫成 <span class="math inline">\(\{0,1,1\}, \{1,0,1\}, \{1,1,0\}\)</span> 放到矩陣上進行高斯消去</p>
+<p><span class="math display">\[\begin{bmatrix}0 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 0\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1\end{bmatrix}\]</span></p>
+<p>則 <span class="math inline">\(\{(100)_2, (011)_2, (001)_2\} = \{4,3,1\}\)</span> 為 <span class="math inline">\(\{3,5,6\}\)</span> 的基底</p>
+<p>而 <span class="math inline">\(\dim(\{3,5,6\})\)</span> 即為 <span class="math inline">\(3\)</span></p>
+<h4 id="找到-154-的-xor-basis">找到 <span class="math inline">\(\{1,5,4\}\)</span> 的 XOR Basis</h4>
+<p>將 <span class="math inline">\(1,5,4\)</span> 寫成 <span class="math inline">\(\{0,0,1\}, \{1,0,1\}, \{1,0,0\}\)</span> 放到矩陣上進行高斯消去</p>
+<p><span class="math display">\[\begin{bmatrix}0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0\end{bmatrix}\]</span></p>
+<p>則 <span class="math inline">\(\{(100)_2, (001)_2\} = \{4,1\}\)</span> 為 <span class="math inline">\(\{1,5,4\}\)</span> 的基底</p>
+<p>而 <span class="math inline">\(\dim(\{3,5,6\})\)</span> 即為 <span class="math inline">\(2\)</span></p>
+<h3 id="程式中的實作">程式中的實作</h3>
+<p>在實作上，當我們處理的位數很少時，我們通常不會直接使用高斯消去法，反之，以下為兩種常見的寫法</p>
+<h4 id="枚舉每個-bit">枚舉每個 bit</h4>
+<p>這個寫法類似高斯消去的想法，當我們在加入一個向量 <span class="math inline">\(v\)</span> 時，我們檢查他的每個 bit，如果當前的基底中在這個 bit 有向量 <span class="math inline">\(b\)</span> 的話，我們就將 <span class="math inline">\(v\)</span> 減去 <span class="math inline">\(b\)</span>，之後再繼續檢查能不能加入，直到當前的基底中不含有某個 bit 時，我們就將 <span class="math inline">\(v\)</span> 加入基底，並跳出迴圈。</p>
+<p>如果要檢查當前的基底是否能線性組合出 <span class="math inline">\(v\)</span>，方法也很類似</p>
+<p>時間複雜度: <span class="math inline">\(O(\log C)\)</span> 插入</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_vector</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = LOGN; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;i))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!basis[i])&#123;</span><br><span class="line">                basis[i] = x; </span><br><span class="line">                sz++; <span class="comment">//增加基底大小</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            x ^= basis[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = LOGN; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;i))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!basis[i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            x ^= basis[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="枚舉基底">枚舉基底</h4>
+<p>這個寫法是我個人比較喜歡的寫法，同樣與高斯消去法很相似，我們每次判斷一個向量能不能加入基底時，我們就用 xor 的方式去試著消，如果最後這個向量被消為 <span class="math inline">\(0\)</span> 了，則表示這個向量與基底不是線性獨立的，否則我們就可以將其加入基底</p>
+<p>時間複雜度: <span class="math inline">\(O(\log C)\)</span> 插入</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; basis;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_vector</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : basis)&#123;</span><br><span class="line">        x = <span class="built_in">min</span>(x,x^v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x!=<span class="number">0</span>) basis.<span class="built_in">push_back</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : basis)&#123;</span><br><span class="line">        x = <span class="built_in">min</span>(x,x^v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="所以-xor-basis-能幹嘛">所以 XOR Basis 能幹嘛?</h2>
+<p>以下是一些我們常會見到的線性基可以使用的地方</p>
+<h3 id="給你一個數字集合-s-a_1a_2cdotsa_n問這些數字能不能夠-xor-出-x">給你一個數字集合 <span class="math inline">\(S = \{a_1,a_2,\cdots,a_n\}\)</span>，問這些數字能不能夠 XOR 出 <span class="math inline">\(x\)</span></h3>
+<p>找到 <span class="math inline">\(S\)</span> 的 XOR Basis 之後，再去檢查 <span class="math inline">\(x\)</span> 是否能被基底線性組合而成即可。</p>
+<h3 id="給你一個數字集合-s-a_1a_2cdotsa_n問這些數字可以-xor-出多少數字">給你一個數字集合 <span class="math inline">\(S = \{a_1,a_2,\cdots,a_n\}\)</span>，問這些數字可以 XOR 出多少數字</h3>
+<p>既然我們想要知道能夠 XOR 出多少數字，就是問 <span class="math inline">\(span(S)\)</span> 的大小，因此我們只要找到 <span class="math inline">\(S\)</span> 的 XOR Basis <span class="math inline">\(V = \{x_1,x_2,\cdots,x_k\}\)</span>，我們知道這些數字可以組成 <span class="math inline">\(u = c_1x_1+c_2x_2+\cdots+c_kx_k\)</span>，而 <span class="math inline">\(c_i \in \{0,1\}\)</span>，所以這個數字集合能夠 xor 出的數字數量即為 <span class="math inline">\(2^k\)</span>。</p>
+<h3 id="給你一個數字集合-s-a_1a_2cdotsa_n問這些數字可以-xor-出的第-k-大的數字">給你一個數字集合 <span class="math inline">\(S = \{a_1,a_2,\cdots,a_n\}\)</span>，問這些數字可以 XOR 出的第 <span class="math inline">\(k\)</span> 大的數字</h3>
+<p>我們找到 XOR Basis 之後，再去枚舉 bit 就可以找到可以 span 出的第 <span class="math inline">\(k\)</span> 大的數字了</p>
+<h3 id="給你一個數字集合-s-a_1a_2cdotsa_n問這些數字可以-xor-出的最大的數字">給你一個數字集合 <span class="math inline">\(S = \{a_1,a_2,\cdots,a_n\}\)</span>，問這些數字可以 XOR 出的最大的數字</h3>
+<p>這個有個很簡單的寫法，不論是第一種還是第二種 xor basis 都可以用這個方式計算</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//第一種的找法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_mx</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = LOGN; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans,ans^basis[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二種的找法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_mx</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : basis)&#123;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans,ans^v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著，讓我們正式來看看一些例題吧</p>
+<h2 id="例題">例題</h2>
+<h3 id="csacademy---xor-closure">CSAcademy - XOR Closure</h3>
+<p><a href="https://csacademy.com/contest/archive/task/xor-closure/">題目連結</a></p>
+<blockquote>
+<p>你有一個 <span class="math inline">\(n\)</span> 個數字的集合 <span class="math inline">\(S\)</span>，你最少要加入幾個數字，才能使得對於任意兩個 <span class="math inline">\(S\)</span> 中的元素 <span class="math inline">\(x,y\)</span>，<span class="math inline">\(x \oplus y\)</span> 也在集合 <span class="math inline">\(S\)</span> 當中</p>
+</blockquote>
+<p>因為所有元素的線性組合都要在集合 <span class="math inline">\(S\)</span> 當中，我們只要找到 <span class="math inline">\(span(S)\)</span> 的大小減去 <span class="math inline">\(n\)</span> 即為答案，因此我們只要對 <span class="math inline">\(S\)</span> 找到 XOR Basis，答案即為 <span class="math inline">\(2^{\text{size of basis}}-n\)</span></p>
+<p>程式碼</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fastio</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; basis;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> y : basis) </span><br><span class="line">            x = <span class="built_in">min</span>(x, x^y);</span><br><span class="line">        <span class="keyword">if</span>(x) basis.<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; (<span class="number">1LL</span>&lt;&lt;basis.<span class="built_in">size</span>())-n &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="codeforces-895c---square-subsets">Codeforces 895C - Square Subsets</h3>
+<p><a href="https://codeforces.com/contest/895/problem/C">題目連結</a></p>
+<blockquote>
+<p>你有 <span class="math inline">\(n\)</span> <span class="math inline">\((n \le 10^5)\)</span> 個數字 <span class="math inline">\(a_1,\cdots,a_n\)</span> (<span class="math inline">\(a_i \le 70\)</span>)，你想要知道這些數字有幾個非空子集的乘積是一個完全平方數</p>
+</blockquote>
+<p>首先，觀察到 <span class="math inline">\(a_i\)</span> 的範圍很小，只有到 <span class="math inline">\(70\)</span>，而小於 <span class="math inline">\(70\)</span> 的質數總共只有 <span class="math inline">\(19\)</span> 個，因此我們考慮位元 DP</p>
+<p>設 <span class="math inline">\(dp[i][mask]\)</span> 為考慮所有小於 <span class="math inline">\(i\)</span> 的數字，有幾個子集的乘積的為 <span class="math inline">\(mask\)</span>，接著我們就能在 <span class="math inline">\(O(70 \times 2^{19})\)</span> 的時間計算完答案了</p>
+<p>欸等等，跟 XOR Basis 有什麼關係阿?</p>
+<p>我們可以觀察到，其實題目想要詢問的東西是總共有幾個方式可以從數字集合中 span 出 <span class="math inline">\(0\)</span>，因此其實我們只要對題目的數字進行轉換之後，找到 XOR Basis，答案就會是 <span class="math inline">\(2^{n-\text{size of basis}}-1\)</span>，我們就能在 <span class="math inline">\(O(n \times 19)\)</span> 的時間找到答案了，比位元 DP 還快。</p>
+<p>而且就算 <span class="math inline">\(a_i\)</span> 的值域變得更大，我們也能使用 XOR Basis 進行計算</p>
+<p><a href="https://codeforces.com/contest/895/submission/151330932">程式碼</a></p>
+<h3 id="codeforces-959f---mahmoud-and-ehab-and-yet-another-xor-task">Codeforces 959F - Mahmoud and Ehab and yet another xor task</h3>
+<p><a href="https://codeforces.com/contest/959/problem/F">題目連結</a></p>
+<blockquote>
+<p>你有一個 <span class="math inline">\(n\)</span> 個數字的陣列 <span class="math inline">\(a_1,a_2,\cdots,a_n\)</span>，接著有 <span class="math inline">\(q\)</span> 次詢問，每次詢問前 <span class="math inline">\(l\)</span> 個數字有幾種方法可以 xor 湊出 <span class="math inline">\(x\)</span></p>
+</blockquote>
+<p>首先，我們可以很直接地想到，既然我們想要知道有幾種方法可以湊出 <span class="math inline">\(x\)</span>，那麼一定與前 <span class="math inline">\(i\)</span> 個數字的 span 有關</p>
+<p>我們可以想到，如果我們先將輸入依照 <span class="math inline">\(l\)</span> 排序好，接著我們只要照順序將數字加進集合中，找到集合的 XOR Basis</p>
+<p>如果我們的基底不能夠線性組合出 <span class="math inline">\(x\)</span>，則答案為 <span class="math inline">\(0\)</span>，否則我們有 <span class="math inline">\(2^{\text{l-size of basis}}\)</span> 種湊出 <span class="math inline">\(x\)</span> 的方式</p>
+<h3 id="csacademy---xor-cycle">CSAcademy - XOR Cycle</h3>
+<blockquote>
+<p>給你一張 <span class="math inline">\(n\)</span> 個點 <span class="math inline">\(m\)</span> 條邊的連通圖，問封閉迴路的邊權 XOR 出的最大值為多少?</p>
+</blockquote>
+<p>在寫這題以前，推薦可以先去寫<a href="https://cses.fi/problemset/task/2078">這題</a></p>
+<p>首先，我們藉由 <a href="https://en.wikipedia.org/wiki/Cycle_basis">Cycle Basis</a>，我們可以知道任何封閉迴路皆可以由簡單環所組成，因此我們只要對所有簡單環 XOR 出來的答案找到 XOR Basis，接著再找到這個 XOR Basis 可以 span 出的最大數字即為答案。</p>
+<p>程式碼 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line">vector&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; adj[N];</span><br><span class="line"><span class="keyword">int</span> dsu[N], dep[N], vis[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dsu[u]==u ? u : dsu[u] = <span class="built_in">find</span>(dsu[u]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">unite</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    u = <span class="built_in">find</span>(u), v = <span class="built_in">find</span>(v);</span><br><span class="line">    <span class="keyword">if</span>(u == v) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    dsu[u] = v;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [v,w] : adj[u])&#123;</span><br><span class="line">        <span class="keyword">if</span>(v == p) <span class="keyword">continue</span>;</span><br><span class="line">        dep[v] = dep[u]^w;</span><br><span class="line">        <span class="built_in">dfs</span>(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fastio</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    vector&lt;pair&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;,<span class="keyword">int</span>&gt;&gt; edges;</span><br><span class="line">    <span class="built_in">iota</span>(dsu,dsu+N,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u,v,w;</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">unite</span>(u,v)) adj[u].<span class="built_in">push_back</span>(&#123;v,w&#125;), adj[v].<span class="built_in">push_back</span>(&#123;u,w&#125;);</span><br><span class="line">        <span class="keyword">else</span> edges.<span class="built_in">push_back</span>(&#123;&#123;u,v&#125;,w&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; basis;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [p,w] : edges)&#123;</span><br><span class="line">        <span class="keyword">auto</span> [u,v] = p;</span><br><span class="line">        <span class="keyword">int</span> x = dep[u] ^ dep[v] ^ w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> y : basis) x = <span class="built_in">min</span>(x, x^y);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(x) basis.<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> x : basis) ans = <span class="built_in">max</span>(ans, ans^x);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="abc223h---xor-query">ABC223H - Xor Query</h3>
+<p><a href="https://atcoder.jp/contests/abc223/tasks/abc223_h">題目連結</a></p>
+<blockquote>
+<p>給你一個 <span class="math inline">\(n\)</span> 個數字的陣列，接著有 <span class="math inline">\(q\)</span> 個詢問，每次詢問區間 <span class="math inline">\([l,r]\)</span> 是否能經由 xor 湊出 <span class="math inline">\(x\)</span></p>
+</blockquote>
+<p>這個的想法就是很直接的維護 <span class="math inline">\([l,r]\)</span> 的線性基，我們可以使用線段樹等資料結構來維護區間數字 xor basis，每次再去檢查這個 basis 是否能線性組合出 <span class="math inline">\(x\)</span> 即可。</p>
+<h2 id="更多練習題">更多練習題</h2>
+<h3 id="agc045a---xor-battle">AGC045A - Xor Battle</h3>
+<p><a href="https://atcoder.jp/contests/agc045/tasks/agc045_a">題目連結</a></p>
+<h3 id="codeforces-1427e---xum">Codeforces 1427E - Xum</h3>
+<p><a href="https://codeforces.com/problemset/problem/1427/E">題目連結</a></p>
+<h3 id="codeforces-1336e1---chiori-and-doll-picking-easy-version">Codeforces 1336E1 - Chiori and Doll Picking (easy version)</h3>
+<p><a href="https://codeforces.com/contest/1336/problem/E1">題目連結</a></p>
+<h3 id="更多題目待補">更多題目待補</h3>
+<h2 id="心得">心得</h2>
+<p>沒想到在線性代數中所學到的「向量空間」在競程上也有它的應用呢</p>
+<p>而 XOR 真的是一個很神奇的運算，能夠放到 trie 上面處理，也能藉由向量空間的基底去計算答案</p>
+<h2 id="參考資料">參考資料</h2>
+<p>https://codeforces.com/blog/entry/68953</p>
+<p>https://zhuanlan.zhihu.com/p/68575986</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>Math</tag>
+        <tag>教學</tag>
+        <tag>線性代數</tag>
+        <tag>XOR Basis</tag>
+      </tags>
+  </entry>
 </search>
