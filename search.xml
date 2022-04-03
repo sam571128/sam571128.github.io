@@ -2501,159 +2501,645 @@ pD 改成 B 節點恰與一個 A 節點相鄰
     <content><![CDATA[<p>由於最近學校也學到「向量空間」這個概念，決定重新來了解 <strong>Xor Basis</strong> (在對岸稱為線性基) 的概念，並將這些概念記錄下來</p>
 <p>以下會有很多的定義，而且這個概念也很抽象，不過我也不知道怎麼解釋得更簡單</p>
 <span id="more"></span>
-<h2 id="向量空間-Vector-Space"><a href="#向量空間-Vector-Space" class="headerlink" title="向量空間 (Vector Space)"></a>向量空間 (Vector Space)</h2><p>首先我們要先認識「向量空間」是什麼，基本上都是定義，與大家以前學的向量的性質有關</p>
+<h2 id="向量空間-vector-space">向量空間 (Vector Space)</h2>
+<p>首先我們要先認識「向量空間」是什麼，基本上都是定義，與大家以前學的向量的性質有關</p>
 <p>不過在向量空間中的向量不見得會是我們所熟知的向量，也可能是函數、多項式等等</p>
-<h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><p>對於一個集合 $S$，定義兩種運算「向量加法」與「純量乘法」</p>
-<p>只要滿足以下十個條件，這個集合 $S$ 即為「向量空間」</p>
-<div class="table-container">
+<h3 id="定義">定義</h3>
+<p>對於一個集合 <span class="math inline">\(S\)</span>，定義兩種運算「向量加法」與「純量乘法」</p>
+<p>只要滿足以下十個條件，這個集合 <span class="math inline">\(S\)</span> 即為「向量空間」</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>加法</th>
 <th>乘法</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>1.$u+v \in S$ (封閉性)</td>
-<td>6.$cv \in S$ (封閉性)</td>
+<tr class="odd">
+<td>1.<span class="math inline">\(u+v \in S\)</span> (封閉性)</td>
+<td>6.<span class="math inline">\(cv \in S\)</span> (封閉性)</td>
 </tr>
-<tr>
-<td>2.$(u+v)+w = u+(v+w)$ (結合律)</td>
-<td>7.$c(u+v) = cu+cv$ (結合律)</td>
+<tr class="even">
+<td>2.<span class="math inline">\((u+v)+w = u+(v+w)\)</span> (結合律)</td>
+<td>7.<span class="math inline">\(c(u+v) = cu+cv\)</span> (結合律)</td>
 </tr>
-<tr>
-<td>3.$u+v = v+u$ (交換律)</td>
-<td>8.$(uv)w=u(vw)$ (交換律)</td>
+<tr class="odd">
+<td>3.<span class="math inline">\(u+v = v+u\)</span> (交換律)</td>
+<td>8.<span class="math inline">\((uv)w=u(vw)\)</span> (交換律)</td>
 </tr>
-<tr>
-<td>4.$u + 0 = u$ (有加法單位元)</td>
-<td>9.$1 \cdot v= v$ (有乘法單位元)</td>
+<tr class="even">
+<td>4.<span class="math inline">\(u + 0 = u\)</span> (有加法單位元)</td>
+<td>9.<span class="math inline">\(1 \cdot v= v\)</span> (有乘法單位元)</td>
 </tr>
-<tr>
-<td>5.$u+(-u)=0$ (有加法反元素)</td>
-<td>10.$(a+b)v = av+bv$ (分配律)</td>
+<tr class="odd">
+<td>5.<span class="math inline">\(u+(-u)=0\)</span> (有加法反元素)</td>
+<td>10.<span class="math inline">\((a+b)v = av+bv\)</span> (分配律)</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="常見的向量空間"><a href="#常見的向量空間" class="headerlink" title="常見的向量空間"></a>常見的向量空間</h3><ol>
-<li>$(x_1,x_2,\cdots,x_n)$，可以是 $\mathbb{R}^n, \mathbb{Z}^n$ 等等</li>
-<li>$n \times m$ 維矩陣</li>
-<li>度數 $\le n$ 的多項式 </li>
-<li>$f(x), g(x)$，加法 $(f+g)(x)$，乘法 $cf(x)$</li>
+<h3 id="常見的向量空間">常見的向量空間</h3>
+<ol type="1">
+<li><span class="math inline">\((x_1,x_2,\cdots,x_n)\)</span>，可以是 <span class="math inline">\(\mathbb{R}^n, \mathbb{Z}^n\)</span> 等等</li>
+<li><span class="math inline">\(n \times m\)</span> 維矩陣</li>
+<li>度數 <span class="math inline">\(\le n\)</span> 的多項式</li>
+<li><span class="math inline">\(f(x), g(x)\)</span>，加法 <span class="math inline">\((f+g)(x)\)</span>，乘法 <span class="math inline">\(cf(x)\)</span></li>
 </ol>
 <p>這些都可以很輕易地驗證以上 10 種性質，因此他們都是向量空間</p>
 <p>接著向量空間有很多的名詞，因此我們要先了解這些名詞的定義</p>
-<h2 id="線性組合-Linear-Combination"><a href="#線性組合-Linear-Combination" class="headerlink" title="線性組合 (Linear Combination)"></a>線性組合 (Linear Combination)</h2><h3 id="定義-1"><a href="#定義-1" class="headerlink" title="定義"></a>定義</h3><p>對於一個 $n$ 個向量 $v_1, v_2, \cdots, v_n$，$c_i$ 為純量，這些向量的線性組合可以寫成向量 </p>
-<script type="math/tex; mode=display">x = c_1v_1+c_2v_2+\cdots+c_nv_n</script><h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><ol>
-<li>在 $\mathbb{R}^2$ 的空間中，$(3,4)$ 可以寫成 $(1,0),(0,1)$ 的線性組合，$(3,4) = 3(1,0) + 4(0,1)$</li>
-<li>在 $\mathbb{R}^3$ 的空間中，$(1,2,3)$ 可以寫成 $(1,1,0),(0,1,1),(1,0,1)$ 的線性組合，$(1,2,3) = 0(1,1,0)+2(0,1,1)+1(1,0,1)$</li>
+<h2 id="線性組合-linear-combination">線性組合 (Linear Combination)</h2>
+<h3 id="定義-1">定義</h3>
+<p>對於一個 <span class="math inline">\(n\)</span> 個向量 <span class="math inline">\(v_1, v_2, \cdots, v_n\)</span>，<span class="math inline">\(c_i\)</span> 為純量，這些向量的線性組合可以寫成向量</p>
+<p><span class="math display">\[x = c_1v_1+c_2v_2+\cdots+c_nv_n\]</span></p>
+<h3 id="範例">範例</h3>
+<ol type="1">
+<li>在 <span class="math inline">\(\mathbb{R}^2\)</span> 的空間中，<span class="math inline">\((3,4)\)</span> 可以寫成 <span class="math inline">\((1,0),(0,1)\)</span> 的線性組合，<span class="math inline">\((3,4) = 3(1,0) + 4(0,1)\)</span></li>
+<li>在 <span class="math inline">\(\mathbb{R}^3\)</span> 的空間中，<span class="math inline">\((1,2,3)\)</span> 可以寫成 <span class="math inline">\((1,1,0),(0,1,1),(1,0,1)\)</span> 的線性組合，<span class="math inline">\((1,2,3) = 0(1,1,0)+2(0,1,1)+1(1,0,1)\)</span></li>
 </ol>
-<h2 id="生成空間-Span"><a href="#生成空間-Span" class="headerlink" title="生成空間 (Span)"></a>生成空間 (Span)</h2><h3 id="定義-2"><a href="#定義-2" class="headerlink" title="定義"></a>定義</h3><p>當一個向量空間 $V$ 被一個集合 $S$ Span，則任意一個 $u \in V$ 都可以寫成 $S$ 當中的向量的線性組合，意即 $u = c_1v_1+c_2v_2+\cdots+c_nv_n$。我們將 $V$ 記為 $span(S)$，而</p>
-<script type="math/tex; mode=display">span(S) = \{\sum_{i=1}^nc_iv_i\}</script><p>一個特點是對於任何一個包含 $S$ 的向量空間 $U$, $span(S) \subset U$ </p>
-<h3 id="範例-1"><a href="#範例-1" class="headerlink" title="範例"></a>範例</h3><p>1.當 $S = {(1,0),(0,1)}$ 時，$span(S)$ 包含所有 $\mathbb{R}^2$ 空間中的向量，因為任一向量 $(x_1,x_2)$ 皆可寫成 $(x_1,x_2)=x_1(1,0)+x_2(0,1)$<br>2.當 $S = {(1,1),(1,-1)}$時，$span(S)$ 包含所有 $\mathbb{R}^2$ 空間中的向量，因為任一向量 $(x_1,x_2)$ 皆可寫成 $(x_1,x_2)=\frac{x_1+x_2}{2}(1,1)+\frac{x_1-x_2}{2}(1,-1)$</p>
-<h2 id="線性獨立-Linearly-Independent"><a href="#線性獨立-Linearly-Independent" class="headerlink" title="線性獨立 (Linearly Independent)"></a>線性獨立 (Linearly Independent)</h2><h3 id="定義-3"><a href="#定義-3" class="headerlink" title="定義"></a>定義</h3><p>對於 $n$ 個向量 ${v_1,v_2,\cdots,v_n}$，滿足</p>
-<script type="math/tex; mode=display">c_1v_1+c_2v_2+\cdots+c_nv_n = 0</script><p>只有 $c_1=c_2=\cdots = 0$ 的解，則我們稱這些向量線性獨立</p>
-<h2 id="線性相依-Linearly-Dependent"><a href="#線性相依-Linearly-Dependent" class="headerlink" title="線性相依 (Linearly Dependent)"></a>線性相依 (Linearly Dependent)</h2><h3 id="定義-4"><a href="#定義-4" class="headerlink" title="定義"></a>定義</h3><p>對於 $n$ 個向量 ${v_1,v_2,\cdots,v_n}$，滿足</p>
-<script type="math/tex; mode=display">c_1v_1+c_2v_2+\cdots+c_nv_n = 0</script><p>存在 $c_i$ 不全為 $0$ 的解，則我們稱這些向量線性相依</p>
-<h3 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h3><p>一個集合 $S$ 線性相依 $\Leftrightarrow$ 其中一個向量可以寫成其他向量的線性組合</p>
-<h4 id="證明"><a href="#證明" class="headerlink" title="證明"></a>證明</h4><p>($\Rightarrow$): 如果集合 $S$ 線性相依，則其中一個向量可以寫成其他向量的線性組合</p>
-<p>根據線性相依的定義，$c_1v_1+c_2v_2+\cdots+c_nv_n = 0$ 有一組非全零的解</p>
-<p>我們可以不失一般性的假設 $c_1 \ne 0$，得到</p>
-<script type="math/tex; mode=display">v1 + c_2v_2 +\cdots+c_nv_n = 0</script><p>移項得到</p>
-<script type="math/tex; mode=display">c_2v_2 +\cdots+c_nv_n = -v_1</script><p>($\Leftarrow$): 如果集合 $S$ 中其中一個向量可以寫成其他向量的線性組合，則集合 $S$ 線性相依</p>
-<p>假設集合 $S$ 其中一個向量可以寫成其他向量的線性組合</p>
-<p>我們可以不失一般性的假設 $v_1$ 可以寫成 $v_2,\cdots,v_n$ 的線性組合</p>
-<script type="math/tex; mode=display">v_1 = c_2v_2+c_3v_3+\cdots+c_nv_n</script><p>移項得到</p>
-<script type="math/tex; mode=display">v_1-c_2v_2-c_3v_3-\cdots-c_nv_n = 0</script><p>為一組係數不全為 $0$ 的解</p>
-<h2 id="基底-Basis"><a href="#基底-Basis" class="headerlink" title="基底 (Basis)"></a>基底 (Basis)</h2><h3 id="定義-5"><a href="#定義-5" class="headerlink" title="定義"></a>定義</h3><p>對於一個向量空間 $V$，如果找的到一個集合 $S$ 滿足</p>
-<ol>
-<li>$span(S) = V$</li>
-<li>$S$ 線性獨立</li>
+<h2 id="生成空間-span">生成空間 (Span)</h2>
+<h3 id="定義-2">定義</h3>
+<p>當一個向量空間 <span class="math inline">\(V\)</span> 被一個集合 <span class="math inline">\(S\)</span> Span，則任意一個 <span class="math inline">\(u \in V\)</span> 都可以寫成 <span class="math inline">\(S\)</span> 當中的向量的線性組合，意即 <span class="math inline">\(u = c_1v_1+c_2v_2+\cdots+c_nv_n\)</span>。我們將 <span class="math inline">\(V\)</span> 記為 <span class="math inline">\(span(S)\)</span>，而 <span class="math display">\[span(S) = \{\sum_{i=1}^nc_iv_i\}\]</span></p>
+<p>一個特點是對於任何一個包含 <span class="math inline">\(S\)</span> 的向量空間 <span class="math inline">\(U\)</span>, <span class="math inline">\(span(S) \subset U\)</span></p>
+<h3 id="範例-1">範例</h3>
+<p>1.當 <span class="math inline">\(S = \{(1,0),(0,1)\}\)</span> 時，<span class="math inline">\(span(S)\)</span> 包含所有 <span class="math inline">\(\mathbb{R}^2\)</span> 空間中的向量，因為任一向量 <span class="math inline">\((x_1,x_2)\)</span> 皆可寫成 <span class="math inline">\((x_1,x_2)=x_1(1,0)+x_2(0,1)\)</span> 2.當 <span class="math inline">\(S = \{(1,1),(1,-1)\}\)</span>時，<span class="math inline">\(span(S)\)</span> 包含所有 <span class="math inline">\(\mathbb{R}^2\)</span> 空間中的向量，因為任一向量 <span class="math inline">\((x_1,x_2)\)</span> 皆可寫成 <span class="math inline">\((x_1,x_2)=\frac{x_1+x_2}{2}(1,1)+\frac{x_1-x_2}{2}(1,-1)\)</span></p>
+<h2 id="線性獨立-linearly-independent">線性獨立 (Linearly Independent)</h2>
+<h3 id="定義-3">定義</h3>
+<p>對於 <span class="math inline">\(n\)</span> 個向量 <span class="math inline">\(\{v_1,v_2,\cdots,v_n\}\)</span>，滿足</p>
+<p><span class="math display">\[c_1v_1+c_2v_2+\cdots+c_nv_n = 0\]</span></p>
+<p>只有 <span class="math inline">\(c_1=c_2=\cdots = 0\)</span> 的解，則我們稱這些向量線性獨立</p>
+<h2 id="線性相依-linearly-dependent">線性相依 (Linearly Dependent)</h2>
+<h3 id="定義-4">定義</h3>
+<p>對於 <span class="math inline">\(n\)</span> 個向量 <span class="math inline">\(\{v_1,v_2,\cdots,v_n\}\)</span>，滿足</p>
+<p><span class="math display">\[c_1v_1+c_2v_2+\cdots+c_nv_n = 0\]</span></p>
+<p>存在 <span class="math inline">\(c_i\)</span> 不全為 <span class="math inline">\(0\)</span> 的解，則我們稱這些向量線性相依</p>
+<h3 id="定理">定理</h3>
+<p>一個集合 <span class="math inline">\(S\)</span> 線性相依 <span class="math inline">\(\Leftrightarrow\)</span> 其中一個向量可以寫成其他向量的線性組合</p>
+<h4 id="證明">證明</h4>
+<p>(<span class="math inline">\(\Rightarrow\)</span>): 如果集合 <span class="math inline">\(S\)</span> 線性相依，則其中一個向量可以寫成其他向量的線性組合</p>
+<p>根據線性相依的定義，<span class="math inline">\(c_1v_1+c_2v_2+\cdots+c_nv_n = 0\)</span> 有一組非全零的解</p>
+<p>我們可以不失一般性的假設 <span class="math inline">\(c_1 \ne 0\)</span>，得到</p>
+<p><span class="math display">\[v1 + c_2v_2 +\cdots+c_nv_n = 0\]</span></p>
+<p>移項得到</p>
+<p><span class="math display">\[c_2v_2 +\cdots+c_nv_n = -v_1\]</span></p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>): 如果集合 <span class="math inline">\(S\)</span> 中其中一個向量可以寫成其他向量的線性組合，則集合 <span class="math inline">\(S\)</span> 線性相依</p>
+<p>假設集合 <span class="math inline">\(S\)</span> 其中一個向量可以寫成其他向量的線性組合</p>
+<p>我們可以不失一般性的假設 <span class="math inline">\(v_1\)</span> 可以寫成 <span class="math inline">\(v_2,\cdots,v_n\)</span> 的線性組合</p>
+<p><span class="math display">\[v_1 = c_2v_2+c_3v_3+\cdots+c_nv_n\]</span></p>
+<p>移項得到</p>
+<p><span class="math display">\[v_1-c_2v_2-c_3v_3-\cdots-c_nv_n = 0\]</span></p>
+<p>為一組係數不全為 <span class="math inline">\(0\)</span> 的解</p>
+<h2 id="基底-basis">基底 (Basis)</h2>
+<h3 id="定義-5">定義</h3>
+<p>對於一個向量空間 <span class="math inline">\(V\)</span>，如果找的到一個集合 <span class="math inline">\(S\)</span> 滿足</p>
+<ol type="1">
+<li><span class="math inline">\(span(S) = V\)</span></li>
+<li><span class="math inline">\(S\)</span> 線性獨立</li>
 </ol>
-<p>則稱 $S$ 為 $V$ 的基底</p>
-<p>而任何 $V$ 當中的向量都可以寫成唯一一組 $S$ 的線性組合</p>
+<p>則稱 <span class="math inline">\(S\)</span> 為 <span class="math inline">\(V\)</span> 的基底</p>
+<p>而任何 <span class="math inline">\(V\)</span> 當中的向量都可以寫成唯一一組 <span class="math inline">\(S\)</span> 的線性組合</p>
 <ul>
 <li>一個向量的基底可以有很多個</li>
-<li>對於任何一個 $V$ 的基底，大小皆相同，我們將 $V$ 的基底大小寫成 $dim(V)$</li>
+<li>對於任何一個 <span class="math inline">\(V\)</span> 的基底，大小皆相同，我們將 <span class="math inline">\(V\)</span> 的基底大小寫成 <span class="math inline">\(dim(V)\)</span></li>
 </ul>
-<h2 id="XOR-與-mathbb-Z-d-2"><a href="#XOR-與-mathbb-Z-d-2" class="headerlink" title="XOR 與 $\mathbb{Z}^d_2$"></a>XOR 與 $\mathbb{Z}^d_2$</h2><p>對於 <strong>XOR</strong> 這個運算，當 $x,y \in {0,1}$ 時，$x \oplus y = x+y \pmod{2}$</p>
+<h2 id="xor-與-mathbbzd_2">XOR 與 <span class="math inline">\(\mathbb{Z}^d_2\)</span></h2>
+<p>對於 <strong>XOR</strong> 這個運算，當 <span class="math inline">\(x,y \in \{0,1\}\)</span> 時，<span class="math inline">\(x \oplus y = x+y \pmod{2}\)</span></p>
 <p>而任何一個數字，我們皆可以將其換為二進位的形式</p>
-<p>如: $5 = (101)_2$, $3 = (011)_2$</p>
-<p>因此我們可以定義向量空間 $\mathbb{Z}^d_2$</p>
-<p>加法運算為 $x+y \pmod{2}$ 等價於 XOR，純量乘法的 $c_i \in {0,1}$</p>
+<p>如: <span class="math inline">\(5 = (101)_2\)</span>, <span class="math inline">\(3 = (011)_2\)</span></p>
+<p>因此我們可以定義向量空間 <span class="math inline">\(\mathbb{Z}^d_2\)</span></p>
+<p>加法運算為 <span class="math inline">\(x+y \pmod{2}\)</span> 等價於 XOR，純量乘法的 <span class="math inline">\(c_i \in \{0,1\}\)</span></p>
 <p>藉由這樣的定義，我們就可以藉由向量空間的性質來處理 XOR 的問題了</p>
-<h2 id="如何對一組數字找到-XOR-Basis"><a href="#如何對一組數字找到-XOR-Basis" class="headerlink" title="如何對一組數字找到 XOR Basis"></a>如何對一組數字找到 XOR Basis</h2><p>最簡單的方式為 <strong>高斯消去法</strong>，我們可以將數字寫成二進位，並將所有的向量放到矩陣上，進行 <strong>高斯消去法</strong>，消成列梯形矩陣 (row-echelon form)，非零向量的集合即為這組數字的 <strong>XOR Basis</strong></p>
-<h3 id="範例-2"><a href="#範例-2" class="headerlink" title="範例"></a>範例</h3><h4 id="找到-3-5-6-的-XOR-Basis"><a href="#找到-3-5-6-的-XOR-Basis" class="headerlink" title="找到 ${3,5,6}$ 的 XOR Basis"></a>找到 ${3,5,6}$ 的 XOR Basis</h4><p>將 $3,5,6$ 寫成 ${0,1,1}, {1,0,1}, {1,1,0}$ 放到矩陣上進行高斯消去</p>
-<script type="math/tex; mode=display">\begin{bmatrix}0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0\end{bmatrix} \rightarrow \begin{bmatrix}1 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 1\end{bmatrix} \rightarrow \begin{bmatrix}1 & 1 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 1\end{bmatrix} \rightarrow \begin{bmatrix}1 & 1 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 0\end{bmatrix}</script><p>則 ${(011)_2, (110)_2} = {3,5}$ 為 ${3,5,6}$ 的基底</p>
-<p>而 $\dim({3,5,6})$ 即為 $2$</p>
-<h4 id="找到-1-5-4-的-XOR-Basis"><a href="#找到-1-5-4-的-XOR-Basis" class="headerlink" title="找到 ${1,5,4}$ 的 XOR Basis"></a>找到 ${1,5,4}$ 的 XOR Basis</h4><p>將 $1,5,4$ 寫成 ${0,0,1}, {1,0,1}, {1,0,0}$ 放到矩陣上進行高斯消去</p>
-<script type="math/tex; mode=display">\begin{bmatrix}0 & 0 & 1 \\ 1 & 0 & 1 \\ 1 & 0 & 0\end{bmatrix} \rightarrow \begin{bmatrix}1 & 0 & 0 \\ 1 & 0 & 1 \\ 0 & 0 & 1\end{bmatrix} \rightarrow \begin{bmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 1\end{bmatrix} \rightarrow \begin{bmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0\end{bmatrix}</script><p>則 ${(100)_2, (001)_2} = {4,1}$ 為 ${1,5,4}$ 的基底</p>
-<p>而 $\dim({3,5,6})$ 即為 $2$</p>
-<h3 id="程式中的實作"><a href="#程式中的實作" class="headerlink" title="程式中的實作"></a>程式中的實作</h3><p>在實作上，當我們處理的位數很少時，我們通常不會直接使用高斯消去法，反之，以下為兩種常見的寫法</p>
-<h4 id="枚舉每個-bit"><a href="#枚舉每個-bit" class="headerlink" title="枚舉每個 bit"></a>枚舉每個 bit</h4><p>這個寫法類似高斯消去的想法，當我們在加入一個向量 $v$ 時，我們檢查他的每個 bit，如果當前的基底中在這個 bit 有向量 $b$ 的話，我們就將 $v$ 減去 $b$，之後再繼續檢查能不能加入，直到當前的基底中不含有某個 bit 時，我們就將 $v$ 加入基底，並跳出迴圈。</p>
-<p>如果要檢查當前的基底是否能線性組合出 $v$，方法也很類似</p>
-<p>時間複雜度: $O(\log C)$ 插入</p>
+<h2 id="如何對一組數字找到-xor-basis">如何對一組數字找到 XOR Basis</h2>
+<p>最簡單的方式為 <strong>高斯消去法</strong>，我們可以將數字寫成二進位，並將所有的向量放到矩陣上，進行 <strong>高斯消去法</strong>，消成列梯形矩陣 (row-echelon form)，非零向量的集合即為這組數字的 <strong>XOR Basis</strong></p>
+<h3 id="範例-2">範例</h3>
+<h4 id="找到-356-的-xor-basis">找到 <span class="math inline">\(\{3,5,6\}\)</span> 的 XOR Basis</h4>
+<p>將 <span class="math inline">\(3,5,6\)</span> 寫成 <span class="math inline">\(\{0,1,1\}, \{1,0,1\}, \{1,1,0\}\)</span> 放到矩陣上進行高斯消去</p>
+<p><span class="math display">\[\begin{bmatrix}0 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 0\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0\end{bmatrix}\]</span></p>
+<p>則 <span class="math inline">\(\{(011)_2, (110)_2\} = \{3,5\}\)</span> 為 <span class="math inline">\(\{3,5,6\}\)</span> 的基底</p>
+<p>而 <span class="math inline">\(\dim(\{3,5,6\})\)</span> 即為 <span class="math inline">\(2\)</span></p>
+<h4 id="找到-154-的-xor-basis">找到 <span class="math inline">\(\{1,5,4\}\)</span> 的 XOR Basis</h4>
+<p>將 <span class="math inline">\(1,5,4\)</span> 寫成 <span class="math inline">\(\{0,0,1\}, \{1,0,1\}, \{1,0,0\}\)</span> 放到矩陣上進行高斯消去</p>
+<p><span class="math display">\[\begin{bmatrix}0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1\end{bmatrix} \rightarrow \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0\end{bmatrix}\]</span></p>
+<p>則 <span class="math inline">\(\{(100)_2, (001)_2\} = \{4,1\}\)</span> 為 <span class="math inline">\(\{1,5,4\}\)</span> 的基底</p>
+<p>而 <span class="math inline">\(\dim(\{3,5,6\})\)</span> 即為 <span class="math inline">\(2\)</span></p>
+<h3 id="程式中的實作">程式中的實作</h3>
+<p>在實作上，當我們處理的位數很少時，我們通常不會直接使用高斯消去法，反之，以下為兩種常見的寫法</p>
+<h4 id="枚舉每個-bit">枚舉每個 bit</h4>
+<p>這個寫法類似高斯消去的想法，當我們在加入一個向量 <span class="math inline">\(v\)</span> 時，我們檢查他的每個 bit，如果當前的基底中在這個 bit 有向量 <span class="math inline">\(b\)</span> 的話，我們就將 <span class="math inline">\(v\)</span> 減去 <span class="math inline">\(b\)</span>，之後再繼續檢查能不能加入，直到當前的基底中不含有某個 bit 時，我們就將 <span class="math inline">\(v\)</span> 加入基底，並跳出迴圈。</p>
+<p>如果要檢查當前的基底是否能線性組合出 <span class="math inline">\(v\)</span>，方法也很類似</p>
+<p>時間複雜度: <span class="math inline">\(O(\log C)\)</span> 插入</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_vector</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = LOGN; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;i))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!basis[i])&#123;</span><br><span class="line">                basis[i] = x; </span><br><span class="line">                sz++; <span class="comment">//增加基底大小</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            x ^= basis[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = LOGN; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;i))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!basis[i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            x ^= basis[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="枚舉基底"><a href="#枚舉基底" class="headerlink" title="枚舉基底"></a>枚舉基底</h4><p>這個寫法是我個人比較喜歡的寫法，同樣與高斯消去法很相似，我們每次判斷一個向量能不能加入基底時，我們就用 xor 的方式去試著消，如果最後這個向量被消為 $0$ 了，則表示這個向量與基底不是線性獨立的，否則我們就可以將其加入基底</p>
-<p>時間複雜度: $O(\log C)$ 插入</p>
+<h4 id="枚舉基底">枚舉基底</h4>
+<p>這個寫法是我個人比較喜歡的寫法，同樣與高斯消去法很相似，我們每次判斷一個向量能不能加入基底時，我們就用 xor 的方式去試著消，如果最後這個向量被消為 <span class="math inline">\(0\)</span> 了，則表示這個向量與基底不是線性獨立的，否則我們就可以將其加入基底</p>
+<p>時間複雜度: <span class="math inline">\(O(\log C)\)</span> 插入</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; basis;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_vector</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : basis)&#123;</span><br><span class="line">        x = <span class="built_in">min</span>(x,x^v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x!=<span class="number">0</span>) basis.<span class="built_in">push_back</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : basis)&#123;</span><br><span class="line">        x = <span class="built_in">min</span>(x,x^v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="所以-XOR-Basis-能幹嘛"><a href="#所以-XOR-Basis-能幹嘛" class="headerlink" title="所以 XOR Basis 能幹嘛?"></a>所以 XOR Basis 能幹嘛?</h2><p>以下是一些我們常會見到的線性基可以使用的地方</p>
-<h3 id="給你一個數字集合-S-a-1-a-2-cdots-a-n-，問這些數字能不能夠-XOR-出-x"><a href="#給你一個數字集合-S-a-1-a-2-cdots-a-n-，問這些數字能不能夠-XOR-出-x" class="headerlink" title="給你一個數字集合 $S = {a_1,a_2,\cdots,a_n}$，問這些數字能不能夠 XOR 出 $x$"></a>給你一個數字集合 $S = {a_1,a_2,\cdots,a_n}$，問這些數字能不能夠 XOR 出 $x$</h3><p>找到 $S$ 的 XOR Basis 之後，再去檢查 $x$ 是否能被基底線性組合而成即可。</p>
-<h3 id="給你一個數字集合-S-a-1-a-2-cdots-a-n-，問這些數字可以-XOR-出多少數字"><a href="#給你一個數字集合-S-a-1-a-2-cdots-a-n-，問這些數字可以-XOR-出多少數字" class="headerlink" title="給你一個數字集合 $S = {a_1,a_2,\cdots,a_n}$，問這些數字可以 XOR 出多少數字"></a>給你一個數字集合 $S = {a_1,a_2,\cdots,a_n}$，問這些數字可以 XOR 出多少數字</h3><p>既然我們想要知道能夠 XOR 出多少數字，就是問 $span(S)$ 的大小，因此我們只要找到 $S$ 的 XOR Basis $V = {x_1,x_2,\cdots,x_k}$，我們知道這些數字可以組成 $u = c_1x_1+c_2x_2+\cdots+c_kx_k$，而 $c_i \in {0,1}$，所以這個數字集合能夠 xor 出的數字數量即為 $2^k$。</p>
-<h3 id="給你一個數字集合-S-a-1-a-2-cdots-a-n-，問這些數字可以-XOR-出的第-k-大的數字"><a href="#給你一個數字集合-S-a-1-a-2-cdots-a-n-，問這些數字可以-XOR-出的第-k-大的數字" class="headerlink" title="給你一個數字集合 $S = {a_1,a_2,\cdots,a_n}$，問這些數字可以 XOR 出的第 $k$ 大的數字"></a>給你一個數字集合 $S = {a_1,a_2,\cdots,a_n}$，問這些數字可以 XOR 出的第 $k$ 大的數字</h3><p>我們找到 XOR Basis 之後，再去枚舉 bit 就可以找到可以 span 出的第 $k$ 大的數字了</p>
-<h3 id="給你一個數字集合-S-a-1-a-2-cdots-a-n-，問這些數字可以-XOR-出的最大的數字"><a href="#給你一個數字集合-S-a-1-a-2-cdots-a-n-，問這些數字可以-XOR-出的最大的數字" class="headerlink" title="給你一個數字集合 $S = {a_1,a_2,\cdots,a_n}$，問這些數字可以 XOR 出的最大的數字"></a>給你一個數字集合 $S = {a_1,a_2,\cdots,a_n}$，問這些數字可以 XOR 出的最大的數字</h3><p>這個有個很簡單的寫法，不論是第一種還是第二種 xor basis 都可以用這個方式計算</p>
+<h2 id="所以-xor-basis-能幹嘛">所以 XOR Basis 能幹嘛?</h2>
+<p>以下是一些我們常會見到的線性基可以使用的地方</p>
+<h3 id="給你一個數字集合-s-a_1a_2cdotsa_n問這些數字能不能夠-xor-出-x">給你一個數字集合 <span class="math inline">\(S = \{a_1,a_2,\cdots,a_n\}\)</span>，問這些數字能不能夠 XOR 出 <span class="math inline">\(x\)</span></h3>
+<p>找到 <span class="math inline">\(S\)</span> 的 XOR Basis 之後，再去檢查 <span class="math inline">\(x\)</span> 是否能被基底線性組合而成即可。</p>
+<h3 id="給你一個數字集合-s-a_1a_2cdotsa_n問這些數字可以-xor-出多少數字">給你一個數字集合 <span class="math inline">\(S = \{a_1,a_2,\cdots,a_n\}\)</span>，問這些數字可以 XOR 出多少數字</h3>
+<p>既然我們想要知道能夠 XOR 出多少數字，就是問 <span class="math inline">\(span(S)\)</span> 的大小，因此我們只要找到 <span class="math inline">\(S\)</span> 的 XOR Basis <span class="math inline">\(V = \{x_1,x_2,\cdots,x_k\}\)</span>，我們知道這些數字可以組成 <span class="math inline">\(u = c_1x_1+c_2x_2+\cdots+c_kx_k\)</span>，而 <span class="math inline">\(c_i \in \{0,1\}\)</span>，所以這個數字集合能夠 xor 出的數字數量即為 <span class="math inline">\(2^k\)</span>。</p>
+<h3 id="給你一個數字集合-s-a_1a_2cdotsa_n問這些數字可以-xor-出的第-k-大的數字">給你一個數字集合 <span class="math inline">\(S = \{a_1,a_2,\cdots,a_n\}\)</span>，問這些數字可以 XOR 出的第 <span class="math inline">\(k\)</span> 大的數字</h3>
+<p>我們找到 XOR Basis 之後，再去枚舉 bit 就可以找到可以 span 出的第 <span class="math inline">\(k\)</span> 大的數字了</p>
+<h3 id="給你一個數字集合-s-a_1a_2cdotsa_n問這些數字可以-xor-出的最大的數字">給你一個數字集合 <span class="math inline">\(S = \{a_1,a_2,\cdots,a_n\}\)</span>，問這些數字可以 XOR 出的最大的數字</h3>
+<p>這個有個很簡單的寫法，不論是第一種還是第二種 xor basis 都可以用這個方式計算</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//第一種的找法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_mx</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = LOGN; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans,ans^basis[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二種的找法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_mx</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v : basis)&#123;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans,ans^v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>接著，讓我們正式來看看一些例題吧</p>
-<h2 id="例題"><a href="#例題" class="headerlink" title="例題"></a>例題</h2><h3 id="CSAcademy-XOR-Closure"><a href="#CSAcademy-XOR-Closure" class="headerlink" title="CSAcademy - XOR Closure"></a>CSAcademy - XOR Closure</h3><p><a href="https://csacademy.com/contest/archive/task/xor-closure/">題目連結</a></p>
+<h2 id="例題">例題</h2>
+<h3 id="csacademy---xor-closure">CSAcademy - XOR Closure</h3>
+<p><a href="https://csacademy.com/contest/archive/task/xor-closure/">題目連結</a></p>
 <blockquote>
-<p>你有一個 $n$ 個數字的集合 $S$，你最少要加入幾個數字，才能使得對於任意兩個 $S$ 中的元素 $x,y$，$x \oplus y$ 也在集合 $S$ 當中</p>
+<p>你有一個 <span class="math inline">\(n\)</span> 個數字的集合 <span class="math inline">\(S\)</span>，你最少要加入幾個數字，才能使得對於任意兩個 <span class="math inline">\(S\)</span> 中的元素 <span class="math inline">\(x,y\)</span>，<span class="math inline">\(x \oplus y\)</span> 也在集合 <span class="math inline">\(S\)</span> 當中</p>
 </blockquote>
-<p>因為所有元素的線性組合都要在集合 $S$ 當中，我們只要找到 $span(S)$ 的大小減去 $n$ 即為答案，因此我們只要對 $S$ 找到 XOR Basis，答案即為 $2^{\text{size of basis}}-n$</p>
+<p>因為所有元素的線性組合都要在集合 <span class="math inline">\(S\)</span> 當中，我們只要找到 <span class="math inline">\(span(S)\)</span> 的大小減去 <span class="math inline">\(n\)</span> 即為答案，因此我們只要對 <span class="math inline">\(S\)</span> 找到 XOR Basis，答案即為 <span class="math inline">\(2^{\text{size of basis}}-n\)</span></p>
 <p>程式碼</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fastio</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; basis;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> y : basis) </span><br><span class="line">            x = <span class="built_in">min</span>(x, x^y);</span><br><span class="line">        <span class="keyword">if</span>(x) basis.<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; (<span class="number">1LL</span>&lt;&lt;basis.<span class="built_in">size</span>())-n &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Codeforces-895C-Square-Subsets"><a href="#Codeforces-895C-Square-Subsets" class="headerlink" title="Codeforces 895C - Square Subsets"></a>Codeforces 895C - Square Subsets</h3><p><a href="https://codeforces.com/contest/895/problem/C">題目連結</a></p>
+<h3 id="codeforces-895c---square-subsets">Codeforces 895C - Square Subsets</h3>
+<p><a href="https://codeforces.com/contest/895/problem/C">題目連結</a></p>
 <blockquote>
-<p>你有 $n$ $(n \le 10^5)$ 個數字 $a_1,\cdots,a_n$ ($a_i \le 70$)，你想要知道這些數字有幾個非空子集的乘積是一個完全平方數</p>
+<p>你有 <span class="math inline">\(n\)</span> <span class="math inline">\((n \le 10^5)\)</span> 個數字 <span class="math inline">\(a_1,\cdots,a_n\)</span> (<span class="math inline">\(a_i \le 70\)</span>)，你想要知道這些數字有幾個非空子集的乘積是一個完全平方數</p>
 </blockquote>
-<p>首先，觀察到 $a_i$ 的範圍很小，只有到 $70$，而小於 $70$ 的質數總共只有 $19$ 個，因此我們考慮位元 DP</p>
-<p>設 $dp[i][mask]$ 為考慮所有小於 $i$ 的數字，有幾個子集的乘積的為 $mask$，接著我們就能在 $O(70 \times 2^{19})$ 的時間計算完答案了</p>
+<p>首先，觀察到 <span class="math inline">\(a_i\)</span> 的範圍很小，只有到 <span class="math inline">\(70\)</span>，而小於 <span class="math inline">\(70\)</span> 的質數總共只有 <span class="math inline">\(19\)</span> 個，因此我們考慮位元 DP</p>
+<p>設 <span class="math inline">\(dp[i][mask]\)</span> 為考慮所有小於 <span class="math inline">\(i\)</span> 的數字，有幾個子集的乘積的為 <span class="math inline">\(mask\)</span>，接著我們就能在 <span class="math inline">\(O(70 \times 2^{19})\)</span> 的時間計算完答案了</p>
 <p>欸等等，跟 XOR Basis 有什麼關係阿?</p>
-<p>我們可以觀察到，其實題目想要詢問的東西是總共有幾個方式可以從數字集合中 span 出 $0$，因此其實我們只要對題目的數字進行轉換之後，找到 XOR Basis，答案就會是 $2^{n-\text{size of basis}}-1$，我們就能在 $O(n \times 19)$ 的時間找到答案了，比位元 DP 還快。</p>
-<p>而且就算 $a_i$ 的值域變得更大，我們也能使用 XOR Basis 進行計算</p>
+<p>我們可以觀察到，其實題目想要詢問的東西是總共有幾個方式可以從數字集合中 span 出 <span class="math inline">\(0\)</span>，因此其實我們只要對題目的數字進行轉換之後，找到 XOR Basis，答案就會是 <span class="math inline">\(2^{n-\text{size of basis}}-1\)</span>，我們就能在 <span class="math inline">\(O(n \times 19)\)</span> 的時間找到答案了，比位元 DP 還快。</p>
+<p>而且就算 <span class="math inline">\(a_i\)</span> 的值域變得更大，我們也能使用 XOR Basis 進行計算</p>
 <p><a href="https://codeforces.com/contest/895/submission/151330932">程式碼</a></p>
-<h3 id="Codeforces-959F-Mahmoud-and-Ehab-and-yet-another-xor-task"><a href="#Codeforces-959F-Mahmoud-and-Ehab-and-yet-another-xor-task" class="headerlink" title="Codeforces 959F - Mahmoud and Ehab and yet another xor task"></a>Codeforces 959F - Mahmoud and Ehab and yet another xor task</h3><p><a href="https://codeforces.com/contest/959/problem/F">題目連結</a></p>
+<h3 id="codeforces-959f---mahmoud-and-ehab-and-yet-another-xor-task">Codeforces 959F - Mahmoud and Ehab and yet another xor task</h3>
+<p><a href="https://codeforces.com/contest/959/problem/F">題目連結</a></p>
 <blockquote>
-<p>你有一個 $n$ 個數字的陣列 $a_1,a_2,\cdots,a_n$，接著有 $q$ 次詢問，每次詢問前 $l$ 個數字有幾種方法可以 xor 湊出 $x$</p>
+<p>你有一個 <span class="math inline">\(n\)</span> 個數字的陣列 <span class="math inline">\(a_1,a_2,\cdots,a_n\)</span>，接著有 <span class="math inline">\(q\)</span> 次詢問，每次詢問前 <span class="math inline">\(l\)</span> 個數字有幾種方法可以 xor 湊出 <span class="math inline">\(x\)</span></p>
 </blockquote>
-<p>首先，我們可以很直接地想到，既然我們想要知道有幾種方法可以湊出 $x$，那麼一定與前 $i$ 個數字的 span 有關</p>
-<p>我們可以想到，如果我們先將輸入依照 $l$ 排序好，接著我們只要照順序將數字加進集合中，找到集合的 XOR Basis</p>
-<p>如果我們的基底不能夠線性組合出 $x$，則答案為 $0$，否則我們有 $2^{\text{l-size of basis}}$ 種湊出 $x$ 的方式</p>
-<h3 id="CSAcademy-XOR-Cycle"><a href="#CSAcademy-XOR-Cycle" class="headerlink" title="CSAcademy - XOR Cycle"></a>CSAcademy - XOR Cycle</h3><blockquote>
-<p>給你一張 $n$ 個點 $m$ 條邊的連通圖，問封閉迴路的邊權 XOR 出的最大值為多少?</p>
+<p>首先，我們可以很直接地想到，既然我們想要知道有幾種方法可以湊出 <span class="math inline">\(x\)</span>，那麼一定與前 <span class="math inline">\(i\)</span> 個數字的 span 有關</p>
+<p>我們可以想到，如果我們先將輸入依照 <span class="math inline">\(l\)</span> 排序好，接著我們只要照順序將數字加進集合中，找到集合的 XOR Basis</p>
+<p>如果我們的基底不能夠線性組合出 <span class="math inline">\(x\)</span>，則答案為 <span class="math inline">\(0\)</span>，否則我們有 <span class="math inline">\(2^{\text{l-size of basis}}\)</span> 種湊出 <span class="math inline">\(x\)</span> 的方式</p>
+<h3 id="csacademy---xor-cycle">CSAcademy - XOR Cycle</h3>
+<blockquote>
+<p>給你一張 <span class="math inline">\(n\)</span> 個點 <span class="math inline">\(m\)</span> 條邊的連通圖，問封閉迴路的邊權 XOR 出的最大值為多少?</p>
 </blockquote>
 <p>在寫這題以前，推薦可以先去寫<a href="https://cses.fi/problemset/task/2078">這題</a></p>
 <p>首先，我們藉由 <a href="https://en.wikipedia.org/wiki/Cycle_basis">Cycle Basis</a>，我們可以知道任何封閉迴路皆可以由簡單環所組成，因此我們只要對所有簡單環 XOR 出來的答案找到 XOR Basis，接著再找到這個 XOR Basis 可以 span 出的最大數字即為答案。</p>
-<p>程式碼<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line">vector&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; adj[N];</span><br><span class="line"><span class="keyword">int</span> dsu[N], dep[N], vis[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dsu[u]==u ? u : dsu[u] = <span class="built_in">find</span>(dsu[u]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">unite</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    u = <span class="built_in">find</span>(u), v = <span class="built_in">find</span>(v);</span><br><span class="line">    <span class="keyword">if</span>(u == v) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    dsu[u] = v;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [v,w] : adj[u])&#123;</span><br><span class="line">        <span class="keyword">if</span>(v == p) <span class="keyword">continue</span>;</span><br><span class="line">        dep[v] = dep[u]^w;</span><br><span class="line">        <span class="built_in">dfs</span>(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fastio</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    vector&lt;pair&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;,<span class="keyword">int</span>&gt;&gt; edges;</span><br><span class="line">    <span class="built_in">iota</span>(dsu,dsu+N,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u,v,w;</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">unite</span>(u,v)) adj[u].<span class="built_in">push_back</span>(&#123;v,w&#125;), adj[v].<span class="built_in">push_back</span>(&#123;u,w&#125;);</span><br><span class="line">        <span class="keyword">else</span> edges.<span class="built_in">push_back</span>(&#123;&#123;u,v&#125;,w&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; basis;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [p,w] : edges)&#123;</span><br><span class="line">        <span class="keyword">auto</span> [u,v] = p;</span><br><span class="line">        <span class="keyword">int</span> x = dep[u] ^ dep[v] ^ w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> y : basis) x = <span class="built_in">min</span>(x, x^y);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(x) basis.<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> x : basis) ans = <span class="built_in">max</span>(ans, ans^x);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="ABC223H-Xor-Query"><a href="#ABC223H-Xor-Query" class="headerlink" title="ABC223H - Xor Query"></a>ABC223H - Xor Query</h3><p><a href="https://atcoder.jp/contests/abc223/tasks/abc223_h">題目連結</a></p>
+<p>程式碼 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line">vector&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; adj[N];</span><br><span class="line"><span class="keyword">int</span> dsu[N], dep[N], vis[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dsu[u]==u ? u : dsu[u] = <span class="built_in">find</span>(dsu[u]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">unite</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    u = <span class="built_in">find</span>(u), v = <span class="built_in">find</span>(v);</span><br><span class="line">    <span class="keyword">if</span>(u == v) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    dsu[u] = v;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [v,w] : adj[u])&#123;</span><br><span class="line">        <span class="keyword">if</span>(v == p) <span class="keyword">continue</span>;</span><br><span class="line">        dep[v] = dep[u]^w;</span><br><span class="line">        <span class="built_in">dfs</span>(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fastio</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    vector&lt;pair&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;,<span class="keyword">int</span>&gt;&gt; edges;</span><br><span class="line">    <span class="built_in">iota</span>(dsu,dsu+N,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u,v,w;</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">unite</span>(u,v)) adj[u].<span class="built_in">push_back</span>(&#123;v,w&#125;), adj[v].<span class="built_in">push_back</span>(&#123;u,w&#125;);</span><br><span class="line">        <span class="keyword">else</span> edges.<span class="built_in">push_back</span>(&#123;&#123;u,v&#125;,w&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; basis;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> [p,w] : edges)&#123;</span><br><span class="line">        <span class="keyword">auto</span> [u,v] = p;</span><br><span class="line">        <span class="keyword">int</span> x = dep[u] ^ dep[v] ^ w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> y : basis) x = <span class="built_in">min</span>(x, x^y);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(x) basis.<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> x : basis) ans = <span class="built_in">max</span>(ans, ans^x);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="abc223h---xor-query">ABC223H - Xor Query</h3>
+<p><a href="https://atcoder.jp/contests/abc223/tasks/abc223_h">題目連結</a></p>
 <blockquote>
-<p>給你一個 $n$ 個數字的陣列，接著有 $q$ 個詢問，每次詢問區間 $[l,r]$ 是否能經由 xor 湊出 $x$</p>
+<p>給你一個 <span class="math inline">\(n\)</span> 個數字的陣列，接著有 <span class="math inline">\(q\)</span> 個詢問，每次詢問區間 <span class="math inline">\([l,r]\)</span> 是否能經由 xor 湊出 <span class="math inline">\(x\)</span></p>
 </blockquote>
-<p>這個的想法就是很直接的維護 $[l,r]$ 的線性基，我們可以使用線段樹等資料結構來維護區間數字 xor basis，每次再去檢查這個 basis 是否能線性組合出 $x$ 即可。</p>
-<h2 id="更多練習題"><a href="#更多練習題" class="headerlink" title="更多練習題"></a>更多練習題</h2><h3 id="AGC045A-Xor-Battle"><a href="#AGC045A-Xor-Battle" class="headerlink" title="AGC045A - Xor Battle"></a>AGC045A - Xor Battle</h3><p><a href="https://atcoder.jp/contests/agc045/tasks/agc045_a">題目連結</a></p>
-<h3 id="Codeforces-1427E-Xum"><a href="#Codeforces-1427E-Xum" class="headerlink" title="Codeforces 1427E - Xum"></a>Codeforces 1427E - Xum</h3><p><a href="https://codeforces.com/problemset/problem/1427/E">題目連結</a></p>
-<h3 id="Codeforces-1336E1-Chiori-and-Doll-Picking-easy-version"><a href="#Codeforces-1336E1-Chiori-and-Doll-Picking-easy-version" class="headerlink" title="Codeforces 1336E1 - Chiori and Doll Picking (easy version)"></a>Codeforces 1336E1 - Chiori and Doll Picking (easy version)</h3><p><a href="https://codeforces.com/contest/1336/problem/E1">題目連結</a></p>
-<h3 id="更多題目待補"><a href="#更多題目待補" class="headerlink" title="更多題目待補"></a>更多題目待補</h3><h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>沒想到在線性代數中所學到的「向量空間」在競程上也有它的應用呢</p>
+<p>這個的想法就是很直接的維護 <span class="math inline">\([l,r]\)</span> 的線性基，我們可以使用線段樹等資料結構來維護區間數字 xor basis，每次再去檢查這個 basis 是否能線性組合出 <span class="math inline">\(x\)</span> 即可。</p>
+<h2 id="更多練習題">更多練習題</h2>
+<h3 id="agc045a---xor-battle">AGC045A - Xor Battle</h3>
+<p><a href="https://atcoder.jp/contests/agc045/tasks/agc045_a">題目連結</a></p>
+<h3 id="codeforces-1427e---xum">Codeforces 1427E - Xum</h3>
+<p><a href="https://codeforces.com/problemset/problem/1427/E">題目連結</a></p>
+<h3 id="codeforces-1336e1---chiori-and-doll-picking-easy-version">Codeforces 1336E1 - Chiori and Doll Picking (easy version)</h3>
+<p><a href="https://codeforces.com/contest/1336/problem/E1">題目連結</a></p>
+<h3 id="更多題目待補">更多題目待補</h3>
+<h2 id="心得">心得</h2>
+<p>沒想到在線性代數中所學到的「向量空間」在競程上也有它的應用呢</p>
 <p>而 XOR 真的是一個很神奇的運算，能夠放到 trie 上面處理，也能藉由向量空間的基底去計算答案</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://codeforces.com/blog/entry/68953">https://codeforces.com/blog/entry/68953</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/68575986">https://zhuanlan.zhihu.com/p/68575986</a></p>
+<h2 id="參考資料">參考資料</h2>
+<p>https://codeforces.com/blog/entry/68953</p>
+<p>https://zhuanlan.zhihu.com/p/68575986</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <tags>
         <tag>Math</tag>
         <tag>教學</tag>
         <tag>線性代數</tag>
         <tag>XOR Basis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高中競程回顧文</title>
+    <url>/2022/04/03/high-school-cp-story/</url>
+    <content><![CDATA[<p>在不知不覺間，高中的競程生涯也已經結束了</p>
+<p>儘管比賽的結果幾乎都沒有達到我的預期 (；′⌒`)</p>
+<p>不過這段路上的經歷確實帶給我許多回憶</p>
+<p>這篇文章應該會從踏入競程開始講到現在，順便回顧在這段兩年的旅途所學到的一切</p>
+<p>希望有些經驗也能幫助到未來的選手們</p>
+<p>我大概將我打競程的經驗分成六個階段，大家也可以分段慢慢讀</p>
+<span id="more"></span>
+<h2 id="step-0-打競程前">Step 0: 打競程前</h2>
+<p>在我開始打競程前，從小到大玩了很多遊戲，我就對於寫程式這件事情感到憧憬。對當初非常喜歡數學的我來說，很早就讓我定下未來的夢想了</p>
+<p>在小六的時候，當時因為不知道要幹嘛，就打算來學學看寫程式。當時因為我最喜歡玩的遊戲就是 Minecraft，然後剛好 Minecraft 是用 Java 寫的，我就這樣決定要學習 Java.</p>
+<p>對於很多程式新手來說，學習程式語言的語法是一件滿困難的事的，當時用 <a href="https://www.sololearn.com/">Sololearn</a> 學 Java 的語法的時候，我發現自己根本完全看不懂在幹嘛，像是 <code>public static void main(String[] args)</code> 等等的東西，我完全無法理解 (T_T)</p>
+<p>因此誤打誤撞的先去碰了名字十分相似的 JavaScript，雖然 JavaScript 確實很多奇怪的東西，不過對於當初的我來說還算滿簡單的，學完之後再回去看 Java，很多東西就能理解了。</p>
+<p>後來上了國中之後，發現班上有個同學也會寫程式。一起討論相關的東西的時候也讓我覺得非常有趣，也讓我想要繼續學習寫程式。</p>
+<p>不過在當時，心裡的想法一直是我想要做出什麼東西，不過像我這樣沒有創意的人真的不知道要做些什麼，當時就有一段時間比較沒有碰相關的東西。</p>
+<p>國中時，稍微碰了一點 Machine Learning 相關的知識，然後都<del>手刻神經網絡</del>，但當初對於程式解題其實滿排斥的，畢竟我不了解也不知道為什麼要解題，所以以前都沒有真的去碰演算法相關的東西</p>
+<h2 id="step-1-踏入競程與新手時期-202006">Step 1: 踏入競程與新手時期 (~2020/06)</h2>
+<p>有滿多東西其實也已經寫在 <a href="https://sam571128.codes/2021/01/01/Hello-2021/#more">2021 我來了</a> 這篇文中了</p>
+<p>總之會踏入競程完完全全是意外呢</p>
+<p>在高一的時候，當時在班上布告欄上看到「資訊奧林匹亞海選」的報名，我就想說去玩玩看好了，然後就報名了。</p>
+<p>當時對於程式解題和演算法完全沒有概念的我，只會寫 Java 就去考了資奧海選</p>
+<h3 id="資奧海選">資奧海選</h3>
+<p>那場海選的題目就是 <a href="https://apcs.csie.ntnu.edu.tw/wp-content/uploads/2018/12/1061028APCSImplementation.pdf">2017/10/28 的那場 APCS</a> 的前三題。</p>
+<p>當時的我因為會語法，就寫出了前兩題 邏輯運算子 和 交錯字串</p>
+<p>然後第三題是找樹上深度總和，不過當時的我連圖論是什麼，樹是什麼都不知道，用了怪方法拿到了部分分的樣子</p>
+<p>總之就有資格能夠去考資奧初選了!</p>
+<h3 id="第一次打資奧初選">第一次打資奧初選</h3>
+<p>其實當初只是報好玩的，畢竟我對於資奧在考什麼完全不懂，也沒學過。</p>
+<p>高一的寒假，當時因為疫情導致寒假變長，不知道要做什麼的我就碰了 Leetcode 和 CodeSignal 之類的網站，然後就寫了一些題目，不過我還是不知道什麼是 DP、什麼是圖，不過算是會用 <code>HashSet</code> 和 <code>HashMap</code> 之類的東西了。</p>
+<p>程式解題對我來說完全就是個新東西，不過意外的發現還滿有趣的。</p>
+<p>然後就直接去考了初選。</p>
+<p>那年的初選，我只寫掉了 pA 送分題，因為對於數論還算有點了解，好像有意外的喇到 pC 之類的分數</p>
+<p>不過算是比賽的初體驗吧</p>
+<p>雖然什麼都不會，不過我覺得滿好玩的</p>
+<h3 id="開始寫-oj-的題目">開始寫 OJ 的題目</h3>
+<p>當時查了一下，發現 CodeChef 和 Codeforces 好像都是滿有名的比賽網站</p>
+<p>第一次碰到 CF 的當天，我也告訴自己我該來學一下 C++</p>
+<p>不過完全沒頭緒要怎麼開始寫，可是我讀到了<a href="https://codeforces.com/blog/entry/16599">這篇文</a> (沒想到當初就讀了夢月的文章</p>
+<p>提到說可以從難度最簡單的題目開始刷</p>
+<p>然後那一天我就花了三到四個小時，把 CF 以難度排序，最簡單的 50 題都用 C++ 刷掉了，也學到了很多 C++ 的語法或 STL</p>
+<h3 id="開始學演算法">開始學演算法</h3>
+<p>在網路上稍微查了一下之後，決定要買一些書來讓自己對於演算法的了解多一點</p>
+<p>我就買了 Algorithm Design 和 Introduction to Algorithms 的兩本書來讀</p>
+<p>不過當時因為有稍微在 Leetcode 之類的地方寫過題目</p>
+<p>大概知道什麼是 DP、Divide and Conquer、Greedy 之類的東西</p>
+<p>所以我就從這些東西開始讀</p>
+<p>從連時間複雜度是什麼都不瞭解的我，花了幾個禮拜，把一堆東西都學起來了</p>
+<p>然後因為 Algorithm Design 那本書分治的部分就有塞 FFT，我當時就直接學了 (都被說毒 (｡•́︿•̀｡)</p>
+<p>CF 的部分也是偶爾會打一下，不過因為時間太晚，當時幾乎都打一下就去睡覺了，最低甚至還摔過灰，很慘 QQ</p>
+<p>不過當時的我完全是一個人在學，沒認識任何人，也不知道我學習的方向到底是不是正確的，但我十分享受學習演算法的過程，每天就學一個演算法，然後解兩三題相關的題目，每次學會一個新東西就會覺得很開心 o(≧▽≦)o</p>
+<p>那兩本書的部分後來聽說對於打比賽比較沒那麼大的幫助，就比較少繼續讀了</p>
+<h2 id="step-2-開拓視野-202006202011">Step 2: 開拓視野 (2020/06~2020/11)</h2>
+<p>在這個階段對於我來說最重要的就是打了比賽，也第一次交到了朋友們</p>
+<h3 id="加入-code-community">加入 Code Community</h3>
+<p>當時影響我最大的大概就是加入了 Code Community 這個 discord 群了吧</p>
+<p>雖然我一個人都不認識，但是慢慢的開始每天上去看跟大家聊天、討論題目</p>
+<p>漸漸的，讓我學到了很多不同的東西</p>
+<h3 id="第一次考-apcs">第一次考 APCS</h3>
+<p>在開始打競程之後，一直都沒有一個正式的比賽</p>
+<p>這次的 APCS 算是對於我學習的兩到三個月的一次檢測吧</p>
+<p>當時的我目標當然是放在 5/5</p>
+<p><a href="https://home.gamer.com.tw/creationDetail.php?sn=4838151">當時的心得</a></p>
+<p>寫完之後其實對自己還滿有信心的呢 ヽ(*・ω・)ﾉ</p>
+<p>然後結果出來之後，5/4 ｡･ﾟﾟ<em>(&gt;д&lt;)</em>ﾟﾟ･｡</p>
+<p>不過後來才知道對於第一次考的人來說也算是不錯了</p>
+<h3 id="寫了自己的-discord-bot">寫了自己的 Discord Bot</h3>
+<p>在七月的時候，看到 Codeforces 的 Lockout Bot，讓我也要寫一隻可以做到這件事的 Bot</p>
+<p>當時花了一整天研究怎麼用 codeforces 的 API 和資料庫，很快地就寫出了 Bot</p>
+<p><img src="https://i.imgur.com/BbPM8LQ.png" /></p>
+<p>不過因為當時都沒人要對決，然後看到<del>雞塊都會自己打自己</del></p>
+<p>我就決定要來加入個人 training 的功能</p>
+<p><img src="https://i.imgur.com/QM9Z8P3.png" /></p>
+<p>有一段時間都一直在用這隻 bot 刷 cf 1600* 的題目</p>
+<p>而這樣的訓練也讓我當時的 rating 從綠提升到了接近藍牌</p>
+<h3 id="ioncamp">2020 IONCamp</h3>
+<p>在那年的暑假，對我來說最重要的活動就是參加了 IONCamp 吧</p>
+<p>第一次去清大，然後拿到了一本厚厚的講義</p>
+<p>當時的我一個人也都不認識，然後就自己認真地讀講義和聽課</p>
+<p>因為當時聽 Wiwi 說可以前一天晚上自己讀隔天基礎的內容，然後每堂就都去聽進階</p>
+<p>我就每天都把隔天基礎的題目和內容讀完之後才去睡覺</p>
+<p>當時真的學到非常多東西，DP 的基礎也是在那裏打好的</p>
+<p>對於線段樹、BIT、Treap等資結，也是到那裡才真正理解原理</p>
+<p>一些圖論的內容像 DFS Tree, SCC, BCC, HLD 等等的，靠著個人賽的題目和題解，也在當時有了概念</p>
+<p>每天晚上的個人賽也都很好玩，<del>題目也都很油</del>，不過也讓我學到很多</p>
+<p><img src="https://i.imgur.com/KVZICWJ.png" /></p>
+<p>有一天晚上，我在補個人賽 邊BCC 的題目的時候，其中一個室友 (Foxyy) 就跑過來跟我搭話，然後我們就一起補了那題，也讓我更加了解了 邊BCC 的概念，也是在那時候，我第一次交到了競程圈的朋友呢 (´ ∀ ` *)</p>
+<p>當時的個人賽也讓我對自己的實力滿有自信的</p>
+<p>團體賽跟 shaun 同隊，看著他拿著紙決定要拿那些部分分真的是讓我學到不少</p>
+<h3 id="校內賽">校內賽</h3>
+<p>因為知道要打北市賽的話要先打校內賽</p>
+<p>所以就去報名了學校的校內賽</p>
+<p>不過我們的校內賽題目都是資訊老師們從 zj 上抓的題目</p>
+<p>而且每題還只有兩個測資 =_=</p>
+<p>以我們這種沒人打競程的學校來說 (不過現在不是了ㄛ!</p>
+<p>隨便就拿下第一了，然後就能去打北市賽了 (^ω^)</p>
+<p>希望之後能幫忙出吧，不然感覺學校的校內賽沒什麼鑑別度 QQ</p>
+<h3 id="第二次考-apcs">第二次考 APCS</h3>
+<p>這次的心得也放在 <a href="https://sam571128.codes/2020/10/17/APCS-10-17/#more">2020 APCS 十月場</a></p>
+<p>總而言之，就是耍毒砸線段樹和 BIT 拿到實作 5 了</p>
+<p>不過這次的觀念反而只拿了 4 (இдஇ)</p>
+<p>但這次的經驗又讓我對北市賽更有自信和信心了</p>
+<h3 id="北市賽前">北市賽前</h3>
+<p>在這年的北市賽前幾天，我一天 vir 一年的考古題</p>
+<p>大概知道北市賽的題目常常會有一些滿經典的簡單題目</p>
+<p>然後可能會放一些比較難的防破台題</p>
+<p>不過看了往年的結果，感覺穩穩打是有機會三等的 QQ</p>
+<p>在北市賽前，我又是各種學了一堆東西，當時在 blog 也記錄了很多</p>
+<p>寫完 CF EDU 線段樹</p>
+<p>學了凸包、分塊、莫隊、斜率優化.....</p>
+<p>一堆都是在這時候學的</p>
+<p>對自己的實力還滿有自信的 然後就試著去考了</p>
+<h3 id="北市賽">2020 北市賽</h3>
+<p>當時還滿緊張的呢，畢竟是開始學競程之後第一次的大比賽</p>
+<p>之前也都只有打過 APCS 或者 IONC 的個人賽</p>
+<p>那年的題目可以去看看 <a href="https://www.wiwiho.me/2020/11/15/thspc2020/">Wiwi 的文</a> 或 <a href="https://hackmd.io/@penguin71630/2020TaipeiProgrammingContest">Gino 當時的心得文</a></p>
+<p>總之，當時的比賽結果滿糟糕的</p>
+<p>以下描述是我大略記得的過程</p>
+<h4 id="賽中">賽中</h4>
+<p>一開始寫掉 pB 水題之後</p>
+<p>就用 DFS 去拿 pA 可是只能拿到 65 分</p>
+<p>然後我就用去寫 pC，一開始範圍給 $n <sup>6</sup></p>
+<p>花十分鐘想到可以用了二項式定理推到可以在 <span class="math inline">\(O(n \log n)\)</span> 做完的一般式之後</p>
+<p>發現題目改成 <span class="math inline">\(n \le 10^9\)</span>，又花了快一小時才發現可以再用一次二項式定理推到 <span class="math inline">\(O(\log n)\)</span></p>
+<p>接著剩下的時間試圖去撈分，可是挑到的題目卻是防破台題，然後第一次的比賽就結束了</p>
+<h4 id="賽後">賽後</h4>
+<p>三個小時的比賽結束之後，出場點開記分板，發現自己 Rk. 27 佳作</p>
+<p>覺得很難過，畢竟賽前目標一直是放在前 20 名的 (´;ω;`)</p>
+<p>不過過了幾天再想一想就覺得其實對於一個剛學沒多久的我來說，應該也算是不錯的經驗了</p>
+<h3 id="npsc-初賽">2020 NPSC 初賽</h3>
+<p>接著在 2020 年最後的比賽就是 NPSC 了，當時告訴自己雖然北市賽沒打好，不過 NPSC 我一定要帶學弟們一起去決賽玩</p>
+<p>不過整場比賽真的很蠢</p>
+<p>我在一題可以使用 <code>pq</code> 輕鬆解決的題目砸了動態開點線段樹</p>
+<p>Debug 了快四個小時才發現是錯在嚴格比對 (╥﹏╥)</p>
+<p>那也是我第一次知道有嚴格比對這種東西</p>
+<p>然後就沒有進決賽了</p>
+<h2 id="step-3-瘋狂刷題-202012202102">Step 3: 瘋狂刷題 (2020/12~2021/02)</h2>
+<p>在這個階段，算是我開始打競程之後刷題最瘋的一個階段了</p>
+<h3 id="每天戳題">每天戳題</h3>
+<p>在北市賽和 NPSC 打差之後，我就決定要來好好打 CF 和練題了!</p>
+<p>當時的我決定要每天刷 cf 1800<em>, 1900</em> 的題目，這樣應該就能脫離藍牌了</p>
+<p>就每天用 bot 用 training 難度設 1800<em>, 1900</em> 開始寫</p>
+<p>不過過了幾天之後，Foxyy 加入了 Code Community，然後開始戳 2000* ~ 2500* 的題目，讓我覺得不能夠輸給他，就也開始戳那個難度區間的題目</p>
+<p>戳到的題目我們也都會一起討論，在當時讓我學到了很多很多東西</p>
+<p>Flow 之類的東西也是這時候自己學起來的</p>
+<h3 id="資訊之芽入芽考">資訊之芽入芽考</h3>
+<p>這年的入芽考大概是在北市賽之後，第一次打比賽了 <del>沒 不是比賽 是考試</del></p>
+<p>入芽考其實滿好玩的，題目不太需要什麼演算法</p>
+<p>不過最後好像只有 300 多分，整個被打爆 ｡ﾟ(ﾟ´ω`ﾟ)ﾟ｡</p>
+<p>當時心得放在<a href="https://sam571128.codes/2021/01/24/Winter-Day-3/#more">這裡</a></p>
+<p>這次也是我第一次見到 Benson 和 __Shioko，以前都是在 discord 上面聊過天，然後發現我都被他們打爆</p>
+<p>總之，後來就能去上資訊之芽的課了</p>
+<h3 id="ioicamp">2021 IOICamp</h3>
+<p>當年的心得文也是放在 <a href="https://sam571128.codes/2021/02/13/Purple-Here-I-am/#more">寒假檢討以及成為紫牌了!</a></p>
+<p>比起前一年參加 IONCamp 時什麼都不會的我，我已經學會了很多東西，不過這次參加 IOICamp 依舊被打爆</p>
+<p>拿到那本比 IONC 講義更厚的書，然後翻開還一堆沒學過的酷東西</p>
+<p>這裡列出一些當時學會的新東西</p>
+<p><strong>圖論:</strong> 虛樹、二分圖最大匹配</p>
+<p><strong>數學:</strong> 卡特蘭數、群論、燒邊定理(後來隊名的由來)</p>
+<p><strong>資結:</strong> 時間線段樹、Pattern、Segment Tree Beats</p>
+<p><strong>字串:</strong> Manacher、AC Automaton</p>
+<p><strong>DP:</strong> 四邊形優化(其實當時沒聽懂</p>
+<p><strong>Flow:</strong> 各種建模方式 (<del>導致我那一陣子看到 DP 都想砸 Flow</del></p>
+<p><strong>賽局:</strong> SG-Value</p>
+<p>然後 IOIC 的比賽也比 IONC 多元很多</p>
+<p>第一天的趣味賽，第二四天的個人賽，第三五天的團體賽</p>
+<p>其中一場個人賽靠著假解拿到了前十名，不過剩下幾場就打得不是很好</p>
+<p>不過團體賽真的完全被帶飛 (☍﹏⁰。)</p>
+<p>讓我體會到了自己到底有多弱</p>
+<p>不過在那時，認識了 Gino (penguin71630)，同樣都是北市賽 Rk.27 的朋友</p>
+<p>就讓我覺得下次比賽絕對不要輸給他!</p>
+<h3 id="aa-競程-toi-模擬賽">AA 競程 TOI 模擬賽</h3>
+<p>當時看到了 dreamoon 要辦 TOI 模擬賽，就讓我覺得我應該會需要在比賽前先知道自己的實力和狀態，就決定去參加了</p>
+<p>我參加的只有下半期的比賽</p>
+<p>不過第一次打 TOI 模擬賽就整個被打爆，一題都 AC 不了 (☍﹏⁰)</p>
+<p>然後接下來的兩場也是</p>
+<p>也是因為這樣，在初選前幾天，dreamoon 跑來私訊我，讓我理解到了我的問題可能是在比賽的策略和心態。</p>
+<p style="color:red">
+<b>我賽中會一直想要寫滿分解，而無視了可以拿部分分的選項</b>
+</p>
+<p style="color:red">
+<b>當自己執著於滿分解時，整個心態也跟著崩潰</b>
+</p>
+<p>這兩點算是點出了我很大的問題</p>
+<p>同時，對於練習的策略也發現了問題</p>
+<p style="color:red">
+<b>總是盲目的戳題，並沒有好好針對一個部分去練習</b>
+</p>
+<p>不過最大的體悟應該是</p>
+<p style="color:red">
+<b>儘管我刷了那麼多難題，賽中的心態會使我無法在比賽中發揮實力</b>
+</p>
+<p>了解到了問題之後，不過距離初選卻也只剩短短的幾天</p>
+<p>我也沒辦法好好練習比賽的策略和調整心態</p>
+<h3 id="virtual-oi-比賽">Virtual OI 比賽</h3>
+<p>因為自己其實不太熟悉 OI 賽制應該用什麼樣的策略去打</p>
+<p>聽別人說可以 Virtual 一些 OI 賽制的比賽</p>
+<p>當時就上 oj.uz 寫了一些 COCI 的題目</p>
+<p>不過當時對於喇分卻也還不是很熟悉</p>
+<h3 id="學了很多大科技">學了很多大科技</h3>
+<p>寒假某天晚上睡不著，翻開 IOIC 的講義之後，就把 「FFT, NTT, 生成函數」的部分都讀完了</p>
+<p>後來的幾天也一直去寫 Codeforces 上與這些相關的題目</p>
+<p>在此時，我也完全沒注意到一些對於我來說很大的缺點</p>
+<p style="color:red">
+<b>基礎不熟，卻不停地在學習新的演算法</b>
+</p>
+<p>每次打比賽，或許出現大科技等等的題目，我能夠寫得出來</p>
+<p>不過每次打 CF 的比賽，都會敗在猜不到梗或一些基本的東西</p>
+<h3 id="codeforces-上紫">Codeforces 上紫</h3>
+<p>在當時，每次只有有 Codeforces 的比賽就打</p>
+<p>也總算是在初選前上了紫牌，不過自己的實力還是很不足</p>
+<p>還是持續在藍紫之間徘徊</p>
+<p><strong>有一點也是當時的我有的滿大的問題</strong></p>
+<p style="color:red">
+<b>每次 Codeforces 摔分都會認為是梗題的問題，並沒有好好思考為什麼自己想不到</b>
+</p>
+<h2 id="step-4-體悟-202103202110">Step 4: 體悟 (2021/03~2021/10)</h2>
+<p>在這個階段，再度經歷了比賽燒雞，不過卻也同時讓我了解到了自己的缺點，並努力讓自己改變</p>
+<p>這段期間比較多的反而是團體賽，與個人賽十分不同，而且非常好玩</p>
+<h3 id="toi-初選">2021 TOI 初選</h3>
+<p>這一年的初選是我開始打競程之後第二次打正式比賽了</p>
+<p>不過當時的狀態不是很好</p>
+<p style="color:red">
+<b>心態很糟，而且沒有放鬆</b>
+</p>
+<p>詳細的比賽情況可以去看<a href="https://sam571128.codes/2021/03/16/TOI-Burn-Chicken/#more">去年的這篇文</a></p>
+<p>總之，賽前夢月所提到的很多問題，在這場比賽依然發生了</p>
+<p><span style="color:red"><b>瘋狂學大科技，基礎不熟</b></span>: 將 LIS 看成一般圖匹配，想不到二分搜</p>
+<p><span style="color:red"><b>對於 OI 制的策略不了解，不會調整心態</b></span>: pD 暴力拿不到分、不知道要不要寫 Flow 喇 pE</p>
+<p>這次比賽可能在賽前就已經註定會失敗了，畢竟許多的問題就擺在眼前</p>
+<p>但我卻無法好好的面對這些問題並一一解決</p>
+<h3 id="資訊之芽">資訊之芽</h3>
+<p>在打完初選之後，心情一直無法平復</p>
+<p>不過每個禮拜都能去台大上資訊之芽的課真的很好玩</p>
+<p>第一階段的內容都滿簡單的，因為有著打競賽的經驗，上機作業每次就很快就秒殺了</p>
+<p>不過手寫作業就不一樣了，每次被扣分都讓我體會到<del>自己有多麼不嚴謹</del></p>
+<p>整個資芽的心得也放在<a href="https://sam571128.codes/2021/08/12/Sprout-2021/#more">這篇文</a>了</p>
+<p>有很多技巧和知識也都是從資芽學會的，而且跟 Gino 一起討論題目也很好玩</p>
+<p>滿推薦想要打競程的選手可以來上資訊之芽的 o((&gt;ω&lt; ))o</p>
+<p>不過講師都會強調 <span style="color:blue"><b>資訊之芽算法班不是競賽培訓班</b></span></p>
+<p>在資訊之芽兩次的階段考也讓我稍微對於打比賽稍微抓回了一點感覺</p>
+<p>第一次考了 430/500 的分數 (Rk.2，只輸 PixelCat)</p>
+<p>第二次則是 320/500 的分數 (Rk.?)</p>
+<p>上完課最大的進步應該是</p>
+<p><span style="color:green"><b>對基礎的東西又更加了解與熟悉了</b></span></p>
+<h3 id="ytp-少年圖靈計畫">YTP 少年圖靈計畫</h3>
+<p>第一次打這種團體賽，而我與 Gino 和 Foxyy 組成了 "BurnChicken Lemma" 這支隊伍</p>
+<p>YTP 的比賽其實滿好玩的，<del>除了有可以被假解通過的題目</del></p>
+<p>與個人的比賽最不一樣的一點就是可以三個人一起想題目真的差很多</p>
+<p>賽中一直與 Foxyy 瘋狂精神題目真的超級好玩</p>
+<p>然後一起討論到底要用什麼方式做一個題目真的超級有趣</p>
+<p>賽中一起討論出 Aliens 優化、Z-val、時間線段樹 等等的作法</p>
+<p>不過缺點是有想法卻沒有去寫吧 ಥ_ಥ</p>
+<p>原本打完之後排名是 Rk.8</p>
+<p>不過因為有一題出問題 rejudge 之後變 Rk.17 இ௰இ</p>
+<p>但是 YTP 真的很好玩，也是第一次現實中見到 Colten、Koying、LittleCube 等人</p>
+<p><span style="color:green"><b>以後大學的 ICPC 也會是這樣吧</b></span></p>
+<h3 id="issc-青年程式設計競賽">ISSC 青年程式設計競賽</h3>
+<p>這次則是第一次去台中比賽，還滿有趣的</p>
+<p>在台中也遇到了很多電神，然後一起吃拉麵 ( •̀ ω •́ )✧</p>
+<p>不過 ISSC 的題目品質就不太好說 (˘･_･˘)</p>
+<p>賽中有一些滿神奇的事情</p>
+<p>像是</p>
+<p><span style="color:blue"><b>題目沒給範圍，詢問之後說 <span class="math inline">\(n\)</span> 的範圍是 32-bit integer</b></span></p>
+<p><span style="color:blue"><b>題目範圍寫假的，暴力就會過了</b></span></p>
+<p>賽中和隊友就是不停地討論，題目到底可不可做</p>
+<p>然後一起討論要不要丟暴力解，然後丟上去還會過 (╯‵□′)╯︵┻━┻</p>
+<p>不過團體賽好玩的還是在與隊友討論的過程</p>
+<p><del>如果是個人賽可能會爆氣</del></p>
+<h3 id="這段時間的線上比賽">這段時間的線上比賽</h3>
+<p>這段期間，偶爾也還是會去打打 Codeforces 和 Atcoder 的比賽</p>
+<p>不過 Rating 一直都沒有太大的進展</p>
+<p>最好的一次就是最高 Rating 超過了 2000</p>
+<p>因為發現很多人都認為 Codeforces 的題目對於打 OI 可能沒有那麼有效</p>
+<p>所以就比較少像以前一樣瘋狂刷 Codeforces 的題目了</p>
+<h3 id="學校社團">學校社團</h3>
+<p>由於一直以來，在我們學校都沒有我以外在打競程的人 (或者是我沒遇到</p>
+<p>我和兩個學弟決定要來創社</p>
+<p>第一學期的社團整個就是我來教</p>
+<p>我就一路從最簡單的時間複雜度教起</p>
+<p>然後一路教到樹論(LCA、HLD、重心剖分)等等</p>
+<p>不過我不太會控制難度</p>
+<p>整個社團 20~30 個人大概只有 3 個人跟得上 (；′⌒`)</p>
+<p>不過這些跟得上的學弟們就是未來學校競程的希望了呢 ( •̀ ω •́ )y</p>
+<h2 id="step-5-轉換心情面對比賽-202110202203">Step 5: 轉換心情，面對比賽! (2021/10~2022/03)</h2>
+<h3 id="第二次打校內賽">第二次打校內賽</h3>
+<p>這年的校內賽還滿可惜的 ＞︿＜</p>
+<p>明明社團有那麼多人，報名校內賽的卻只有四個人</p>
+<p>然後整個比賽就是從四個人中選兩個，完全沒什麼刺激的感覺 〒▽〒</p>
+<p>不過這年的校內賽比往年好了一點</p>
+<p>以往都是只從 Zerojudge 抓一些糞題出來</p>
+<p>今年有一些題目是從 TOI 練習賽裡面出出來的</p>
+<p>題目品質算是好了一點，不過同樣還是沒什麼鑑別度可言 (´。＿。｀)</p>
+<p>不過看到在社團中的學弟們慢慢進步，感覺如果繼續是這樣的題目會不太好</p>
+<p>之後看看能不能由我來幫忙出題吧</p>
+<h3 id="cses-刷題計畫">CSES 刷題計畫</h3>
+<p>由於知道自己基礎和經典題目可能刷的不夠多</p>
+<p>就決定要把 CSES 的題目都刷一刷</p>
+<p style="color:purple">
+<b> 跟不知道的人提一下: CSES 裡面從最經典的題目到後面一些技巧都有涵蓋 </b>
+</p>
+<p style="color:purple">
+<b> 非常推薦新手可以從這個網站開始刷起 </b>
+</p>
+<p>當時從 100 題左右一路刷到 270 幾題</p>
+<p>各種技巧都練習了一遍，對於接下來的北市賽還滿有自信的</p>
+<h3 id="北市賽-1">2021 北市賽</h3>
+<p>這場比賽在賽前原本聽說前 11 名都會進全國，而且都是前兩等獎</p>
+<p>不過後來卻又改回前 10 名了 (┬┬﹏┬┬)</p>
+<p><del>反正應該不會那麼雖吧</del></p>
+<p>然後比賽結果出來之後 Rank 11 (′д｀ )</p>
+<p>這場比賽的心得文放在 <a href="https://sam571128.codes/2021/11/30/Taipei-Contest-2021/#more">這篇</a></p>
+<p>這場比賽，我做到了以下三點</p>
+<p><span style="color:green">比賽前一天完全沒寫題目，一直讓自己放鬆</span></p>
+<p><span style="color:green">心態是穩定的</span></p>
+<p><span style="color:green">策略也訂好了</span></p>
+<p><strong>當時準備的策略</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    讀題目();</span><br><span class="line">    整理感覺拿的到的分數</span><br><span class="line">    while(true)&#123;</span><br><span class="line">        if(沒有題目會寫)&#123;</span><br><span class="line">            喇部分分();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            規劃時間();</span><br><span class="line">            先把會寫的題目寫掉();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然後當我一讀完題目，覺得 pA 是可拿滿分的，就先試著解</p>
+<p>不過最後只拿到一點分數</p>
+<p><span style="color:green"><b>此時，我不再重踩初選的錯誤</b></span></p>
+<p><span style="color:green"><b>我寫不出來的題目，別人一定也寫不出來</b></span></p>
+<p>而除了這題，我對於其他題目完全沒有想法</p>
+<p><span style="color:green"><b>我只要不斷地拿我所能拿到的分數就好了!</b></span></p>
+<p>這樣的策略對於這場比賽來說是極為正確的</p>
+<p>雖然一路到比賽結束，我 1 AC 都沒有拿到</p>
+<p>不過心裡告訴自己: <strong>我一定是有機會的</strong></p>
+<p><span style="color:orange"><b>儘管最後結果出來只拿到了 Rank 11，這也是我第一次將一場比賽打好! (≧∇≦)ﾉ</b></span></p>
+<h3 id="休息了一段時間">休息了一段時間</h3>
+<p>在北市賽後，儘管沒進全國，不過我還是休息了一段時間沒有解題</p>
+<p>我認為賽後的休息時間其實還滿重要的</p>
+<p>能幫助自己好好思考接下來要怎麼調整自己的策略和學習</p>
+<h3 id="ioicamp-2022">IOICamp 2022</h3>
+<p>而今年又再參加了一次 IOICamp</p>
+<p>比較可惜的是今年因為疫情改成了線上舉辦</p>
+<p>不過這一年比較好的一點，比起去年的我，我的實力也上升了不少</p>
+<p>課程的內容大多數也都能夠聽懂了</p>
+<p>這一年學到的新東西:</p>
+<p><strong>資結:</strong> Li Chao Tree Extended, Segment Tree Beats 處理歷史極值</p>
+<p><strong>圖論:</strong> Dominator Tree，有向最小生成樹、二分圖匹配、一般圖匹配、擬陣(其實根本沒理解 QQ)</p>
+<p><strong>數學:</strong> 生成函數</p>
+<p><strong>字串:</strong> Suffix BST</p>
+<p><strong>賽局:</strong> 真正搞懂了 SG Theorem 在幹嘛</p>
+<p><strong>計幾:</strong> 學會了各種酷酷的掃描線</p>
+<p>個人賽也都打得比去年還要好許多</p>
+<p>而今年團體賽的隊友是 alvingogo，不愧是高一就能拿到數資學科雙一等的電神</p>
+<p>在團體賽時，遇到數學與賽局的題目丟給他都能很快速的秒掉</p>
+<p>我們兩個的默契也滿好的，在最後一天的團體賽</p>
+<p>各寫出一半的題目，我寫資結、SA、同餘最短路的題目，他寫 <strong>走自己的路</strong> 和一些數學題</p>
+<p>然後一起討論出了賽局的題目</p>
+<p>最後我們也拿到了 Rank 3 的成績</p>
+<p><img src="https://i.imgur.com/3vp7rKk.png" /></p>
+<p>真的非常好玩，也讓我學到了很多</p>
+<h3 id="aa-競程-toi-模擬賽-1">2022 AA 競程 TOI 模擬賽</h3>
+<p>這年因為疫情的緣故，原本 AA 競程要花錢才能比的 TOI 模擬賽變成免費的了! (≧∀≦)ゞ</p>
+<p><del>(佛心公司，想要學競程的也可以去參加 dreamoon 的課程</del></p>
+<p>總之，這三場比賽</p>
+<h4 id="第一場-125500-rank-45">第一場: 125/500 (Rank 45)</h4>
+<p>A/B/C/D/E =</p>
+<p><span style="color:red"><b>大燒雞</b></span></p>
+<p>先不論有很多已經進選訓的人或大學生來參加</p>
+<p>整個比賽就是打的很爛</p>
+<p><span style="color:red"><b>不但沒抓到水題，還在簡單的題目砸大科技 (BCC)</b></span></p>
+<p><span style="color:red"><b>並沒有每題都拿到分數 (大忌)</b></span></p>
+<p>完全與前一年打初選時一模一樣，整個策略就是錯誤的</p>
+<p>在這一次有點讓我體會到，一定要好好的調整自己的心態和策略</p>
+<h4 id="第二場-314500-rank-8">第二場: 314/500 (Rank 8)</h4>
+<p>這場雖然名次非常高，不過因為與 YTP 的報告日期撞到</p>
+<p>有很多厲害的人都沒來打</p>
+<p>不過就算多了那些人，這個分數還是打得十分好的</p>
+<p><span style="color:green"><b>抓到了 pB 是計幾水題</b></span></p>
+<p><span style="color:green"><b>發現 pE 是會做的題目，就馬上寫了線段樹砸掉</b></span></p>
+<p><span style="color:green"><b>剩下的題目都有喇到分數，沒有一題是沒有分的</b></span></p>
+<p>完全就是最理想的比賽狀況</p>
+<p>如果正式的初選也是照著這樣的策略一定能夠打的很好</p>
+<h4 id="第三場-168500-rank-31">第三場: 168/500 (Rank 31)</h4>
+<p><span style="color:red"><b>燒雞</b></span></p>
+<p>這場比賽與第一場的慘狀不同，策略上大致上是有去試著遵守的</p>
+<p>不過還是有以下狀況</p>
+<p><span style="color:red"><b>沒抓到水題，還在簡單的題目砸大科技 (持久化線段樹)</b></span></p>
+<p><span style="color:red"><b>沒有每題都拿到分數 (大忌)</b></span></p>
+<h4 id="總結">總結</h4>
+<p>總共也只有三場比賽，卻有兩場比賽打不好</p>
+<p>整個狀況其實滿糟糕的，而且也有很長的一段時間沒有練習打 OI 比賽了</p>
+<p>而且在第三場時，其實心態並沒有穩定好就在打了</p>
+<p>整個狀況真的差很多 இ௰இ</p>
+<h3 id="調整心態">調整心態</h3>
+<p>在初選前的兩個禮拜，我花了滿久讓自己調整好進入比賽前應該有的心態的</p>
+<p><span style="color:green"><b>比起瘋狂練題，穩定自己的心態會是比賽前更好的策略</b></span></p>
+<p>賽前的練習也比較偏向複習</p>
+<p>也把 Codeforces EDU - Binary Search, Two Pointers, DSU 都寫一寫了</p>
+<p>畢竟去年整個就是輸在沒有看出經典題</p>
+<p>而在比賽前一天，也讓自己好好放鬆，不要解題</p>
+<p><strong>告訴自己，自己是有實力的，一定能夠進入選訓!</strong></p>
+<h2 id="step-6-最後一場比賽---2022-toi-初選">Step 6: 最後一場比賽 - 2022 TOI 初選!</h2>
+<p>其實在比賽前，就大概了解到，這可能會是高中最後一場比賽了</p>
+<p>這一天其實整個狀況沒到最佳的狀態</p>
+<p>前一天心情有點爆炸，而且沒睡好</p>
+<p>不過這一天的心態算是穩定的</p>
+<p>過幾天之後，我應該也會把初選的心得文放到 Blog 上面來</p>
+<h3 id="賽中-1">賽中</h3>
+<p>這場比賽其實滿奇怪的，一打開題本，與賽前所做的準備完全不同</p>
+<p><span style="color:red"><b>讀完題目之後，感覺沒有一題是演算法題</b></span></p>
+<p><span style="color:red"><b>有三題水題，剩下兩題感覺是奇怪數學或構造題</b></span></p>
+<p><span style="color:red"><b>前三題的部分分數很怪，有切跟沒切一樣</b></span></p>
+<p><del><span style="color:red"><b>鍵盤題我完全不想做</b></span></del></p>
+<p>此時，我很快的發現到了，這場比賽用一直以來的策略 <strong>喇分</strong> 並不會是最佳選擇</p>
+<p><span style="color:green"><b>調整了心態，快速的將前三題水題寫掉</b></span></p>
+<p><span style="color:green"><b>用以往的想法，不能有任何一題 0 分</b></span></p>
+<p><span style="color:green"><b>試著撈更多的分數</b></span></p>
+<p>而這些事情都達成了 o((&gt;ω&lt; ))o</p>
+<p>不過最大缺點是 pD, pE 卡了很久，一直喇不到更多部分分 (┬┬﹏┬┬)</p>
+<p>賽中大概就覺得那兩題的部分分會影響結果了</p>
+<h3 id="賽後-1">賽後</h3>
+<p>原本覺得自己應該還是有機會進入選訓</p>
+<p>不過最後點開記分板 Rank 27</p>
+<p>然後 Rank 17 甚至有 6 個同分</p>
+<p>而自己卻只差了一個子題，而且是賽中一直在想辦法喇的子題就能夠進入選訓了</p>
+<p>最後下載了 submission 也真的是個小錯誤</p>
+<p>不過高中的競賽就在這個比賽畫下句點了 (´。＿。｀)</p>
+<h2 id="總結-1">總結</h2>
+<p>其實最後的結尾還滿突然的，沒有想到在最後一場比賽，題目會出的與以往所預測的完全不同</p>
+<p>不過大概也只是自己的隨機應變能力不足吧</p>
+<p>但是</p>
+<p><span style="color:orange"><b>儘管我高中這兩年都沒進過全國賽或選訓那又如何呢?</b></span></p>
+<p><span style="color:green"><b>在這段路上，我遇到了許多形形色色的人，也交到了許多朋友，學習的過程和這些經歷才是最重要的</b></span></p>
+<p>接下來我希望能夠將我打競賽的這份精神傳給未來要繼續拚競程的人們</p>
+<p>而我的 Blog 也會持續更新，可能會多寫一些教學文等等的</p>
+<p>希望在未來，我的經驗也能夠幫助一些人們在這條路上努力</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>心得</tag>
+        <tag>回顧</tag>
       </tags>
   </entry>
 </search>
