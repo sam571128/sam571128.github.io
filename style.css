@@ -493,7 +493,7 @@ a:hover {
 /* ---- Works ---- */
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
@@ -537,6 +537,24 @@ a:hover {
   padding: 4px 10px;
   border-radius: 4px;
   background: var(--accent-soft);
+}
+
+.work-card-tag-teal {
+  background: var(--teal-soft);
+  color: var(--teal);
+}
+
+.work-card-tag-amber {
+  background: rgba(245, 166, 35, 0.12);
+  color: var(--amber);
+}
+
+.work-card-stars {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--amber);
+  margin-top: 12px;
 }
 
 .work-card-arrow {
@@ -756,11 +774,15 @@ a:hover {
   }
 
   .works-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 640px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+
   .nav-links {
     display: none;
     position: fixed;
