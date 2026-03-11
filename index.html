@@ -1,1357 +1,370 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-<meta name="google-site-verification" content="NNns6yX_AQQxa6sJQwIIHMJbXcs02pg3ZiTE4UK8VQQ" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta name="google-site-verification" content="true">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-<meta property="og:type" content="website">
-<meta property="og:title" content="山姆的競程日記">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="山姆的競程日記">
-<meta property="og:description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-<meta property="og:locale" content="zh_TW">
-<meta property="article:author" content="路過的一隻山姆">
-<meta property="article:tag" content="codeforces, competitive programming, algorithms, atcoder, segment tree, dp, sam, 山姆, 路過的一隻山姆, 線段樹, BIT, graph, flow">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-TW'
-  };
-</script>
-
-  <title>山姆的競程日記</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cheng-Yuan Lee | ML Infra Engineer</title>
+  <meta name="description" content="Personal blog of Cheng-Yuan Lee (sam571128) - ML Infrastructure Engineer at Cognition. Writing about algorithms, model training, GPU computing, and infrastructure.">
+  <meta property="og:title" content="Cheng-Yuan Lee | ML Infra Engineer">
+  <meta property="og:description" content="Writing about algorithms, model training, GPU computing, and infrastructure.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sam571128.github.io">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
+  <!-- Animated background canvas -->
+  <canvas id="neural-bg"></canvas>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">山姆的競程日記</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">從綠牌開始的旅途</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-bracket">{</span>
+        <span class="nav-logo-text">CYL</span>
+        <span class="nav-logo-bracket">}</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">about</a>
+        <a href="#writing" class="nav-link">writing</a>
+        <a href="#projects" class="nav-link">projects</a>
+        <a href="/old_blog/" class="nav-link nav-link-old">archive <span class="nav-link-badge">zh</span></a>
+        <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="nav-link nav-link-icon" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜尋..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
+      </div>
+      <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/03/high-school-cp-story/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/03/high-school-cp-story/" class="post-title-link" itemprop="url">高中競程回顧文</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2022-04-03 17:24:24 / 修改時間：17:41:10" itemprop="dateCreated datePublished" datetime="2022-04-03T17:24:24+08:00">2022-04-03</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/04/03/high-school-cp-story/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/03/high-school-cp-story/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在不知不覺間，高中的競程生涯也已經結束了</p>
-<p>儘管比賽的結果幾乎都沒有達到我的預期 (；′⌒`)</p>
-<p>不過這段路上的經歷確實帶給我許多回憶</p>
-<p>這篇文章應該會從踏入競程開始講到現在，順便回顧在這段兩年的旅途所學到的一切</p>
-<p>希望有些經驗也能幫助到未來的選手們</p>
-<p>我大概將我打競程的經驗分成六個階段，大家也可以分段慢慢讀</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/03/high-school-cp-story/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/XOR-Basis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/29/XOR-Basis/" class="post-title-link" itemprop="url">向量空間與 Xor Basis</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2022-03-29 21:54:27" itemprop="dateCreated datePublished" datetime="2022-03-29T21:54:27+08:00">2022-03-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-04-03 13:01:10" itemprop="dateModified" datetime="2022-04-03T13:01:10+08:00">2022-04-03</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/03/29/XOR-Basis/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/03/29/XOR-Basis/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>由於最近學校也學到「向量空間」這個概念，決定重新來了解 <strong>Xor Basis</strong> (在對岸稱為線性基) 的概念，並將這些概念記錄下來</p>
-<p>以下會有很多的定義，而且這個概念也很抽象，不過我也不知道怎麼解釋得更簡單</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/29/XOR-Basis/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/30/Taipei-Contest-2021/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/30/Taipei-Contest-2021/" class="post-title-link" itemprop="url">2021 臺北市資訊學科能力競賽</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-11-30 20:31:10" itemprop="dateCreated datePublished" datetime="2021-11-30T20:31:10+08:00">2021-11-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-03-29 22:00:15" itemprop="dateModified" datetime="2022-03-29T22:00:15+08:00">2022-03-29</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/11/30/Taipei-Contest-2021/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/11/30/Taipei-Contest-2021/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://i.imgur.com/7ITLOMX.png" /></p>
-<p>總結: 三等一 沒進全國</p>
-<p>但總算是有一場打得還算不錯的比賽了</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/30/Taipei-Contest-2021/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/23/Slope-Trick/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/23/Slope-Trick/" class="post-title-link" itemprop="url">不常見的DP優化 - Slope Trick</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-10-23 14:56:21 / 修改時間：14:57:02" itemprop="dateCreated datePublished" datetime="2021-10-23T14:56:21+08:00">2021-10-23</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/10/23/Slope-Trick/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/10/23/Slope-Trick/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="何謂-slope-trick">何謂 Slope Trick</h2>
-<p>Slope Trick的誕生大概是 <a target="_blank" rel="noopener" href="https://codeforces.com/contest/713/problem/C">Codeforces 713C - Sonya and Problem Wihtout a Legend</a> 這個題目所衍生出來的一種 DP 優化方式。</p>
-<p>他可以處理與凹凸性函數代價的 DP 優化，不過我也是在寫 CSES 時才知道這個 DP 優化技巧</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/23/Slope-Trick/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/19/dirchlet-convolution-and-mobius-inversion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/19/dirchlet-convolution-and-mobius-inversion/" class="post-title-link" itemprop="url">數論 狄利克雷卷積 & 莫比烏斯反演</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-19 15:03:56 / 修改時間：16:23:38" itemprop="dateCreated datePublished" datetime="2021-08-19T15:03:56+08:00">2021-08-19</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/08/19/dirchlet-convolution-and-mobius-inversion/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/19/dirchlet-convolution-and-mobius-inversion/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>上一場 Div.2 的比賽中出了<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1559/problem/E">這題</a> 要用到莫比烏斯函數來做排容</p>
-<p>不過這兩個東西都是之前就聽過，但從來沒有真的去了解過這東西</p>
-<p>最近就決定來好好這兩個可怕的數學</p>
-<p>如果只是想要知道如何使用莫比烏斯反演計算題目，則可跳過證明的部分</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/19/dirchlet-convolution-and-mobius-inversion/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/12/Sprout-2021/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/12/Sprout-2021/" class="post-title-link" itemprop="url">2021 資訊之芽心得</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-12 08:02:57 / 修改時間：08:06:16" itemprop="dateCreated datePublished" datetime="2021-08-12T08:02:57+08:00">2021-08-12</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/08/12/Sprout-2021/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/12/Sprout-2021/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>快半年沒更新blog了 來更新一下好了</p>
-<p>這半年間經歷了不少事情</p>
-<p>像是在初選結束之後 CF rating又回藍了</p>
-<p>資訊之芽的兩個階段也結束了</p>
-<p>在這之間競程能力不知道增強了多少 不過至少對於亂砸資料結構這點應該是有所進步</p>
-<p>而久違的這篇文來更一下上資訊之芽的心得吧</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/12/Sprout-2021/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/TOI-Burn-Chicken/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/16/TOI-Burn-Chicken/" class="post-title-link" itemprop="url">2021 資訊奧林匹亞初選</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-03-16 20:54:36 / 修改時間：20:55:52" itemprop="dateCreated datePublished" datetime="2021-03-16T20:54:36+08:00">2021-03-16</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/03/16/TOI-Burn-Chicken/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/16/TOI-Burn-Chicken/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p><img src="https://i.imgur.com/LnyHrXG.png" alt=""></p>
-<p>最後結果：$152/500$</p>
-<p>讓自己的心情沈澱了幾天</p>
-<p>這個分數高過了高一的 130分 和 女保的 124分</p>
-<p>不過我是高二，努力練了11個月的競程卻沒有成果 QQ</p>
-<p>這次燒雞的人不只我，賽中左右兩邊的人看起來也打得很難受</p>
-<p>有些實力比我強，北市賽、全國賽名次很高的人也都沒有表現好</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/TOI-Burn-Chicken/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/20/Good-Problems/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/20/Good-Problems/" class="post-title-link" itemprop="url">一些不錯的題目</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-02-20 16:40:30" itemprop="dateCreated datePublished" datetime="2021-02-20T16:40:30+08:00">2021-02-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-03 10:34:54" itemprop="dateModified" datetime="2021-06-03T10:34:54+08:00">2021-06-03</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/02/20/Good-Problems/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/02/20/Good-Problems/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>決定開一篇來紀錄自己寫到不錯或有趣的題目</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/20/Good-Problems/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/14/finite-series-with-binomial-coefficient/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/14/finite-series-with-binomial-coefficient/" class="post-title-link" itemprop="url">含有二項式的有限級數</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-02-14 02:17:41 / 修改時間：04:28:45" itemprop="dateCreated datePublished" datetime="2021-02-14T02:17:41+08:00">2021-02-14</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/02/14/finite-series-with-binomial-coefficient/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/02/14/finite-series-with-binomial-coefficient/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>不久前 在 Discord 群看到有人在解 <a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/932/E">Codeforces 932E</a> </p>
-<p>然後看到這題 就覺得感覺不難 列出算式之後卻還是不會算</p>
-<p>不過經由呆呆獸及他人的指導 </p>
-<p>終於理解了這類方便的方法來計算這種排列組合的題目</p>
-<p>那就讓我們來看看這是什麼樣的方法吧</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/14/finite-series-with-binomial-coefficient/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/13/Purple-Here-I-am/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-      <meta itemprop="name" content="路過的一隻山姆">
-      <meta itemprop="description" content="這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山姆的競程日記">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/13/Purple-Here-I-am/" class="post-title-link" itemprop="url">寒假檢討以及成為紫牌了！</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-02-13 16:28:54 / 修改時間：17:33:32" itemprop="dateCreated datePublished" datetime="2021-02-13T16:28:54+08:00">2021-02-13</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/02/13/Purple-Here-I-am/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/02/13/Purple-Here-I-am/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>好久沒有寫Blog 最近都一直富奸 XD</p>
-<p>不過距離上一次也發生了不少事情 就來細數一下這個寒假到現在有哪些令人印象深刻的事情吧</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/13/Purple-Here-I-am/#more" rel="content">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about" class="mobile-menu-link">about</a>
+    <a href="#writing" class="mobile-menu-link">writing</a>
+    <a href="#projects" class="mobile-menu-link">projects</a>
+    <a href="/old_blog/" class="mobile-menu-link">archive <span class="nav-link-badge">zh</span></a>
+    <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="mobile-menu-link">github</a>
+  </div>
 
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        <span>ML Infrastructure @ Cognition</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-line hero-title-line-1">Cheng-Yuan</span>
+        <span class="hero-title-line hero-title-line-2">Lee</span>
+      </h1>
+      <p class="hero-subtitle">
+        Building infrastructure for the next generation of AI.<br>
+        From competitive programming to training large models at scale.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value" data-count="39">0</span>
+          <span class="hero-stat-label">articles written</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">CF</span>
+          <span class="hero-stat-label">purple rated</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">GPU</span>
+          <span class="hero-stat-label">whisperer</span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#writing" class="btn btn-primary">Read the Blog</a>
+        <a href="#about" class="btn btn-ghost">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="gpu-grid">
+        <div class="gpu-cell" style="--delay: 0"></div>
+        <div class="gpu-cell" style="--delay: 1"></div>
+        <div class="gpu-cell" style="--delay: 2"></div>
+        <div class="gpu-cell" style="--delay: 3"></div>
+        <div class="gpu-cell" style="--delay: 4"></div>
+        <div class="gpu-cell" style="--delay: 5"></div>
+        <div class="gpu-cell" style="--delay: 6"></div>
+        <div class="gpu-cell" style="--delay: 7"></div>
+        <div class="gpu-cell" style="--delay: 8"></div>
+        <div class="gpu-cell" style="--delay: 9"></div>
+        <div class="gpu-cell" style="--delay: 10"></div>
+        <div class="gpu-cell" style="--delay: 11"></div>
+        <div class="gpu-cell" style="--delay: 12"></div>
+        <div class="gpu-cell" style="--delay: 13"></div>
+        <div class="gpu-cell" style="--delay: 14"></div>
+        <div class="gpu-cell" style="--delay: 15"></div>
+        <div class="gpu-cell" style="--delay: 16"></div>
+        <div class="gpu-cell" style="--delay: 17"></div>
+        <div class="gpu-cell" style="--delay: 18"></div>
+        <div class="gpu-cell" style="--delay: 19"></div>
+        <div class="gpu-cell" style="--delay: 20"></div>
+        <div class="gpu-cell" style="--delay: 21"></div>
+        <div class="gpu-cell" style="--delay: 22"></div>
+        <div class="gpu-cell" style="--delay: 23"></div>
+        <div class="gpu-cell" style="--delay: 24"></div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
 
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">About</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead">
+            I'm <strong>Cheng-Yuan Lee</strong> (Sam), an ML Infrastructure Engineer at 
+            <a href="https://cognition.ai" target="_blank" rel="noopener">Cognition</a>, 
+            where I work on the systems that power large-scale model training.
+          </p>
+          <p>
+            My journey started in competitive programming &mdash; reaching purple on 
+            <a href="https://codeforces.com/profile/sam571128" target="_blank" rel="noopener">Codeforces</a> 
+            and competing extensively on 
+            <a href="https://atcoder.jp/users/SamDaBest" target="_blank" rel="noopener">AtCoder</a>. 
+            That obsession with algorithmic problem-solving naturally led me into the world of 
+            ML systems, where efficiency and correctness are everything.
+          </p>
+          <p>
+            Previously, I've contributed to projects like 
+            <a href="https://github.com/MiuLab/Taiwan-LLM" target="_blank" rel="noopener">Taiwan-LLM</a> 
+            and worked on distributed training infrastructure. I studied at the University of Maryland, 
+            where I also taught competitive programming courses.
+          </p>
+        </div>
+        <div class="about-terminal">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="terminal-dot terminal-dot-red"></div>
+              <div class="terminal-dot terminal-dot-yellow"></div>
+              <div class="terminal-dot terminal-dot-green"></div>
+              <span class="terminal-title">sam@gpu-cluster ~ </span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-cmd">whoami</span>
+              </div>
+              <div class="terminal-output">cheng-yuan-lee</div>
+              <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-cmd">cat interests.txt</span>
+              </div>
+              <div class="terminal-output">
+                distributed_training<br>
+                gpu_optimization<br>
+                algorithms<br>
+                infrastructure<br>
+                large_language_models
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-cmd">nvidia-smi --query</span>
+              </div>
+              <div class="terminal-output terminal-output-highlight">
+                GPU 0: Ready for training<br>
+                Memory: Fully allocated<br>
+                Status: <span class="terminal-green">RUNNING</span>
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-cursor">_</span>
+              </div>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
       </div>
-      <!--/noindex-->
+    </div>
+  </section>
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="路過的一隻山姆"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSntKp7eEhcoJJiTO--_Fl3uC8JtmyrYYHccw&usqp=CAU">
-  <p class="site-author-name" itemprop="name">路過的一隻山姆</p>
-  <div class="site-description" itemprop="description">這裡會紀錄一些打過的Contest，題目，或者是一些剛學到的演算法</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">39</span>
-          <span class="site-state-item-name">文章</span>
+  <!-- Writing / Blog Section -->
+  <section class="section writing" id="writing">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Writing</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="writing-intro">
+        Thoughts on algorithms, ML infrastructure, distributed systems, and GPU computing. 
+        Looking for my older posts in Chinese? Check the <a href="/old_blog/">archive</a>.
+      </p>
+      <div class="posts-grid">
+        <!-- Post 1 -->
+        <article class="post-card post-card-featured">
+          <div class="post-card-tag">
+            <span class="post-card-tag-dot" style="--tag-color: var(--cyan)"></span>
+            Infrastructure
+          </div>
+          <h3 class="post-card-title">Coming Soon: Scaling Model Training Beyond a Single Node</h3>
+          <p class="post-card-excerpt">
+            A deep dive into the challenges and solutions for distributed training across 
+            multiple GPU clusters, covering data parallelism, model parallelism, and pipeline parallelism.
+          </p>
+          <div class="post-card-meta">
+            <span class="post-card-date">2026</span>
+            <span class="post-card-read">~ 15 min read</span>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post-card">
+          <div class="post-card-tag">
+            <span class="post-card-tag-dot" style="--tag-color: var(--amber)"></span>
+            Algorithms
+          </div>
+          <h3 class="post-card-title">Coming Soon: From Competitive Programming to Production Systems</h3>
+          <p class="post-card-excerpt">
+            How the problem-solving mindset from competitive programming translates to building 
+            reliable, performant ML infrastructure.
+          </p>
+          <div class="post-card-meta">
+            <span class="post-card-date">2026</span>
+            <span class="post-card-read">~ 10 min read</span>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="post-card">
+          <div class="post-card-tag">
+            <span class="post-card-tag-dot" style="--tag-color: var(--magenta)"></span>
+            GPU Computing
+          </div>
+          <h3 class="post-card-title">Coming Soon: Understanding GPU Memory Hierarchies</h3>
+          <p class="post-card-excerpt">
+            An exploration of GPU memory architecture and how understanding it can dramatically 
+            improve training throughput.
+          </p>
+          <div class="post-card-meta">
+            <span class="post-card-date">2026</span>
+            <span class="post-card-read">~ 12 min read</span>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="post-card">
+          <div class="post-card-tag">
+            <span class="post-card-tag-dot" style="--tag-color: var(--teal)"></span>
+            ML Systems
+          </div>
+          <h3 class="post-card-title">Coming Soon: The Art of Efficient Data Loading</h3>
+          <p class="post-card-excerpt">
+            Why your data pipeline is probably the bottleneck and what you can do about it. 
+            Techniques for keeping GPUs fed and happy.
+          </p>
+          <div class="post-card-meta">
+            <span class="post-card-date">2026</span>
+            <span class="post-card-read">~ 8 min read</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section projects" id="projects">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+        <a href="https://github.com/MiuLab/Taiwan-LLM" target="_blank" rel="noopener" class="project-card">
+          <div class="project-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="project-card-title">Taiwan-LLM</h3>
+          <p class="project-card-desc">Contributed to building Traditional Chinese language models with instruction tuning and RLHF.</p>
+          <span class="project-card-link">View on GitHub &rarr;</span>
+        </a>
+
+        <a href="https://github.com/sam571128/CP-Slides" target="_blank" rel="noopener" class="project-card">
+          <div class="project-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="project-card-title">CP Slides</h3>
+          <p class="project-card-desc">Educational slides covering advanced competitive programming topics and algorithm tutorials.</p>
+          <span class="project-card-link">View on GitHub &rarr;</span>
+        </a>
+
+        <a href="https://github.com/sam571128/CMSC451-F24-Programming-Problems" target="_blank" rel="noopener" class="project-card">
+          <div class="project-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+          </div>
+          <h3 class="project-card-title">CMSC451 Problems</h3>
+          <p class="project-card-desc">Programming homework problems and test cases for UMD's advanced algorithms course.</p>
+          <span class="project-card-link">View on GitHub &rarr;</span>
+        </a>
+
+        <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="project-card project-card-more">
+          <div class="project-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <h3 class="project-card-title">More Projects</h3>
+          <p class="project-card-desc">Explore all my open source work on GitHub.</p>
+          <span class="project-card-link">View Profile &rarr;</span>
         </a>
       </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">64</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/sam571128" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sam571128" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/sam571128/0819" title="Discord → sam571128&#x2F;0819"><i class="fab fa-discord fa-fw"></i>Discord</a>
-      </span>
-  </div>
-
-
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
-      Links
     </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="https://codeforces.com/profile/sam571128" title="https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;sam571128" rel="noopener" target="_blank">Codeforces</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://atcoder.jp/users/SamDaBest" title="https:&#x2F;&#x2F;atcoder.jp&#x2F;users&#x2F;SamDaBest" rel="noopener" target="_blank">AtCoder</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://discord.gg/yb3Hv2U" title="https:&#x2F;&#x2F;discord.gg&#x2F;yb3Hv2U" rel="noopener" target="_blank">Code Community (Xuan)</a>
-        </li>
-    </ul>
-  </div>
+  </section>
 
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">
+            <span class="nav-logo-bracket">{</span>
+            <span class="nav-logo-text">CYL</span>
+            <span class="nav-logo-bracket">}</span>
+          </span>
+          <p class="footer-desc">ML Infrastructure Engineer building systems for the next era of AI.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Links</h4>
+          <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+          <a href="https://codeforces.com/profile/sam571128" target="_blank" rel="noopener" class="footer-link">Codeforces</a>
+          <a href="https://atcoder.jp/users/SamDaBest" target="_blank" rel="noopener" class="footer-link">AtCoder</a>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Site</h4>
+          <a href="#about" class="footer-link">About</a>
+          <a href="#writing" class="footer-link">Writing</a>
+          <a href="#projects" class="footer-link">Projects</a>
+          <a href="/old_blog/" class="footer-link">Archive (zh-TW)</a>
+        </div>
       </div>
-
+      <div class="footer-bottom">
+        <span>&copy; 2026 Cheng-Yuan Lee. Built with obsessive attention to detail.</span>
+        <span class="footer-gpu-temp">
+          <span class="footer-gpu-dot"></span>
+          GPU temp: nominal
+        </span>
+      </div>
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+  </footer>
 
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fas fa-code"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">路過的一隻山姆</span>
-</div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  
-  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/pjax/pjax.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-  <script>
-var pjax = new Pjax({
-  selectors: [
-    'head title',
-    '#page-configurations',
-    '.content-wrap',
-    '.post-toc-wrap',
-    '.languages',
-    '#pjax'
-  ],
-  switches: {
-    '.post-toc-wrap': Pjax.switches.innerHTML
-  },
-  analytics: false,
-  cacheBust: false,
-  scrollTo : !CONFIG.bookmark.enable
-});
-
-window.addEventListener('pjax:success', () => {
-  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
-    var code = element.text || element.textContent || element.innerHTML || '';
-    var parent = element.parentNode;
-    parent.removeChild(element);
-    var script = document.createElement('script');
-    if (element.id) {
-      script.id = element.id;
-    }
-    if (element.className) {
-      script.className = element.className;
-    }
-    if (element.type) {
-      script.type = element.type;
-    }
-    if (element.src) {
-      script.src = element.src;
-      // Force synchronous loading of peripheral JS.
-      script.async = false;
-    }
-    if (element.dataset.pjax !== undefined) {
-      script.dataset.pjax = '';
-    }
-    if (code !== '') {
-      script.appendChild(document.createTextNode(code));
-    }
-    parent.appendChild(script);
-  });
-  NexT.boot.refresh();
-  // Define Motion Sequence & Bootstrap Motion.
-  if (CONFIG.motion.enable) {
-    NexT.motion.integrator
-      .init()
-      .add(NexT.motion.middleWares.subMenu)
-      .add(NexT.motion.middleWares.postList)
-      .bootstrap();
-  }
-  NexT.utils.updateSidebarPosition();
-});
-</script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div id="pjax">
-  
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
-
-  
-
-<script>
-  function loadCount() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://sam571128.disqus.com/count.js';
-    s.id = 'dsq-count-scr';
-    (d.head || d.body).appendChild(s);
-  }
-  // defer loading until the whole page loading is completed
-  window.addEventListener('load', loadCount, false);
-</script>
-
-    </div>
+  <script src="script.js"></script>
 </body>
 </html>
