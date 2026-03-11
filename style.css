@@ -101,6 +101,10 @@ a:hover {
   color: var(--accent);
 }
 
+.nav-logo-dot {
+  color: var(--accent);
+}
+
 .nav-links {
   display: flex;
   align-items: center;
