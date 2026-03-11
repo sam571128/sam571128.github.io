@@ -4,364 +4,234 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cheng-Yuan Lee | ML Infra Engineer</title>
-  <meta name="description" content="Personal blog of Cheng-Yuan Lee (sam571128) - ML Infrastructure Engineer at Cognition. Writing about algorithms, model training, GPU computing, and infrastructure.">
+  <meta name="description" content="Personal site of Cheng-Yuan Lee (sam571128) - ML Infrastructure Engineer at Cognition. Algorithms, model training, GPU computing.">
   <meta property="og:title" content="Cheng-Yuan Lee | ML Infra Engineer">
-  <meta property="og:description" content="Writing about algorithms, model training, GPU computing, and infrastructure.">
+  <meta property="og:description" content="ML Infrastructure Engineer at Cognition. Algorithms, model training, GPU computing.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sam571128.github.io">
+  <meta property="og:url" content="https://sam571128.codes">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Animated background canvas -->
-  <canvas id="neural-bg"></canvas>
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <span class="nav-logo-bracket">{</span>
-        <span class="nav-logo-text">CYL</span>
-        <span class="nav-logo-bracket">}</span>
+    <a href="/" class="nav-logo">CYL</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#works" class="nav-link">Works</a>
+      <a href="#writing" class="nav-link">Writing</a>
+      <a href="/old_blog/" class="nav-link">Archive <span class="badge">ZH</span></a>
+      <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="nav-link nav-link-gh">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
       </a>
-      <div class="nav-links">
-        <a href="#about" class="nav-link">about</a>
-        <a href="#writing" class="nav-link">writing</a>
-        <a href="#projects" class="nav-link">projects</a>
-        <a href="/old_blog/" class="nav-link nav-link-old">archive <span class="nav-link-badge">zh</span></a>
-        <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="nav-link nav-link-icon" aria-label="GitHub">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        </a>
-      </div>
-      <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </nav>
 
-  <!-- Mobile menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#about" class="mobile-menu-link">about</a>
-    <a href="#writing" class="mobile-menu-link">writing</a>
-    <a href="#projects" class="mobile-menu-link">projects</a>
-    <a href="/old_blog/" class="mobile-menu-link">archive <span class="nav-link-badge">zh</span></a>
-    <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="mobile-menu-link">github</a>
-  </div>
-
   <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
+  <section class="hero">
+    <div class="hero-left">
       <div class="hero-tag">
         <span class="hero-tag-dot"></span>
-        <span>ML Infrastructure @ Cognition</span>
+        ML Infrastructure @ Cognition
       </div>
-      <h1 class="hero-title">
-        <span class="hero-title-line hero-title-line-1">Cheng-Yuan</span>
-        <span class="hero-title-line hero-title-line-2">Lee</span>
+      <h1 class="hero-name">
+        <span class="hero-name-line">Cheng-Yuan</span>
+        <span class="hero-name-line hero-name-accent">Lee</span>
       </h1>
-      <p class="hero-subtitle">
-        Building infrastructure for the next generation of AI.<br>
-        From competitive programming to training large models at scale.
+      <p class="hero-role">ML Infrastructure Engineer</p>
+      <p class="hero-desc">
+        Building the systems that power large-scale model training.
+        From competitive programming to GPU clusters.
       </p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="hero-stat-value" data-count="39">0</span>
-          <span class="hero-stat-label">articles written</span>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <span class="hero-stat-value">CF</span>
-          <span class="hero-stat-label">purple rated</span>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <span class="hero-stat-value">GPU</span>
-          <span class="hero-stat-label">whisperer</span>
-        </div>
-      </div>
-      <div class="hero-cta">
-        <a href="#writing" class="btn btn-primary">Read the Blog</a>
-        <a href="#about" class="btn btn-ghost">Learn More</a>
+      <div class="hero-actions">
+        <a href="#works" class="btn btn-primary">View Works</a>
+        <a href="#about" class="btn btn-outline">About Me</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="gpu-grid">
-        <div class="gpu-cell" style="--delay: 0"></div>
-        <div class="gpu-cell" style="--delay: 1"></div>
-        <div class="gpu-cell" style="--delay: 2"></div>
-        <div class="gpu-cell" style="--delay: 3"></div>
-        <div class="gpu-cell" style="--delay: 4"></div>
-        <div class="gpu-cell" style="--delay: 5"></div>
-        <div class="gpu-cell" style="--delay: 6"></div>
-        <div class="gpu-cell" style="--delay: 7"></div>
-        <div class="gpu-cell" style="--delay: 8"></div>
-        <div class="gpu-cell" style="--delay: 9"></div>
-        <div class="gpu-cell" style="--delay: 10"></div>
-        <div class="gpu-cell" style="--delay: 11"></div>
-        <div class="gpu-cell" style="--delay: 12"></div>
-        <div class="gpu-cell" style="--delay: 13"></div>
-        <div class="gpu-cell" style="--delay: 14"></div>
-        <div class="gpu-cell" style="--delay: 15"></div>
-        <div class="gpu-cell" style="--delay: 16"></div>
-        <div class="gpu-cell" style="--delay: 17"></div>
-        <div class="gpu-cell" style="--delay: 18"></div>
-        <div class="gpu-cell" style="--delay: 19"></div>
-        <div class="gpu-cell" style="--delay: 20"></div>
-        <div class="gpu-cell" style="--delay: 21"></div>
-        <div class="gpu-cell" style="--delay: 22"></div>
-        <div class="gpu-cell" style="--delay: 23"></div>
-        <div class="gpu-cell" style="--delay: 24"></div>
+    <div class="hero-right">
+      <div class="hero-card-accent"></div>
+      <div class="hero-terminal">
+        <div class="terminal-bar">
+          <span class="terminal-dot terminal-dot-r"></span>
+          <span class="terminal-dot terminal-dot-y"></span>
+          <span class="terminal-dot terminal-dot-g"></span>
+          <span class="terminal-tab">sam@gpu-cluster</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line"><span class="t-prompt">$</span> nvidia-smi --query-gpu=name --format=csv</div>
+          <div class="t-output">NVIDIA H100 80GB HBM3</div>
+          <div class="t-line"><span class="t-prompt">$</span> python train.py --nodes 8 --gpus-per-node 8</div>
+          <div class="t-output">[INFO] Initializing distributed training...</div>
+          <div class="t-output">[INFO] World size: 64 GPUs</div>
+          <div class="t-output t-highlight">[INFO] Training started successfully</div>
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cursor">_</span></div>
+        </div>
       </div>
-    </div>
-    <div class="hero-scroll-indicator">
-      <span>scroll</span>
-      <div class="hero-scroll-line"></div>
     </div>
   </section>
 
   <!-- About Section -->
   <section class="section about" id="about">
-    <div class="section-inner">
-      <div class="section-header">
-        <span class="section-number">01</span>
-        <h2 class="section-title">About</h2>
-        <div class="section-line"></div>
+    <div class="section-label">
+      <span class="section-label-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      </span>
+      ABOUT ME
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <p class="about-lead">
+          I&#x2019;m <strong>Cheng-Yuan Lee</strong> (Sam), an ML Infrastructure Engineer at
+          <a href="https://cognition.ai" target="_blank" rel="noopener">Cognition</a>,
+          where I build the systems that power large-scale model training.
+        </p>
+        <p>
+          My journey started in competitive programming &mdash; reaching purple on
+          <a href="https://codeforces.com/profile/sam571128" target="_blank" rel="noopener">Codeforces</a>
+          and competing on
+          <a href="https://atcoder.jp/users/SamDaBest" target="_blank" rel="noopener">AtCoder</a>.
+          That obsession with algorithmic problem-solving led me into ML systems,
+          where efficiency and correctness are everything.
+        </p>
+        <p>
+          Previously, I contributed to
+          <a href="https://github.com/MiuLab/Taiwan-LLM" target="_blank" rel="noopener">Taiwan-LLM</a>
+          and worked on distributed training infrastructure. I studied at UMD,
+          where I also taught competitive programming.
+        </p>
       </div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="about-lead">
-            I'm <strong>Cheng-Yuan Lee</strong> (Sam), an ML Infrastructure Engineer at 
-            <a href="https://cognition.ai" target="_blank" rel="noopener">Cognition</a>, 
-            where I work on the systems that power large-scale model training.
-          </p>
-          <p>
-            My journey started in competitive programming &mdash; reaching purple on 
-            <a href="https://codeforces.com/profile/sam571128" target="_blank" rel="noopener">Codeforces</a> 
-            and competing extensively on 
-            <a href="https://atcoder.jp/users/SamDaBest" target="_blank" rel="noopener">AtCoder</a>. 
-            That obsession with algorithmic problem-solving naturally led me into the world of 
-            ML systems, where efficiency and correctness are everything.
-          </p>
-          <p>
-            Previously, I've contributed to projects like 
-            <a href="https://github.com/MiuLab/Taiwan-LLM" target="_blank" rel="noopener">Taiwan-LLM</a> 
-            and worked on distributed training infrastructure. I studied at the University of Maryland, 
-            where I also taught competitive programming courses.
-          </p>
-        </div>
-        <div class="about-terminal">
-          <div class="terminal">
-            <div class="terminal-header">
-              <div class="terminal-dot terminal-dot-red"></div>
-              <div class="terminal-dot terminal-dot-yellow"></div>
-              <div class="terminal-dot terminal-dot-green"></div>
-              <span class="terminal-title">sam@gpu-cluster ~ </span>
-            </div>
-            <div class="terminal-body">
-              <div class="terminal-line">
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-cmd">whoami</span>
-              </div>
-              <div class="terminal-output">cheng-yuan-lee</div>
-              <div class="terminal-line">
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-cmd">cat interests.txt</span>
-              </div>
-              <div class="terminal-output">
-                distributed_training<br>
-                gpu_optimization<br>
-                algorithms<br>
-                infrastructure<br>
-                large_language_models
-              </div>
-              <div class="terminal-line">
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-cmd">nvidia-smi --query</span>
-              </div>
-              <div class="terminal-output terminal-output-highlight">
-                GPU 0: Ready for training<br>
-                Memory: Fully allocated<br>
-                Status: <span class="terminal-green">RUNNING</span>
-              </div>
-              <div class="terminal-line">
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-cursor">_</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="about-tags">
+        <span class="tag">Distributed Training</span>
+        <span class="tag">GPU Optimization</span>
+        <span class="tag">Algorithms</span>
+        <span class="tag">LLM Infrastructure</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">CUDA</span>
+        <span class="tag">Competitive Programming</span>
       </div>
     </div>
   </section>
 
-  <!-- Writing / Blog Section -->
+  <!-- Works Section -->
+  <section class="section works" id="works">
+    <div class="section-label">
+      <span class="section-label-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </span>
+      SELECTED WORKS
+    </div>
+    <div class="works-grid">
+      <a href="https://github.com/MiuLab/Taiwan-LLM" target="_blank" rel="noopener" class="work-card">
+        <div class="work-card-top">
+          <span class="work-card-tag">LLM</span>
+          <svg class="work-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <h3 class="work-card-title">Taiwan-LLM</h3>
+        <p class="work-card-desc">Traditional Chinese language models with instruction tuning and RLHF. Contributing to open-source LLM development for underserved languages.</p>
+      </a>
+
+      <a href="https://github.com/sam571128/CP-Slides" target="_blank" rel="noopener" class="work-card">
+        <div class="work-card-top">
+          <span class="work-card-tag">Education</span>
+          <svg class="work-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <h3 class="work-card-title">CP Slides</h3>
+        <p class="work-card-desc">Educational slides covering advanced competitive programming topics, from data structures to graph algorithms and beyond.</p>
+      </a>
+
+      <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="work-card">
+        <div class="work-card-top">
+          <span class="work-card-tag">Infrastructure</span>
+          <svg class="work-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <h3 class="work-card-title">ML Training Infra</h3>
+        <p class="work-card-desc">Distributed training systems, GPU cluster orchestration, and infrastructure for large-scale model training at Cognition.</p>
+      </a>
+
+      <a href="https://codeforces.com/profile/sam571128" target="_blank" rel="noopener" class="work-card">
+        <div class="work-card-top">
+          <span class="work-card-tag">Algorithms</span>
+          <svg class="work-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <h3 class="work-card-title">Competitive Programming</h3>
+        <p class="work-card-desc">Purple-rated on Codeforces. Extensive experience in algorithmic problem-solving, contest math, and teaching.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Writing Section -->
   <section class="section writing" id="writing">
-    <div class="section-inner">
-      <div class="section-header">
-        <span class="section-number">02</span>
-        <h2 class="section-title">Writing</h2>
-        <div class="section-line"></div>
-      </div>
-      <p class="writing-intro">
-        Thoughts on algorithms, ML infrastructure, distributed systems, and GPU computing. 
-        Looking for my older posts in Chinese? Check the <a href="/old_blog/">archive</a>.
-      </p>
-      <div class="posts-grid">
-        <!-- Post 1 -->
-        <article class="post-card post-card-featured">
-          <div class="post-card-tag">
-            <span class="post-card-tag-dot" style="--tag-color: var(--cyan)"></span>
-            Infrastructure
-          </div>
-          <h3 class="post-card-title">Coming Soon: Scaling Model Training Beyond a Single Node</h3>
-          <p class="post-card-excerpt">
-            A deep dive into the challenges and solutions for distributed training across 
-            multiple GPU clusters, covering data parallelism, model parallelism, and pipeline parallelism.
-          </p>
-          <div class="post-card-meta">
-            <span class="post-card-date">2026</span>
-            <span class="post-card-read">~ 15 min read</span>
-          </div>
-        </article>
-
-        <!-- Post 2 -->
-        <article class="post-card">
-          <div class="post-card-tag">
-            <span class="post-card-tag-dot" style="--tag-color: var(--amber)"></span>
-            Algorithms
-          </div>
-          <h3 class="post-card-title">Coming Soon: From Competitive Programming to Production Systems</h3>
-          <p class="post-card-excerpt">
-            How the problem-solving mindset from competitive programming translates to building 
-            reliable, performant ML infrastructure.
-          </p>
-          <div class="post-card-meta">
-            <span class="post-card-date">2026</span>
-            <span class="post-card-read">~ 10 min read</span>
-          </div>
-        </article>
-
-        <!-- Post 3 -->
-        <article class="post-card">
-          <div class="post-card-tag">
-            <span class="post-card-tag-dot" style="--tag-color: var(--magenta)"></span>
-            GPU Computing
-          </div>
-          <h3 class="post-card-title">Coming Soon: Understanding GPU Memory Hierarchies</h3>
-          <p class="post-card-excerpt">
-            An exploration of GPU memory architecture and how understanding it can dramatically 
-            improve training throughput.
-          </p>
-          <div class="post-card-meta">
-            <span class="post-card-date">2026</span>
-            <span class="post-card-read">~ 12 min read</span>
-          </div>
-        </article>
-
-        <!-- Post 4 -->
-        <article class="post-card">
-          <div class="post-card-tag">
-            <span class="post-card-tag-dot" style="--tag-color: var(--teal)"></span>
-            ML Systems
-          </div>
-          <h3 class="post-card-title">Coming Soon: The Art of Efficient Data Loading</h3>
-          <p class="post-card-excerpt">
-            Why your data pipeline is probably the bottleneck and what you can do about it. 
-            Techniques for keeping GPUs fed and happy.
-          </p>
-          <div class="post-card-meta">
-            <span class="post-card-date">2026</span>
-            <span class="post-card-read">~ 8 min read</span>
-          </div>
-        </article>
-      </div>
+    <div class="section-label">
+      <span class="section-label-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </span>
+      WRITING
+    </div>
+    <p class="writing-intro">
+      Thoughts on ML infrastructure, algorithms, and GPU computing.
+      Older posts in Chinese are in the <a href="/old_blog/">archive</a>.
+    </p>
+    <div class="posts-list">
+      <article class="post-item">
+        <span class="post-tag post-tag-infra">Infrastructure</span>
+        <h3 class="post-title">Coming Soon: Scaling Model Training Beyond a Single Node</h3>
+        <p class="post-excerpt">A deep dive into distributed training across multiple GPU clusters &mdash; data parallelism, model parallelism, and pipeline parallelism.</p>
+        <span class="post-meta">2026 &middot; ~15 min</span>
+      </article>
+      <article class="post-item">
+        <span class="post-tag post-tag-algo">Algorithms</span>
+        <h3 class="post-title">Coming Soon: From Competitive Programming to Production Systems</h3>
+        <p class="post-excerpt">How the problem-solving mindset from competitive programming translates to building reliable ML infrastructure.</p>
+        <span class="post-meta">2026 &middot; ~10 min</span>
+      </article>
+      <article class="post-item">
+        <span class="post-tag post-tag-gpu">GPU Computing</span>
+        <h3 class="post-title">Coming Soon: Understanding GPU Memory Hierarchies</h3>
+        <p class="post-excerpt">An exploration of GPU memory architecture and how understanding it can dramatically improve training throughput.</p>
+        <span class="post-meta">2026 &middot; ~12 min</span>
+      </article>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section class="section projects" id="projects">
-    <div class="section-inner">
-      <div class="section-header">
-        <span class="section-number">03</span>
-        <h2 class="section-title">Projects</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="projects-grid">
-        <a href="https://github.com/MiuLab/Taiwan-LLM" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3 class="project-card-title">Taiwan-LLM</h3>
-          <p class="project-card-desc">Contributed to building Traditional Chinese language models with instruction tuning and RLHF.</p>
-          <span class="project-card-link">View on GitHub &rarr;</span>
-        </a>
-
-        <a href="https://github.com/sam571128/CP-Slides" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3 class="project-card-title">CP Slides</h3>
-          <p class="project-card-desc">Educational slides covering advanced competitive programming topics and algorithm tutorials.</p>
-          <span class="project-card-link">View on GitHub &rarr;</span>
-        </a>
-
-        <a href="https://github.com/sam571128/CMSC451-F24-Programming-Problems" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
-          </div>
-          <h3 class="project-card-title">CMSC451 Problems</h3>
-          <p class="project-card-desc">Programming homework problems and test cases for UMD's advanced algorithms course.</p>
-          <span class="project-card-link">View on GitHub &rarr;</span>
-        </a>
-
-        <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="project-card project-card-more">
-          <div class="project-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-          </div>
-          <h3 class="project-card-title">More Projects</h3>
-          <p class="project-card-desc">Explore all my open source work on GitHub.</p>
-          <span class="project-card-link">View Profile &rarr;</span>
-        </a>
-      </div>
+  <!-- Connect Section -->
+  <section class="section connect" id="connect">
+    <div class="section-label">
+      <span class="section-label-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+      </span>
+      CONNECT
+    </div>
+    <div class="connect-links">
+      <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="connect-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="/old_blog/" class="connect-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Old Blog (ZH)
+      </a>
+      <a href="https://codeforces.com/profile/sam571128" target="_blank" rel="noopener" class="connect-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Codeforces
+      </a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <span class="footer-logo">
-            <span class="nav-logo-bracket">{</span>
-            <span class="nav-logo-text">CYL</span>
-            <span class="nav-logo-bracket">}</span>
-          </span>
-          <p class="footer-desc">ML Infrastructure Engineer building systems for the next era of AI.</p>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">Links</h4>
-          <a href="https://github.com/sam571128" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-          <a href="https://codeforces.com/profile/sam571128" target="_blank" rel="noopener" class="footer-link">Codeforces</a>
-          <a href="https://atcoder.jp/users/SamDaBest" target="_blank" rel="noopener" class="footer-link">AtCoder</a>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">Site</h4>
-          <a href="#about" class="footer-link">About</a>
-          <a href="#writing" class="footer-link">Writing</a>
-          <a href="#projects" class="footer-link">Projects</a>
-          <a href="/old_blog/" class="footer-link">Archive (zh-TW)</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Cheng-Yuan Lee. Built with obsessive attention to detail.</span>
-        <span class="footer-gpu-temp">
-          <span class="footer-gpu-dot"></span>
-          GPU temp: nominal
-        </span>
-      </div>
+      <span class="footer-copy">&copy; 2026 Cheng-Yuan Lee</span>
+      <a href="#" class="footer-top" id="back-to-top" aria-label="Back to top">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
     </div>
   </footer>
 
