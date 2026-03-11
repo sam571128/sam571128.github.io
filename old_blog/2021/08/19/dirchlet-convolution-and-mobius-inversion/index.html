@@ -6,28 +6,34 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
 <meta name="google-site-verification" content="NNns6yX_AQQxa6sJQwIIHMJbXcs02pg3ZiTE4UK8VQQ" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/old_blog/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="mask-icon" href="/old_blog/images/logo.svg" color="#222">
   <meta name="google-site-verification" content="true">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/old_blog/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/old_blog/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/old_blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/old_blog/search.xml"};
   </script>
 
-  <meta name="description" content="上一場 Div.2 的比賽中出了這題 要用到莫比烏斯函數來做排容 不過這兩個東西都是之前就聽過，但從來沒有真的去了解過這東西 最近就決定來好好這兩個可怕的數學 如果只是想要知道如何使用莫比烏斯反演計算題目，則可跳過證明的部分">
+  <meta name="description" content="上一場 Div.2 的比賽中出了這題 要用到莫比烏斯函數來做排容
+ 不過這兩個東西都是之前就聽過，但從來沒有真的去了解過這東西
+ 最近就決定來好好這兩個可怕的數學
+ 如果只是想要知道如何使用莫比烏斯反演計算題目，則可跳過證明的部分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="數論 狄利克雷卷積 &amp; 莫比烏斯反演">
 <meta property="og:url" content="http://example.com/2021/08/19/dirchlet-convolution-and-mobius-inversion/index.html">
 <meta property="og:site_name" content="山姆的競程日記">
-<meta property="og:description" content="上一場 Div.2 的比賽中出了這題 要用到莫比烏斯函數來做排容 不過這兩個東西都是之前就聽過，但從來沒有真的去了解過這東西 最近就決定來好好這兩個可怕的數學 如果只是想要知道如何使用莫比烏斯反演計算題目，則可跳過證明的部分">
+<meta property="og:description" content="上一場 Div.2 的比賽中出了這題 要用到莫比烏斯函數來做排容
+ 不過這兩個東西都是之前就聽過，但從來沒有真的去了解過這東西
+ 最近就決定來好好這兩個可怕的數學
+ 如果只是想要知道如何使用莫比烏斯反演計算題目，則可跳過證明的部分">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-08-19T07:03:56.000Z">
 <meta property="article:modified_time" content="2021-08-19T08:23:38.514Z">
@@ -100,7 +106,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/old_blog/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">山姆的競程日記</h1>
       <span class="logo-line-after"><i></i></span>
@@ -122,22 +128,22 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+    <a href="/old_blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+    <a href="/old_blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+    <a href="/old_blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+    <a href="/old_blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -231,7 +237,7 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2021/08/19/dirchlet-convolution-and-mobius-inversion/#disqus_thread" itemprop="discussionUrl">
+    <a title="disqus" href="/old_blog/2021/08/19/dirchlet-convolution-and-mobius-inversion/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/19/dirchlet-convolution-and-mobius-inversion/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -378,7 +384,7 @@
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/54150">[Tutorial] Math note — Dirichlet convolution</a></p>
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/53925">[Tutorial] Math note — Möbius inversion</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lanly/p/12189571.html">从狄利克雷卷积到莫比乌斯函数</a></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<link rel="stylesheet" href="/old_blog/css/spoiler.css" type="text/css"><script src="/old_blog/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     
@@ -387,10 +393,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B8%E5%AD%B8/" rel="tag"># 數學</a>
-              <a href="/tags/%E6%95%B8%E8%AB%96/" rel="tag"># 數論</a>
-              <a href="/tags/%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A9%8D/" rel="tag"># 狄利克雷卷積</a>
-              <a href="/tags/%E8%8E%AB%E6%AF%94%E7%83%8F%E6%96%AF%E5%8F%8D%E6%BC%94/" rel="tag"># 莫比烏斯反演</a>
+              <a href="/old_blog/tags/%E6%95%B8%E5%AD%B8/" rel="tag"># 數學</a>
+              <a href="/old_blog/tags/%E6%95%B8%E8%AB%96/" rel="tag"># 數論</a>
+              <a href="/old_blog/tags/%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A9%8D/" rel="tag"># 狄利克雷卷積</a>
+              <a href="/old_blog/tags/%E8%8E%AB%E6%AF%94%E7%83%8F%E6%96%AF%E5%8F%8D%E6%BC%94/" rel="tag"># 莫比烏斯反演</a>
           </div>
 
         
@@ -399,11 +405,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/12/Sprout-2021/" rel="prev" title="2021 資訊之芽心得">
+    <a href="/old_blog/2021/08/12/Sprout-2021/" rel="prev" title="2021 資訊之芽心得">
       <i class="fa fa-chevron-left"></i> 2021 資訊之芽心得
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/10/23/Slope-Trick/" rel="next" title="不常見的DP優化 - Slope Trick">
+    <a href="/old_blog/2021/10/23/Slope-Trick/" rel="next" title="不常見的DP優化 - Slope Trick">
       不常見的DP優化 - Slope Trick <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -485,14 +491,14 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/old_blog/archives/">
         
           <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+            <a href="/old_blog/tags/">
           
         <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">標籤</span></a>
@@ -567,21 +573,21 @@
 
   
   
-  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/pjax/pjax.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/old_blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/old_blog/lib/anime.min.js"></script>
+  <script src="/old_blog/lib/pjax/pjax.min.js"></script>
+  <script src="/old_blog/lib/velocity/velocity.min.js"></script>
+  <script src="/old_blog/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/old_blog/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="/old_blog/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/old_blog/js/schemes/pisces.js"></script>
+
+
+<script src="/old_blog/js/next-boot.js"></script>
 
   <script>
 var pjax = new Pjax({
@@ -651,7 +657,7 @@ window.addEventListener('pjax:success', () => {
 
 
   
-<script src="/js/local-search.js"></script>
+<script src="/old_blog/js/local-search.js"></script>
 
 
 

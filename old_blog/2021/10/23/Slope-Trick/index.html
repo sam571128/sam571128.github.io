@@ -6,28 +6,32 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
 <meta name="google-site-verification" content="NNns6yX_AQQxa6sJQwIIHMJbXcs02pg3ZiTE4UK8VQQ" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/old_blog/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
   <link rel="icon" type="image/png" sizes="16x16" href="https://www.flaticon.com/svg/static/icons/svg/13/13706.svg">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="mask-icon" href="/old_blog/images/logo.svg" color="#222">
   <meta name="google-site-verification" content="true">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/old_blog/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/old_blog/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/old_blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/old_blog/search.xml"};
   </script>
 
-  <meta name="description" content="何謂 Slope Trick Slope Trick的誕生大概是 Codeforces 713C - Sonya and Problem Wihtout a Legend 這個題目所衍生出來的一種 DP 優化方式。 他可以處理與凹凸性函數代價的 DP 優化，不過我也是在寫 CSES 時才知道這個 DP 優化技巧">
+  <meta name="description" content="何謂 Slope Trick
+ Slope Trick的誕生大概是 Codeforces 713C - Sonya and Problem Wihtout a Legend 這個題目所衍生出來的一種 DP 優化方式。
+ 他可以處理與凹凸性函數代價的 DP 優化，不過我也是在寫 CSES 時才知道這個 DP 優化技巧">
 <meta property="og:type" content="article">
 <meta property="og:title" content="不常見的DP優化 - Slope Trick">
 <meta property="og:url" content="http://example.com/2021/10/23/Slope-Trick/index.html">
 <meta property="og:site_name" content="山姆的競程日記">
-<meta property="og:description" content="何謂 Slope Trick Slope Trick的誕生大概是 Codeforces 713C - Sonya and Problem Wihtout a Legend 這個題目所衍生出來的一種 DP 優化方式。 他可以處理與凹凸性函數代價的 DP 優化，不過我也是在寫 CSES 時才知道這個 DP 優化技巧">
+<meta property="og:description" content="何謂 Slope Trick
+ Slope Trick的誕生大概是 Codeforces 713C - Sonya and Problem Wihtout a Legend 這個題目所衍生出來的一種 DP 優化方式。
+ 他可以處理與凹凸性函數代價的 DP 優化，不過我也是在寫 CSES 時才知道這個 DP 優化技巧">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/Jp9sh7X.png">
 <meta property="og:image" content="https://i.imgur.com/xpss1U9.png">
@@ -102,7 +106,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/old_blog/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">山姆的競程日記</h1>
       <span class="logo-line-after"><i></i></span>
@@ -124,22 +128,22 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+    <a href="/old_blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+    <a href="/old_blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+    <a href="/old_blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+    <a href="/old_blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -233,7 +237,7 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2021/10/23/Slope-Trick/#disqus_thread" itemprop="discussionUrl">
+    <a title="disqus" href="/old_blog/2021/10/23/Slope-Trick/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/10/23/Slope-Trick/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -332,7 +336,7 @@
 <p>參考程式碼如下</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="keyword">int</span>&gt; slope;</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    slope.<span class="built_in">push</span>(x);</span><br><span class="line">    slope.<span class="built_in">push</span>(x);</span><br><span class="line">    ans += slope.<span class="built_in">top</span>()-x;</span><br><span class="line">    slope.<span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以去 <a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/2132/">CSES - Increasing Array II</a> 丟丟看自己的解</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<link rel="stylesheet" href="/old_blog/css/spoiler.css" type="text/css"><script src="/old_blog/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     
@@ -347,11 +351,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/19/dirchlet-convolution-and-mobius-inversion/" rel="prev" title="數論 狄利克雷卷積 & 莫比烏斯反演">
+    <a href="/old_blog/2021/08/19/dirchlet-convolution-and-mobius-inversion/" rel="prev" title="數論 狄利克雷卷積 & 莫比烏斯反演">
       <i class="fa fa-chevron-left"></i> 數論 狄利克雷卷積 & 莫比烏斯反演
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/11/30/Taipei-Contest-2021/" rel="next" title="2021 臺北市資訊學科能力競賽">
+    <a href="/old_blog/2021/11/30/Taipei-Contest-2021/" rel="next" title="2021 臺北市資訊學科能力競賽">
       2021 臺北市資訊學科能力競賽 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -433,14 +437,14 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/old_blog/archives/">
         
           <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+            <a href="/old_blog/tags/">
           
         <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">標籤</span></a>
@@ -515,21 +519,21 @@
 
   
   
-  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/pjax/pjax.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script color='255,255,200' opacity='0.5' zIndex='-1' count='500' src="/old_blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/old_blog/lib/anime.min.js"></script>
+  <script src="/old_blog/lib/pjax/pjax.min.js"></script>
+  <script src="/old_blog/lib/velocity/velocity.min.js"></script>
+  <script src="/old_blog/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/old_blog/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="/old_blog/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/old_blog/js/schemes/pisces.js"></script>
+
+
+<script src="/old_blog/js/next-boot.js"></script>
 
   <script>
 var pjax = new Pjax({
@@ -599,7 +603,7 @@ window.addEventListener('pjax:success', () => {
 
 
   
-<script src="/js/local-search.js"></script>
+<script src="/old_blog/js/local-search.js"></script>
 
 
 
